@@ -1,40 +1,28 @@
 import "./index.css";
 import PATHS from "./Utils/paths";
 import HeaderOne from "./Components/HeaderOne";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Home from "./Pages/Home";
+import Account from "./Pages/Account";
+import TvShows from "./Pages/TvShows";
+import Movies from "./Pages/Movies";
+import Login from "./Pages/Login";
+import FormSearching from "./Components/FormSearching";
 
 function App() {
   return (
     <div className='body-info'>
-      <HeaderOne />
-
-      <div>
-        <div id='home-name'>
-          <h1>Home</h1>
-        </div>
-
-        <form id='search-form'>
-          <div className='container'>
-            <input id='search-input' type='text' placeholder='Enter a name' />
-            <button className='container-button'>Search</button>
-          </div>
-        </form>
-
-        <label>Filter:</label>
-        <select id='alphabet'>
-          <option value='A-G'>A-G</option>
-          <option value='H-N'>H-N</option>
-          <option value='O-U'>O-U</option>
-          <option value='V-Z'>V-Z</option>
-        </select>
-
-        <div id='sumOfMovies'>
-          <h2 id='headerOfSum'>
-            You added
-            <span> 0 </span> movies to your watchlist
-          </h2>
-        </div>
-        <div className='grid-container'></div>
-      </div>
+      <Router>
+        <HeaderOne />
+        <Routes>
+          <Route path={PATHS.HOME} element={<Home />} />
+          <Route path={PATHS.ACCOUNT_APP} element={<Account />} />
+          <Route path={PATHS.TVSHOWS_APP} element={<TvShows />} />
+          <Route path={PATHS.MOVIES_APP} element={<Movies />} />
+          <Route path={PATHS.LOGIN_APP} element={<Login />} />
+        </Routes>
+      </Router>
+      {/* <FormSearching /> */}
     </div>
   );
 }

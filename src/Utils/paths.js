@@ -1,4 +1,4 @@
-export const PATHS = {
+const PATHS = {
   HOME: "/",
   LOGIN_APP: "/login",
   LOGOUT_APP: "/logout",
@@ -6,3 +6,5 @@ export const PATHS = {
   TVSHOWS_APP: "/tvshows",
   MOVIES_APP: "/movies",
 };
+
+export default PATHS;

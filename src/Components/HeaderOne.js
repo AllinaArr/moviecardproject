@@ -1,5 +1,5 @@
 import React from "react";
-import NavBar from "../Pages/NavBar";
+import NavBar from "./NavBar";
 
 function HeaderOne() {
   return (
