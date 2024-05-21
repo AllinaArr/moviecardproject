@@ -1,29 +1,11 @@
 import "./index.css";
+import PATHS from "./Utils/paths";
+import HeaderOne from "./Components/HeaderOne";
 
 function App() {
   return (
-    <body>
-      <nav>
-        <ul className='nav-list'>
-          <li className='active'>
-            <a href='index.html' aria-current='page'>
-              Home
-            </a>
-          </li>
-          <li>
-            <a href='account.html'>Account</a>
-          </li>
-          <li>
-            <a href='tvshow.html'>TV Shows</a>
-          </li>
-          <li>
-            <a href='movies.html'>Movies</a>
-          </li>
-          <li>
-            <a href='signout.html'>Sign Out</a>
-          </li>
-        </ul>
-      </nav>
+    <div className='body-info'>
+      <HeaderOne />
 
       <div>
         <div id='home-name'>
@@ -53,7 +35,7 @@ function App() {
         </div>
         <div className='grid-container'></div>
       </div>
-    </body>
+    </div>
   );
 }
 
