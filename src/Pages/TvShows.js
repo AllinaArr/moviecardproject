@@ -1,5 +1,5 @@
 import SearchingBar from "../Components/SearchingBar";
-import TVShowsDataBase from "../Components/TVShowsDataBase";
+import RandomTVShows from "../Components/RandomTVShows";
 
 function TvShows() {
   return (
@@ -11,7 +11,7 @@ function TvShows() {
           </div>
           <SearchingBar />
         </div>
-        <TVShowsDataBase />
+        <RandomTVShows />
       </div>
     </div>
   );

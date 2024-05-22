@@ -1,5 +1,5 @@
 import SearchingBar from "../Components/SearchingBar";
-import HighlyRatedMovies from "../Components/HighlyRatedMovies";
+import RandomMovies from "../Components/RandomMovies";
 
 function Movies() {
   return (
@@ -11,7 +11,7 @@ function Movies() {
           </div>
           <SearchingBar />
         </div>
-        <HighlyRatedMovies />
+        <RandomMovies />
       </div>
     </div>
   );

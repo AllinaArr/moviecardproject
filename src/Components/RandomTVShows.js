@@ -1,21 +1,18 @@
-import { useEffect, useState } from "react";
-import "../index.css";
+import { useState, useEffect } from "react";
 import { options } from "../Utils/options";
 
-function ImagesPlace() {
-  const imgPlace = document.querySelector(".grid-container");
-  let valueSpan = 0;
-
-  const [movies, setMovies] = useState([]);
+function RandomTVShows() {
+  const [tvShows, setTvShows] = useState([]);
+  let randomPage = Math.floor(Math.random() * 500);
 
   useEffect(() => {
     fetch(
-      "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
+      `https://api.themoviedb.org/3/tv/popular?language=en-US&page=${randomPage}`,
       options
     )
       .then((response) => response.json())
       .then((data) => {
-        setMovies(data.results);
+        setTvShows(data.results);
       })
       .catch((err) => console.error(err));
   }, []);
@@ -23,13 +20,13 @@ function ImagesPlace() {
   return (
     <div id='parent-grid-container'>
       <div className='grid-container'>
-        {movies.map((movie) => (
-          <div className='movie-container' key={movie.id}>
+        {tvShows.map((tvshow) => (
+          <div className='movie-container' key={tvshow.id}>
             <div className='divForImg'>
               <img
                 id='grid-image'
-                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                alt={movie.original_title}
+                src={`https://image.tmdb.org/t/p/w500${tvshow.poster_path}`}
+                alt={tvshow.original_title}
               />
             </div>
             <div className='divForBut'>
@@ -42,4 +39,4 @@ function ImagesPlace() {
   );
 }
 
-export default ImagesPlace;
+export default RandomTVShows;

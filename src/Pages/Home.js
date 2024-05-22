@@ -2,7 +2,7 @@ import SearchingBar from "../Components/SearchingBar";
 import React from "react";
 import "../index.css";
 import SummaryOfAddedMovies from "../Components/SummaryOfAddedMovies";
-import ImagesPlace from "../Components/ImagesPlace";
+import UpcomingMovies from "../Components/UpcomingMovies";
 
 function Home() {
   return (
@@ -16,7 +16,7 @@ function Home() {
         </div>
         <SummaryOfAddedMovies />
       </div>
-      <ImagesPlace />
+      <UpcomingMovies />
     </div>
   );
 }

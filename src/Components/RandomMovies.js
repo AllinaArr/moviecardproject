@@ -2,12 +2,13 @@ import { useState, useEffect } from "react";
 import { options } from "../Utils/options";
 import "../index.css";
 
-function HighlyRatedMovies() {
+function RandomMovies() {
   const [highlyRated, setHighlyRated] = useState([]);
+  let randomPage = Math.floor(Math.random() * 500);
 
   useEffect(() => {
     fetch(
-      "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1",
+      `https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=${randomPage}`,
       options
     )
       .then((response) => response.json())
@@ -39,4 +40,4 @@ function HighlyRatedMovies() {
   );
 }
 
-export default HighlyRatedMovies;
+export default RandomMovies;

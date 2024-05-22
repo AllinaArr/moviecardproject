@@ -1,17 +1,21 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import "../index.css";
 import { options } from "../Utils/options";
 
-function TVShowsDataBase() {
-  const [tvShows, setTvShows] = useState([]);
+function UpcomingMovies() {
+  const imgPlace = document.querySelector(".grid-container");
+  let valueSpan = 0;
+
+  const [movies, setMovies] = useState([]);
 
   useEffect(() => {
     fetch(
-      "https://api.themoviedb.org/3/tv/popular?language=en-US&page=1",
+      `https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1`,
       options
     )
       .then((response) => response.json())
       .then((data) => {
-        setTvShows(data.results);
+        setMovies(data.results);
       })
       .catch((err) => console.error(err));
   }, []);
@@ -19,13 +23,13 @@ function TVShowsDataBase() {
   return (
     <div id='parent-grid-container'>
       <div className='grid-container'>
-        {tvShows.map((tvshow) => (
-          <div className='movie-container' key={tvshow.id}>
+        {movies.map((movie) => (
+          <div className='movie-container' key={movie.id}>
             <div className='divForImg'>
               <img
                 id='grid-image'
-                src={`https://image.tmdb.org/t/p/w500${tvshow.poster_path}`}
-                alt={tvshow.original_title}
+                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                alt={movie.original_title}
               />
             </div>
             <div className='divForBut'>
@@ -38,4 +42,4 @@ function TVShowsDataBase() {
   );
 }
 
-export default TVShowsDataBase;
+export default UpcomingMovies;
