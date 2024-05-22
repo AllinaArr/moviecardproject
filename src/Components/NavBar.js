@@ -1,9 +1,7 @@
 import { NavLink, useLocation } from "react-router-dom";
-// import PATHS from "../Utils/paths";
-// import "../Pages/appDesign.css";
 import { useState } from "react";
 import PATHS from "../Utils/paths";
-import "../Components/appDesign.css";
+import "../index.css";
 
 function NavBar() {
   const location = useLocation();

@@ -1,6 +1,6 @@
 import SearchingBar from "../Components/SearchingBar";
 import React from "react";
-import "../Components/appDesign.css";
+import "../index.css";
 import SummaryOfAddedMovies from "../Components/SummaryOfAddedMovies";
 import ImagesPlace from "../Components/ImagesPlace";
 

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import "../index.css";
 
 function ImagesPlace() {
   const imgPlace = document.querySelector(".grid-container");
@@ -11,8 +12,7 @@ function ImagesPlace() {
       method: "GET",
       headers: {
         accept: "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmNDdkZTBlMGY4ZGZjZmM0ODRhYjIzZjk3OGFlYmM3OSIsInN1YiI6IjY2NGNiY2QzOThmNWZjNWJiNTU1MzBhNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.sFJvo3zcsYMRMFGJKNkpUUJXYS1tdwvJ7zFWLlf8ZpY",
+        Authorization: `Bearer ${process.env.REACT_APP_API_TOKEN}`,
       },
     };
 
@@ -27,27 +27,24 @@ function ImagesPlace() {
       .catch((err) => console.error(err));
   }, []);
 
-  function handleDatabase(movie) {
-    return (
-      <div className='movie-container' key='{movie.id}'>
-        <div className='divForImg'>
-          <img
-            id='grid-image'
-            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-            alt={movie.original_title}
-          />
-        </div>
-        <div className='divForBut'>
-          <button className='overlay-button'>Add to my watchlist</button>
-        </div>
-        {/* <p>{movie.original_title}</p> */}
-      </div>
-    );
-  }
-
   return (
-    <div className='grid-container'>
-      {movies.map((movie) => handleDatabase(movie))}
+    <div id='parent-grid-container'>
+      <div className='grid-container'>
+        {movies.map((movie) => (
+          <div className='movie-container' key={movie.id}>
+            <div className='divForImg'>
+              <img
+                id='grid-image'
+                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                alt={movie.original_title}
+              />
+            </div>
+            <div className='divForBut'>
+              <button className='overlay-button'>Add to my watchlist</button>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

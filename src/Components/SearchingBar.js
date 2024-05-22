@@ -1,4 +1,4 @@
-import "../Components/appDesign.css";
+import "../index.css";
 
 function SearchingBar() {
   return (
