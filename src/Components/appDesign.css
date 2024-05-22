@@ -98,3 +98,82 @@ nav {
   margin-left: 10%;
   text-align: center;
 }
+
+img {
+  display: grid;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  column-gap: 30px;
+  row-gap: 30px;
+  position: relative;
+}
+
+.divForImg > img {
+  width: 200px;
+  height: 300px;
+  border: 1px solid;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+#grid-image:hover {
+  display: block;
+  border-color: gold;
+  transform: scale(1.1);
+  transition: all 0.3s;
+}
+
+.movie-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.overlay-button {
+  padding: 10px 20px;
+  background-color: var(--nav-bg);
+  color: #4f4959;
+  border: 1px solid #4f4959;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.overlay-button:hover {
+  display: block;
+  border-color: gold;
+  transform: scale(1.1);
+  transition: all 0.3s;
+}
+
+.divForBut {
+  margin-top: 10px; /* Add spacing between image and button */
+}
+
+.overlay-button:hover {
+  background-color: #333;
+  color: #e5e1ec;
+}
+
+.container-button {
+  width: 100px;
+  background-color: var(--nav-bg);
+  color: #4f4959;
+  border: 1px solid #4f4959;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+#headerOfSum {
+  text-align: center;
+}
+
+#alphabet {
+  margin-left: auto;
+  text-align: center;
+}
