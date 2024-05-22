@@ -2,8 +2,3 @@
   --body-bg: #123;
   --nav-bg: #e5e1ec;
 }
-
-#home-name,
-#search-input {
-  display: inline-block;
-}

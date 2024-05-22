@@ -7,7 +7,6 @@ import Account from "./Pages/Account";
 import TvShows from "./Pages/TvShows";
 import Movies from "./Pages/Movies";
 import Login from "./Pages/Login";
-import FormSearching from "./Components/FormSearching";
 
 function App() {
   return (
@@ -22,7 +21,6 @@ function App() {
           <Route path={PATHS.LOGIN_APP} element={<Login />} />
         </Routes>
       </Router>
-      {/* <FormSearching /> */}
     </div>
   );
 }

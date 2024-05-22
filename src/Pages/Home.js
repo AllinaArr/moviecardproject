@@ -1,5 +1,20 @@
+import SearchingBar from "../Components/SearchingBar";
+import React from "react";
+import "../Components/appDesign.css";
+import SummaryOfAddedMovies from "../Components/SummaryOfAddedMovies";
+
 function Home() {
-  return <h1 id='home-name'>Home</h1>;
+  return (
+    <div>
+      <div id='home-container'>
+        <div id='home-name'>
+          <h1>Home</h1>
+        </div>
+        <SearchingBar />
+      </div>
+      <SummaryOfAddedMovies />
+    </div>
+  );
 }
 
 export default Home;
