@@ -1,21 +1,18 @@
-import { useEffect, useState } from "react";
-import "../index.css";
+import { useState, useEffect } from "react";
 import { options } from "../Utils/options";
+import "../index.css";
 
-function ImagesPlace() {
-  const imgPlace = document.querySelector(".grid-container");
-  let valueSpan = 0;
-
-  const [movies, setMovies] = useState([]);
+function HighlyRatedMovies() {
+  const [highlyRated, setHighlyRated] = useState([]);
 
   useEffect(() => {
     fetch(
-      "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
+      "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1",
       options
     )
       .then((response) => response.json())
       .then((data) => {
-        setMovies(data.results);
+        setHighlyRated(data.results);
       })
       .catch((err) => console.error(err));
   }, []);
@@ -23,7 +20,7 @@ function ImagesPlace() {
   return (
     <div id='parent-grid-container'>
       <div className='grid-container'>
-        {movies.map((movie) => (
+        {highlyRated.map((movie) => (
           <div className='movie-container' key={movie.id}>
             <div className='divForImg'>
               <img
@@ -42,4 +39,4 @@ function ImagesPlace() {
   );
 }
 
-export default ImagesPlace;
+export default HighlyRatedMovies;

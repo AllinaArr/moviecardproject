@@ -1,6 +1,8 @@
 import "../index.css";
 
 function SummaryOfAddedMovies() {
+  //useState to update span
+
   return (
     <div id='sumOfMovies'>
       <h2 id='headerOfSum'>
