@@ -1,22 +1,23 @@
 import SearchingBar from "../Components/SearchingBar";
 import React from "react";
 import "../index.css";
-import SummaryOfAddedMovies from "../Components/SummaryOfAddedMovies";
+import { useState } from "react";
+import SearchBar from "../Components/SearchBar";
 import UpcomingMovies from "../Components/UpcomingMovies";
 
 function Home() {
   return (
     <div>
-      <div>
-        <div id='home-container'>
-          <div id='home-name'>
-            <h1>Home</h1>
-          </div>
-          <SearchingBar />
+      <div id='home-container'>
+        <div id='home-name'>
+          <h1>Home</h1>
         </div>
-        <SummaryOfAddedMovies />
+        <SearchBar />
       </div>
-      <UpcomingMovies />
+      <div>
+        {/* <SearchingBar /> */}
+        {/* <UpcomingMovies /> */}
+      </div>
     </div>
   );
 }

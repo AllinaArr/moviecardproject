@@ -48,7 +48,7 @@ function NavBar() {
             to={PATHS.LOGIN_APP}
             onClick={() => handleClick(PATHS.LOGIN_APP)}
           >
-            Login
+            Logout
           </NavLink>
         </li>
       </ul>
