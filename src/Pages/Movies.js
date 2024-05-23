@@ -1,4 +1,4 @@
-import SearchingBar from "../Components/SearchingBar";
+import FilteredMovies from "../Components/FilteredMovies";
 import RandomMovies from "../Components/RandomMovies";
 
 function Movies() {
@@ -9,7 +9,7 @@ function Movies() {
           <div id='home-name'>
             <h1>Movies</h1>
           </div>
-          <SearchingBar />
+          <FilteredMovies />
         </div>
         <RandomMovies />
       </div>

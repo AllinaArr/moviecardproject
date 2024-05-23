@@ -87,7 +87,7 @@ nav {
 }
 
 .search-divider {
-  margin-left: 50vh;
+  /* margin-left: 5vh; */
 }
 
 .container {
@@ -111,8 +111,8 @@ nav {
 }
 
 #search-form {
-  /* display: inline; */
-  /* align-items: center; */
+  display: inline;
+  align-items: center;
 }
 
 #search-input {
