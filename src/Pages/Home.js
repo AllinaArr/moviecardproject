@@ -40,8 +40,11 @@ function Home() {
         />
       </div>
       <div>
-        <FilteredMovies searchValue={searchValue} />
-        <UpcomingMovies listOfMovies={movies} />
+        {searchValue ? (
+          <FilteredMovies searchValue={searchValue} />
+        ) : (
+          <UpcomingMovies listOfMovies={movies} />
+        )}
       </div>
     </div>
   );
