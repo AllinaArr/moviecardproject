@@ -1,14 +1,18 @@
 import SummaryOfAddedMovies from "../Components/SummaryOfAddedMovies";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import UpcomingMovies from "../Components/UpcomingMovies";
+import MoviesAddedToAccount from "../Components/MoviesAddedToAccount";
 
 function Account() {
-  //create a GET REQUEST from db.json
+  const [movies, setMovies] = useState([]);
   useEffect(() => {
     fetch("http://localhost:3000/movies")
       .then((response) => response.json())
-      .then((movies) => console.log(movies));
-  });
+      .then((data) => {
+        console.log(movies);
+        setMovies(data);
+      });
+  }, []);
 
   return (
     <div>
@@ -18,9 +22,7 @@ function Account() {
         </div>
         <SummaryOfAddedMovies />
       </div>
-      <div>Show me all movies from my DB</div>
-
-      {/* <UpcomingMovies /> */}
+      <MoviesAddedToAccount listOfMovies={movies} />
     </div>
   );
 }
