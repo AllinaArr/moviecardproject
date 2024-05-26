@@ -104,6 +104,7 @@ nav {
 }
 
 #sumOfMovies {
+  margin-left: 30vh;
 }
 
 #home-name {
@@ -196,6 +197,7 @@ img {
 
 #headerOfSum {
   text-align: center;
+  margin-left: 1px;
 }
 
 #alphabet {

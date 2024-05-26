@@ -18,7 +18,7 @@ function Account() {
 
   return (
     <div>
-      <div id='home-container'>
+      <div id='account-container'>
         <div id='home-name'>
           <h1>Account</h1>
         </div>
