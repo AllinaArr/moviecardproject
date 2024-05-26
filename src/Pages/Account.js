@@ -1,16 +1,18 @@
 import SummaryOfAddedMovies from "../Components/SummaryOfAddedMovies";
 import { useEffect, useState } from "react";
-import UpcomingMovies from "../Components/UpcomingMovies";
+
 import MoviesAddedToAccount from "../Components/MoviesAddedToAccount";
 
 function Account() {
   const [movies, setMovies] = useState([]);
+  const [count, setCount] = useState(0);
   useEffect(() => {
     fetch("http://localhost:3000/movies")
       .then((response) => response.json())
       .then((data) => {
         console.log(movies);
         setMovies(data);
+        setCount(data.length);
       });
   }, []);
 
@@ -20,7 +22,7 @@ function Account() {
         <div id='home-name'>
           <h1>Account</h1>
         </div>
-        <SummaryOfAddedMovies />
+        <SummaryOfAddedMovies count={count} />
       </div>
       <MoviesAddedToAccount listOfMovies={movies} />
     </div>

@@ -34,7 +34,7 @@ function AddMovieButton({ addMovie, movie }) {
   return (
     <div className='divForBut'>
       <button className='overlay-button' onClick={handleClick}>
-        Add to my watchlist
+        {movieAdded ? "Remove from my watchlist" : "Add to my watchlist"}
       </button>
 
       {modal && (

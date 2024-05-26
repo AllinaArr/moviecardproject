@@ -1,13 +1,13 @@
 import "../index.css";
 
-function SummaryOfAddedMovies() {
+function SummaryOfAddedMovies({ count }) {
   //useState to update span
 
   return (
     <div id='sumOfMovies'>
       <h2 id='headerOfSum'>
-        You added
-        <span> 0 </span> movies to your watchlist
+        You have
+        <span> {count} </span> movies in your watchlist
       </h2>
     </div>
   );

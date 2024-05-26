@@ -13,7 +13,7 @@ function MoviesAddedToAccount({ listOfMovies }) {
                 alt={movie.original_title}
               />
             </div>
-            <AddMovieButton />
+            <AddMovieButton movie={movie} />
           </div>
         ))}
       </div>
