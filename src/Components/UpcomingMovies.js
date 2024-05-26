@@ -1,6 +1,15 @@
 import "../index.css";
+import AddMovieButton from "./AddMovieButton";
+import { useState } from "react";
 
 function UpcomingMovies({ listOfMovies }) {
+  const [movies, setMovies] = useState([]);
+
+  const addMovie = (newMovie) => {
+    console.log("I am handling t add movie");
+    setMovies((prevMovies) => [...prevMovies, newMovie]);
+  };
+
   return (
     <div id='parent-grid-container'>
       <div className='grid-container'>
@@ -13,9 +22,7 @@ function UpcomingMovies({ listOfMovies }) {
                 alt={movie.original_title}
               />
             </div>
-            <div className='divForBut'>
-              <button className='overlay-button'>Add to my watchlist</button>
-            </div>
+            <AddMovieButton addMovie={addMovie} movie={movie} />
           </div>
         ))}
       </div>

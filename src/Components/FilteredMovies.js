@@ -1,6 +1,7 @@
 import "../index.css";
 import { useEffect, useState } from "react";
 import { options } from "../Utils/options";
+import AddMovieButton from "./AddMovieButton";
 
 function FilteredMovies({ searchValue }) {
   const [filteredMovies, setFilteredMovies] = useState([]);
@@ -31,9 +32,7 @@ function FilteredMovies({ searchValue }) {
                 alt={movie.original_title}
               />
             </div>
-            <div className='divForBut'>
-              <button className='overlay-button'>Add to my watchlist</button>
-            </div>
+            <AddMovieButton />
           </div>
         ))}
       </div>
