@@ -218,9 +218,9 @@ img {
 }
 
 .overlay {
-  background-color: white;
+  background-color: #cdbaef;
   padding: 20px;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 .modal-content {
@@ -229,4 +229,11 @@ img {
 
 .close-modal {
   margin-top: 10px;
+  border-radius: 30px;
+  background: border-box;
+  width: 100px;
+  background-color: var(--nav-bg);
+  color: #4f4959;
+  border: 1px solid #4f4959;
+  cursor: pointer;
 }

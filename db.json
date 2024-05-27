@@ -1,34 +1,19 @@
 {
   "movies": [
     {
-      "id": 573435,
+      "id": "573435",
       "poster_path": "/nP6RliHjxsz4irTKsxe8FRhKZYl.jpg",
       "title": "Bad Boys: Ride or Die"
-    },
-    {
-      "id": 845783,
-      "poster_path": "/lbOyeiiRYAE6Nm2e7xiNAAaRwZB.jpg",
-      "title": "Baghead"
-    },
-    {
-      "id": 938614,
-      "poster_path": "/u3YQJctMzFN2wAvnkmXy41bXhFv.jpg",
-      "title": "Late Night with the Devil"
-    },
-    {
-      "id": 639720,
-      "poster_path": "/xbKFv4KF3sVYuWKllLlwWDmuZP7.jpg",
-      "title": "IF"
-    },
-    {
-      "id": 1041613,
-      "poster_path": "/fdZpvODTX5wwkD0ikZNaClE4AoW.jpg",
-      "title": "Immaculate"
     },
     {
       "id": 748783,
       "poster_path": "/p6AbOJvMQhBmffd0PIv0u8ghWeY.jpg",
       "title": "The Garfield Movie"
+    },
+    {
+      "id": 838209,
+      "poster_path": "/pQYHouPsDw32FhDLr7E3jmw0WTk.jpg",
+      "title": "Exhuma"
     }
   ]
 }
