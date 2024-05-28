@@ -14,7 +14,7 @@ function App() {
   const [movies, setMovies] = useState([]);
 
   const addMovie = (newMovie) => {
-    console.log("I am handling t add movie");
+    console.log("I am handling to add movie");
     setMovies((prevMovies) => [...prevMovies, newMovie]);
   };
 
@@ -48,7 +48,17 @@ function App() {
             }
           />
           <Route path={PATHS.ACCOUNT_APP} element={<Account />} />
-          <Route path={PATHS.TVSHOWS_APP} element={<TvShows />} />
+          <Route
+            path={PATHS.TVSHOWS_APP}
+            element={
+              <TvShows
+                searchValue={searchValue}
+                setSearchValue={setSearchValue}
+                movies={movies}
+                addMovie={addMovie}
+              />
+            }
+          />
           <Route
             path={PATHS.MOVIES_APP}
             element={

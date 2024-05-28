@@ -1,7 +1,28 @@
 import FilteredMovies from "../Components/FilteredMovies";
 import RandomTVShows from "../Components/RandomTVShows";
+import SearchBar from "../Components/SearchBar";
+import { useState, useEffect } from "react";
+import { options } from "../Utils/options";
 
-function TvShows() {
+function TvShows({ searchValue, setSearchValue, movies, addMovie }) {
+  const [tvShows, setTvShows] = useState([]);
+  // let randomPage = Math.floor(Math.random() * 500);
+
+  useEffect(() => {
+    fetch(
+      `https://api.themoviedb.org/3/tv/popular?language=en-US&page=1`,
+      options
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setTvShows(data.results);
+      })
+      .catch((err) => console.error(err));
+  }, []);
+
+  const handleSearch = () => {
+    console.log("Searching for:", searchValue);
+  };
   return (
     <div>
       <div>
@@ -9,9 +30,17 @@ function TvShows() {
           <div id='home-name'>
             <h1>TV Shows</h1>
           </div>
-          <FilteredMovies />
+          <SearchBar
+            searchValue={searchValue}
+            onChangeValue={setSearchValue}
+            onSearch={handleSearch}
+          />
         </div>
-        <RandomTVShows />
+        {searchValue ? (
+          <FilteredMovies searchValue={searchValue} />
+        ) : (
+          <RandomTVShows listOfTvShows={tvShows} addMovie={addMovie} />
+        )}
       </div>
     </div>
   );
