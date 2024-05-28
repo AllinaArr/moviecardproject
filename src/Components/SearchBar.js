@@ -2,7 +2,7 @@ function SearchBar({ searchValue, onChangeValue, onSearch }) {
   const handleSubmit = (e) => {
     console.log("Searching ... I am here");
     e.preventDefault();
-    onSearch(); // Call the onSearch prop when the form is submitted
+    onSearch();
   };
   return (
     <div className='search-divider'>

@@ -1,27 +1,18 @@
-import { useState, useEffect } from "react";
-import { options } from "../Utils/options";
+import AddMovieButton from "./AddMovieButton";
 import "../index.css";
+import { useState } from "react";
 
-function RandomMovies() {
-  const [highlyRated, setHighlyRated] = useState([]);
-  let randomPage = Math.floor(Math.random() * 500);
+function RandomMovies({ listOfMovies }) {
+  const [movies, setMovies] = useState([]);
 
-  useEffect(() => {
-    fetch(
-      `https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=${randomPage}`,
-      options
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        setHighlyRated(data.results);
-      })
-      .catch((err) => console.error(err));
-  }, []);
-
+  const addMovie = (newMovie) => {
+    console.log("I am handling t add movie");
+    setMovies((prevMovies) => [...prevMovies, newMovie]);
+  };
   return (
     <div id='parent-grid-container'>
       <div className='grid-container'>
-        {highlyRated.map((movie) => (
+        {listOfMovies.map((movie) => (
           <div className='movie-container' key={movie.id}>
             <div className='divForImg'>
               <img
@@ -30,9 +21,7 @@ function RandomMovies() {
                 alt={movie.original_title}
               />
             </div>
-            <div className='divForBut'>
-              <button className='overlay-button'>Add to my watchlist</button>
-            </div>
+            <AddMovieButton addMovie={addMovie} movie={movie} />
           </div>
         ))}
       </div>

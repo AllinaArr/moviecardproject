@@ -7,17 +7,51 @@ import Account from "./Pages/Account";
 import TvShows from "./Pages/TvShows";
 import Movies from "./Pages/Movies";
 import Login from "./Pages/Login";
-
+import { useEffect, useState } from "react";
+import { options } from "./Utils/options";
 function App() {
+  const [searchValue, setSearchValue] = useState("");
+  const [movies, setMovies] = useState([]);
+  useEffect(() => {
+    fetch(
+      `https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1`,
+      options
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("WE GET ALL DATA");
+        setMovies(data.results);
+      })
+      .catch((err) => console.error(err));
+  }, []);
+
   return (
     <div className='body-info'>
       <Router>
         <HeaderOne />
         <Routes>
-          <Route path={PATHS.HOME} element={<Home />} />
+          <Route
+            path={PATHS.HOME}
+            element={
+              <Home
+                searchValue={searchValue}
+                setSearchValue={setSearchValue}
+                movies={movies}
+              />
+            }
+          />
           <Route path={PATHS.ACCOUNT_APP} element={<Account />} />
           <Route path={PATHS.TVSHOWS_APP} element={<TvShows />} />
-          <Route path={PATHS.MOVIES_APP} element={<Movies />} />
+          <Route
+            path={PATHS.MOVIES_APP}
+            element={
+              <Movies
+                searchValue={searchValue}
+                setSearchValue={setSearchValue}
+                movies={movies}
+              />
+            }
+          />
           <Route path={PATHS.LOGIN_APP} element={<Login />} />
         </Routes>
       </Router>
