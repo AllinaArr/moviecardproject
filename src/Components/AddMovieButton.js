@@ -24,6 +24,10 @@ function AddMovieButton({ addMovie, movie }) {
         addMovie(data);
         setMovieAdded(true);
         setModal(true);
+
+        setTimeout(() => {
+          setModal(false);
+        }, 1000);
       });
   }
 
