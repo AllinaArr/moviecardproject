@@ -4,7 +4,7 @@ import SearchBar from "../Components/SearchBar";
 import { useState, useEffect } from "react";
 import { options } from "../Utils/options";
 
-function TvShows({ searchValue, setSearchValue, movies, addMovie }) {
+function TvShows({ searchValue, setSearchValue, addMovie }) {
   const [tvShows, setTvShows] = useState([]);
   // let randomPage = Math.floor(Math.random() * 500);
 

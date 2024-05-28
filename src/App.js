@@ -54,7 +54,6 @@ function App() {
               <TvShows
                 searchValue={searchValue}
                 setSearchValue={setSearchValue}
-                movies={movies}
                 addMovie={addMovie}
               />
             }
@@ -65,7 +64,6 @@ function App() {
               <Movies
                 searchValue={searchValue}
                 setSearchValue={setSearchValue}
-                movies={movies}
                 addMovie={addMovie}
               />
             }

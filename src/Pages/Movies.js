@@ -4,7 +4,7 @@ import SearchBar from "../Components/SearchBar";
 import { useState, useEffect } from "react";
 import { options } from "../Utils/options";
 
-function Movies({ searchValue, setSearchValue, movies, addMovie }) {
+function Movies({ searchValue, setSearchValue, addMovie }) {
   const [highlyRated, setHighlyRated] = useState([]);
   const handleSearch = () => {
     console.log("Searching for:", searchValue);
