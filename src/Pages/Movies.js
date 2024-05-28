@@ -4,7 +4,7 @@ import SearchBar from "../Components/SearchBar";
 import { useState, useEffect } from "react";
 import { options } from "../Utils/options";
 
-function Movies({ searchValue, setSearchValue, movies }) {
+function Movies({ searchValue, setSearchValue, movies, addMovie }) {
   const [highlyRated, setHighlyRated] = useState([]);
   const handleSearch = () => {
     console.log("Searching for:", searchValue);
@@ -40,7 +40,7 @@ function Movies({ searchValue, setSearchValue, movies }) {
         {searchValue ? (
           <FilteredMovies searchValue={searchValue} />
         ) : (
-          <RandomMovies listOfMovies={highlyRated} />
+          <RandomMovies listOfMovies={highlyRated} addMovie={addMovie} />
         )}
       </div>
     </div>

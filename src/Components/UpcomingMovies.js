@@ -1,15 +1,7 @@
 import "../index.css";
 import AddMovieButton from "./AddMovieButton";
-import { useState } from "react";
 
-function UpcomingMovies({ listOfMovies }) {
-  const [movies, setMovies] = useState([]);
-
-  const addMovie = (newMovie) => {
-    console.log("I am handling t add movie");
-    setMovies((prevMovies) => [...prevMovies, newMovie]);
-  };
-
+function UpcomingMovies({ listOfMovies, addMovie }) {
   return (
     <div id='parent-grid-container'>
       <div className='grid-container'>

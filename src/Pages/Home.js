@@ -3,7 +3,7 @@ import React from "react";
 import SearchBar from "../Components/SearchBar";
 import UpcomingMovies from "../Components/UpcomingMovies";
 
-function Home({ searchValue, setSearchValue, movies }) {
+function Home({ searchValue, setSearchValue, movies, addMovie }) {
   const handleSearch = () => {
     console.log("Searching for:", searchValue);
   };
@@ -24,7 +24,7 @@ function Home({ searchValue, setSearchValue, movies }) {
         {searchValue ? (
           <FilteredMovies searchValue={searchValue} />
         ) : (
-          <UpcomingMovies listOfMovies={movies} />
+          <UpcomingMovies listOfMovies={movies} addMovie={addMovie} />
         )}
       </div>
     </div>

@@ -12,6 +12,12 @@ import { options } from "./Utils/options";
 function App() {
   const [searchValue, setSearchValue] = useState("");
   const [movies, setMovies] = useState([]);
+
+  const addMovie = (newMovie) => {
+    console.log("I am handling t add movie");
+    setMovies((prevMovies) => [...prevMovies, newMovie]);
+  };
+
   useEffect(() => {
     fetch(
       `https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1`,
@@ -37,6 +43,7 @@ function App() {
                 searchValue={searchValue}
                 setSearchValue={setSearchValue}
                 movies={movies}
+                addMovie={addMovie}
               />
             }
           />
@@ -49,6 +56,7 @@ function App() {
                 searchValue={searchValue}
                 setSearchValue={setSearchValue}
                 movies={movies}
+                addMovie={addMovie}
               />
             }
           />
