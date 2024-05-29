@@ -9,6 +9,7 @@ import Movies from "./Pages/Movies";
 import Login from "./Pages/Login";
 import { useEffect, useState } from "react";
 import { options } from "./Utils/options";
+
 function App() {
   const [searchValue, setSearchValue] = useState("");
   const [movies, setMovies] = useState([]);
@@ -16,6 +17,13 @@ function App() {
   const addMovie = (newMovie) => {
     console.log("I am handling to add movie");
     setMovies((prevMovies) => [...prevMovies, newMovie]);
+  };
+
+  const deleteMovie = (movieId) => {
+    setMovies((prevMovies) =>
+      prevMovies.filter((movie) => movie.id !== movieId)
+    );
+    console.log("prevMovie ID");
   };
 
   useEffect(() => {
@@ -47,7 +55,10 @@ function App() {
               />
             }
           />
-          <Route path={PATHS.ACCOUNT_APP} element={<Account />} />
+          <Route
+            path={PATHS.ACCOUNT_APP}
+            element={<Account deleteMovie={deleteMovie} />}
+          />
           <Route
             path={PATHS.TVSHOWS_APP}
             element={

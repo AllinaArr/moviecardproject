@@ -1,15 +1,17 @@
 import AddMovieButton from "./AddMovieButton";
 
-function MoviesAddedToAccount({ listOfMovies }) {
-  // function handleDeletion() {
-  //   console.log("deleted from Account");
+function MoviesAddedToAccount({ listOfMovies, deleteMovie }) {
+  function handleDeletion(movieId) {
+    console.log("deleted from Account");
 
-  //   fetch(`http://localhost:3000/movies/${movie.id}`, {
-  //     method: "DELETE",
-  //   })
-  //     .then((response) => response.ok)
-  //     .then(() => deletePlant(movie.id));
-  // }
+    fetch(`http://localhost:3000/movies/${movieId}`, {
+      method: "DELETE",
+    })
+      .then((response) => response.ok)
+      .then(() => deleteMovie(movieId))
+      .catch((err) => console.log(err));
+  }
+
   return (
     <div id='parent-grid-container'>
       <div className='grid-container'>
@@ -23,7 +25,10 @@ function MoviesAddedToAccount({ listOfMovies }) {
               />
             </div>
             <div className='divForBut'>
-              <button className='overlay-button'>
+              <button
+                className='overlay-button'
+                onClick={() => handleDeletion(movie.id)}
+              >
                 Remove from my watchlist
               </button>
             </div>

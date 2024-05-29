@@ -1,9 +1,14 @@
 {
   "movies": [
     {
-      "id": "573435",
-      "poster_path": "/nP6RliHjxsz4irTKsxe8FRhKZYl.jpg",
-      "title": "Bad Boys: Ride or Die"
+      "id": "519182",
+      "poster_path": "/3w84hCFJATpiCO5g8hpdWVPBbmq.jpg",
+      "title": "Despicable Me 4"
+    },
+    {
+      "id": "560016",
+      "poster_path": "/4lhR4L2vzzjl68P1zJyCH755Oz4.jpg",
+      "title": "Monkey Man"
     }
   ]
 }

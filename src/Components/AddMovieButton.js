@@ -14,9 +14,10 @@ function AddMovieButton({ addMovie, movie }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        id: movie.id,
+        id: movie.id.toString(),
         poster_path: movie.poster_path,
         title: movie.title,
+        original_name: movie.original_name,
       }),
     })
       .then((response) => response.json())

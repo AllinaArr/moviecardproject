@@ -3,14 +3,16 @@ import { useEffect, useState } from "react";
 
 import MoviesAddedToAccount from "../Components/MoviesAddedToAccount";
 
-function Account() {
+function Account({ deleteMovie }) {
   const [movies, setMovies] = useState([]);
   const [count, setCount] = useState(0);
+
   useEffect(() => {
     fetch("http://localhost:3000/movies")
       .then((response) => response.json())
       .then((data) => {
         console.log(movies);
+
         setMovies(data);
         setCount(data.length);
       });
@@ -24,7 +26,7 @@ function Account() {
         </div>
         <SummaryOfAddedMovies count={count} />
       </div>
-      <MoviesAddedToAccount listOfMovies={movies} />
+      <MoviesAddedToAccount listOfMovies={movies} deleteMovie={deleteMovie} />
     </div>
   );
 }
