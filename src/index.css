@@ -1,0 +1,239 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+
+:root {
+  --body-bg: #123;
+  --nav-bg: #e5e1ec;
+}
+
+body,
+.body-info {
+  min-height: 100vh;
+  font-family: "Lato", sans-serif;
+  background-color: #cdbaef;
+  display: grid;
+  grid-template-columns: 15rem 1fr;
+  gap: 2rem;
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  max-height: 100svh;
+  background-color: var(--nav-bg);
+}
+
+.nav-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 2rem;
+  padding-block: 10rem;
+  font-size: 1.5rem;
+}
+
+.nav-list li {
+  background: #e5e1ec;
+  padding: 1rem 2rem;
+  margin-left: 2rem;
+  border-radius: 100vw 0 0 100vw;
+}
+
+.nav-list li.active {
+  /* view-transition-name: activeNavTab; */
+  background: #cdbaef;
+  position: relative;
+}
+
+/* ::view-transition-group(activeNavTab) {
+  animation-duration: 500ms;
+} */
+
+.nav-list li.active::before,
+.nav-list li.active::after {
+  --border-radius: 1rem;
+  content: "";
+  position: absolute;
+  width: var(--border-radius);
+  height: var(--border-radius);
+  right: 0;
+  background: var(--nav-bg);
+}
+
+.nav-list li.active::before {
+  top: calc(var(--border-radius) * -1);
+  border-radius: 0 0 100vw 0vw;
+  box-shadow: 5px 5px 0 5px #cdbaef;
+}
+
+.nav-list li.active::after {
+  border-radius: 0 100vw 0 0;
+  box-shadow: 5px -5px 0 5px #cdbaef;
+  bottom: calc(var(--border-radius) * -1);
+}
+
+.nav-list a {
+  color: rgb(21, 66, 111);
+  display: block;
+  text-decoration: none;
+  position: relative;
+  z-index: 10;
+}
+
+#home-container {
+  display: flex;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+}
+
+.search-divider {
+  /* margin-left: 5vh; */
+}
+
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.container input[type="text"] {
+  margin-right: 5px;
+}
+
+.container button {
+  margin: 0;
+}
+
+#sumOfMovies {
+  margin-left: 30vh;
+}
+
+#home-name {
+  margin-right: 60vh;
+  position: relative;
+  margin: 300 px;
+  left: 0;
+}
+
+#search-form {
+  display: inline;
+  align-items: center;
+}
+
+#search-input {
+  /* margin-left: 10%; */
+  /* text-align: center; */
+}
+
+img {
+  display: grid;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}
+
+#parent-grid-container {
+  width: 150%;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  column-gap: 30px;
+  row-gap: 30px;
+  position: relative;
+}
+
+.divForImg > img {
+  width: 200px;
+  height: 300px;
+  border: 1px solid;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+#grid-image:hover {
+  display: block;
+  border-color: gold;
+  transform: scale(1.1);
+  transition: all 0.3s;
+}
+
+.movie-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.overlay-button {
+  padding: 10px 20px;
+  background-color: var(--nav-bg);
+  color: #4f4959;
+  border: 1px solid #4f4959;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.overlay-button:hover {
+  display: block;
+  border-color: gold;
+  transform: scale(1.1);
+  transition: all 0.3s;
+  background-color: #333;
+  color: #e5e1ec;
+}
+
+.divForBut {
+  margin-top: 10px; /* Add spacing between image and button */
+}
+
+.container-button {
+  width: 100px;
+  background-color: var(--nav-bg);
+  color: #4f4959;
+  border: 1px solid #4f4959;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+#headerOfSum {
+  text-align: center;
+  margin-left: 1px;
+}
+
+#alphabet {
+  margin-left: auto;
+  text-align: center;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* semi-transparent background */
+  display: flex;
+  justify-content: center; /* horizontally center the modal */
+  align-items: center; /* vertically center the modal */
+}
+
+.overlay {
+  background-color: #cdbaef;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.modal-content {
+  text-align: center;
+}
+
+.close-modal {
+  margin-top: 10px;
+  border-radius: 30px;
+  background: border-box;
+  width: 100px;
+  background-color: var(--nav-bg);
+  color: #4f4959;
+  border: 1px solid #4f4959;
+  cursor: pointer;
+}
