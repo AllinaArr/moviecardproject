@@ -12,6 +12,7 @@ function MoviesAddedToAccount({ listOfMovies, deleteMovie }) {
 
   return (
     <div id='parent-grid-container'>
+      {/* <div id='parent-grid-container'> */}
       <div className='grid-container'>
         {listOfMovies.map((movie) => (
           <div className='movie-container' key={movie.id}>

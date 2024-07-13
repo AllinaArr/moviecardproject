@@ -1,6 +1,5 @@
 import AddMovieButton from "./AddMovieButton";
 import "../index.css";
-import { useState } from "react";
 
 function RandomMovies({ listOfMovies, addMovie }) {
   return (

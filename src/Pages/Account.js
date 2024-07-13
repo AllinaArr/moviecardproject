@@ -15,7 +15,7 @@ function Account({ deleteMovie }) {
         setMovies(data);
         setCount(data.length);
       });
-  }, []);
+  }, [movies]);
 
   return (
     <div>

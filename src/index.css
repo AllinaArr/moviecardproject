@@ -237,3 +237,12 @@ img {
   border: 1px solid #4f4959;
   cursor: pointer;
 }
+
+.flex {
+  height: 100vh;
+  width: 250%;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  column-gap: 30px;
+  row-gap: 30px;
+  position: relative;
+}

@@ -10,7 +10,7 @@ import MoviesAddedToAccount from "./MoviesAddedToAccount";
 
 const AccordionAccount = ({ movies, deleteMovie }) => {
   return (
-    <div className='flex flex-col'>
+    <div className='flex'>
       <Accordion>
         <AccordionSummary
           id='panel1-header'
