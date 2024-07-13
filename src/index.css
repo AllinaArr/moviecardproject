@@ -187,7 +187,7 @@ img {
 }
 
 .container-button {
-  width: 100px;
+  width: 300px;
   background-color: var(--nav-bg);
   color: #4f4959;
   border: 1px solid #4f4959;
