@@ -17,7 +17,7 @@ function AddMovieButton({ addMovie, movie }) {
         id: movie.id.toString(),
         poster_path: movie.poster_path,
         title: movie.title,
-        original_name: movie.original_name,
+        original_title: movie.original_title,
       }),
     })
       .then((response) => response.json())
