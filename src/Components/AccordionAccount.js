@@ -11,7 +11,7 @@ import MoviesAddedToAccount from "./MoviesAddedToAccount";
 const AccordionAccount = ({ movies, deleteMovie }) => {
   return (
     <div className='flex'>
-      <Accordion>
+      <Accordion style={{ backgroundColor: "var(--body-secondary)" }}>
         <AccordionSummary
           id='panel1-header'
           aria-controls='panel1-content'
@@ -20,7 +20,11 @@ const AccordionAccount = ({ movies, deleteMovie }) => {
           <Typography> My List </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
+          <Typography
+            style={{
+              backgroundColor: "var(--body-secondary)",
+            }}
+          >
             <MoviesAddedToAccount
               listOfMovies={movies}
               deleteMovie={deleteMovie}
@@ -28,28 +32,52 @@ const AccordionAccount = ({ movies, deleteMovie }) => {
           </Typography>
         </AccordionDetails>
       </Accordion>
-      <Accordion>
+      <Accordion style={{ backgroundColor: "var(--body-secondary)" }}>
         <AccordionSummary
           id='panel1-header'
           aria-controls='panel1-content'
           expandIcon={<ExpandMoreIcon />}
         >
-          <Typography> Currently watching </Typography>
+          <Typography
+            style={{
+              backgroundColor: "var(--body-secondary)",
+            }}
+          >
+            {" "}
+            Currently watching{" "}
+          </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>Movies</Typography>
+          <Typography className='myListStyle'>Movies</Typography>
         </AccordionDetails>
       </Accordion>{" "}
-      <Accordion>
+      <Accordion
+        style={{
+          backgroundColor: "var(--body-secondary)",
+        }}
+      >
         <AccordionSummary
           id='panel1-header'
           aria-controls='panel1-content'
           expandIcon={<ExpandMoreIcon />}
         >
-          <Typography> Finished </Typography>
+          <Typography
+            style={{
+              backgroundColor: "var(--body-secondary)",
+            }}
+          >
+            {" "}
+            Finished{" "}
+          </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>Movies</Typography>
+          <Typography
+            style={{
+              backgroundColor: "var(--body-secondary)",
+            }}
+          >
+            Movies
+          </Typography>
         </AccordionDetails>
       </Accordion>
     </div>

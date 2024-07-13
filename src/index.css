@@ -3,13 +3,15 @@
 :root {
   --body-bg: #123;
   --nav-bg: #e5e1ec;
+  --body-primary: #cdbaef;
+  --body-secondary: #b495ea;
 }
 
 body,
 .body-info {
   min-height: 100vh;
   font-family: "Lato", sans-serif;
-  background-color: #cdbaef;
+  background-color: var(--body-primary);
   display: grid;
   grid-template-columns: 15rem 1fr;
   gap: 2rem;
@@ -132,14 +134,20 @@ img {
 }
 
 #parent-grid-container {
-  width: 150%;
+  width: 170%;
+  padding: 20px;
+}
+
+#parent-grid-container-added-movies {
+  padding: 20px;
 }
 
 .grid-container {
   display: grid;
+  /* width: 100%; */
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  column-gap: 30px;
-  row-gap: 30px;
+  column-gap: 20px;
+  row-gap: 20px;
   position: relative;
 }
 
@@ -245,4 +253,38 @@ img {
   column-gap: 30px;
   row-gap: 30px;
   position: relative;
+  background-color: var(--body-primary);
+}
+
+.search-btn {
+}
+
+@media only screen and (max-width: 1210px) {
+  #parent-grid-container {
+    width: 1210px;
+    padding: 20px;
+  }
+  .grid-container {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    column-gap: 20px;
+    row-gap: 20px;
+    position: relative;
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  #parent-grid-container {
+    width: 1100px;
+    padding: 20px;
+  }
+  .grid-container {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    column-gap: 20px;
+    row-gap: 20px;
+    position: relative;
+  }
 }
