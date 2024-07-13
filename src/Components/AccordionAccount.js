@@ -6,28 +6,11 @@ import {
   Typography,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { useEffect, useState } from "react";
 import MoviesAddedToAccount from "./MoviesAddedToAccount";
-import SummaryOfAddedMovies from "../Components/SummaryOfAddedMovies";
 
-const AccordionAccount = ({ deleteMovie }) => {
-  const [movies, setMovies] = useState([]);
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    fetch("http://localhost:3000/movies")
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(movies);
-
-        setMovies(data);
-        setCount(data.length);
-      });
-  }, []);
-
+const AccordionAccount = ({ movies, deleteMovie }) => {
   return (
     <div className='flex flex-col'>
-      <SummaryOfAddedMovies count={count} />
       <Accordion>
         <AccordionSummary
           id='panel1-header'
@@ -37,11 +20,12 @@ const AccordionAccount = ({ deleteMovie }) => {
           <Typography> My List </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>Movies</Typography>
-          <MoviesAddedToAccount
-            listOfMovies={movies}
-            deleteMovie={deleteMovie}
-          />
+          <Typography>
+            <MoviesAddedToAccount
+              listOfMovies={movies}
+              deleteMovie={deleteMovie}
+            />
+          </Typography>
         </AccordionDetails>
       </Accordion>
       <Accordion>
@@ -54,10 +38,6 @@ const AccordionAccount = ({ deleteMovie }) => {
         </AccordionSummary>
         <AccordionDetails>
           <Typography>Movies</Typography>
-          <MoviesAddedToAccount
-            listOfMovies={movies}
-            deleteMovie={deleteMovie}
-          />
         </AccordionDetails>
       </Accordion>{" "}
       <Accordion>
@@ -70,10 +50,6 @@ const AccordionAccount = ({ deleteMovie }) => {
         </AccordionSummary>
         <AccordionDetails>
           <Typography>Movies</Typography>
-          <MoviesAddedToAccount
-            listOfMovies={movies}
-            deleteMovie={deleteMovie}
-          />
         </AccordionDetails>
       </Accordion>
     </div>

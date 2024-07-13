@@ -2,8 +2,6 @@ import SummaryOfAddedMovies from "../Components/SummaryOfAddedMovies";
 import { useEffect, useState } from "react";
 import AccordionAccount from "../Components/AccordionAccount";
 
-import MoviesAddedToAccount from "../Components/MoviesAddedToAccount";
-
 function Account({ deleteMovie }) {
   const [movies, setMovies] = useState([]);
   const [count, setCount] = useState(0);
@@ -25,9 +23,9 @@ function Account({ deleteMovie }) {
         <div id='home-name'>
           <h1>Account</h1>
         </div>
-        {/* <SummaryOfAddedMovies count={count} /> */}
-        <AccordionAccount listOfMovies={movies} deleteMovie={deleteMovie} />
+        <SummaryOfAddedMovies count={count} />
       </div>
+      <AccordionAccount movies={movies} deleteMovie={deleteMovie} />
     </div>
   );
 }
