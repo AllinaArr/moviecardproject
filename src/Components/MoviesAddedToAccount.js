@@ -1,5 +1,5 @@
-import { Button } from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
+import Dropdown from "react-bootstrap/Dropdown";
+import DropdownButton from "react-bootstrap/DropdownButton";
 
 function MoviesAddedToAccount({ listOfMovies, deleteMovie }) {
   function handleDeletion(movieId) {
@@ -27,18 +27,40 @@ function MoviesAddedToAccount({ listOfMovies, deleteMovie }) {
               />
             </div>
             <div className='divForBut'>
+              {/* <Dropdown>
+                <Dropdown.Toggle variant='success' className='overlay-button'>
+                  Move To
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu>
+                  <Dropdown.Item href='#/action-1' className='overlay-button'>
+                    Currently Watching
+                  </Dropdown.Item>
+                  <Dropdown.Item href='#/action-2' className='overlay-button'>
+                    Watched
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    href='#/action-3'
+                    className='overlay-button'
+                    onClick={() => handleDeletion(movie.id)}
+                  >
+                    Delete Folder
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown> */}
+
               <button
                 className='overlay-button'
                 onClick={() => handleDeletion(movie.id)}
               >
                 Remove from my watchlist
-                <DeleteIcon sx={{ fontSize: 20 }} />
               </button>
             </div>
           </div>
         ))}
       </div>
     </div>
+    // </div>
   );
 }
 

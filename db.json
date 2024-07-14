@@ -31,11 +31,6 @@
       "title": "Boneyard"
     },
     {
-      "id": "718821",
-      "poster_path": "/g7yg6jJj4Z377j5h6S3MBRmjQ7U.jpg",
-      "title": "Twisters"
-    },
-    {
       "id": "1214509",
       "poster_path": "/hPfWHgq07nXbeldwEGxWB4JqwtE.jpg",
       "title": "In a Violent Nature"
@@ -54,6 +49,11 @@
       "id": "1114738",
       "poster_path": "/xkNK36hQv8SWiwiQoE7naRfP0zL.jpg",
       "title": "Boneyard"
+    },
+    {
+      "id": "278",
+      "poster_path": "/9cqNxx0GxF0bflZmeSMuL5tnGzr.jpg",
+      "title": "The Shawshank Redemption"
     }
   ]
 }
