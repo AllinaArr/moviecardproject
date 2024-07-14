@@ -1,5 +1,13 @@
 import { useState } from "react";
 import "../index.css";
+import AddIcon from "@mui/icons-material/Add";
+import DeleteIcon from "@mui/icons-material/Delete";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import { Button } from "@mui/material";
 
 function AddMovieButton({ addMovie, movie }) {
   const [modal, setModal] = useState(false);
@@ -28,7 +36,7 @@ function AddMovieButton({ addMovie, movie }) {
 
         setTimeout(() => {
           setModal(false);
-        }, 1000);
+        }, 10000);
       });
   }
 
@@ -38,22 +46,24 @@ function AddMovieButton({ addMovie, movie }) {
   }
   return (
     <div className='divForBut'>
-      <button className='overlay-button' onClick={handleClick}>
-        {movieAdded ? "Remove from my watchlist" : "Add to my watchlist"}
-      </button>
-
-      {modal && (
-        <div className='modal'>
-          <div className='overlay'>
-            <div className='modal-content'>
-              {movieAdded && <h2>You added this movie to your watchlist</h2>}
-              <button className='close-modal' onClick={toggleModal}>
-                Done
-              </button>
-            </div>
-          </div>
-        </div>
+      {movieAdded ? (
+        <DeleteIcon className='overlay-button' />
+      ) : (
+        <AddIcon className='overlay-button' onClick={handleClick} />
       )}
+      <Dialog open={modal} onClose={toggleModal}>
+        <DialogTitle>Notification</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            {movieAdded && "You added this movie to your watchlist"}
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={toggleModal} color='primary' className='close-modal'>
+            Done
+          </Button>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 }

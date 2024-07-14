@@ -11,7 +11,12 @@ import MoviesAddedToAccount from "./MoviesAddedToAccount";
 const AccordionAccount = ({ movies, deleteMovie }) => {
   return (
     <div className='flex'>
-      <Accordion style={{ backgroundColor: "var(--body-secondary)" }}>
+      <Accordion
+        style={{
+          backgroundColor: "var(--body-secondary)",
+          borderRadius: "10px",
+        }}
+      >
         <AccordionSummary
           id='panel1-header'
           aria-controls='panel1-content'
@@ -23,6 +28,7 @@ const AccordionAccount = ({ movies, deleteMovie }) => {
           <Typography
             style={{
               backgroundColor: "var(--body-secondary)",
+              borderRadius: "10px",
             }}
           >
             <MoviesAddedToAccount
@@ -32,7 +38,12 @@ const AccordionAccount = ({ movies, deleteMovie }) => {
           </Typography>
         </AccordionDetails>
       </Accordion>
-      <Accordion style={{ backgroundColor: "var(--body-secondary)" }}>
+      <Accordion
+        style={{
+          backgroundColor: "var(--body-secondary)",
+          borderRadius: "10px",
+        }}
+      >
         <AccordionSummary
           id='panel1-header'
           aria-controls='panel1-content'
@@ -41,6 +52,7 @@ const AccordionAccount = ({ movies, deleteMovie }) => {
           <Typography
             style={{
               backgroundColor: "var(--body-secondary)",
+              borderRadius: "10px",
             }}
           >
             {" "}
@@ -54,6 +66,7 @@ const AccordionAccount = ({ movies, deleteMovie }) => {
       <Accordion
         style={{
           backgroundColor: "var(--body-secondary)",
+          borderRadius: "10px",
         }}
       >
         <AccordionSummary
@@ -74,6 +87,7 @@ const AccordionAccount = ({ movies, deleteMovie }) => {
           <Typography
             style={{
               backgroundColor: "var(--body-secondary)",
+              borderRadius: "10px",
             }}
           >
             Movies

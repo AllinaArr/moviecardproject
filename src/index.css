@@ -4,7 +4,9 @@
   --body-bg: #123;
   --nav-bg: #e5e1ec;
   --body-primary: #cdbaef;
-  --body-secondary: #b495ea;
+  /* --body-secondary: #b495ea;
+   */
+  --body-secondary: #e4d5f4;
 }
 
 body,

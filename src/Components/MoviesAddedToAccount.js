@@ -1,3 +1,6 @@
+import { Button } from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
+
 function MoviesAddedToAccount({ listOfMovies, deleteMovie }) {
   function handleDeletion(movieId) {
     console.log("deleted from Account");
@@ -29,6 +32,7 @@ function MoviesAddedToAccount({ listOfMovies, deleteMovie }) {
                 onClick={() => handleDeletion(movie.id)}
               >
                 Remove from my watchlist
+                <DeleteIcon sx={{ fontSize: 20 }} />
               </button>
             </div>
           </div>
