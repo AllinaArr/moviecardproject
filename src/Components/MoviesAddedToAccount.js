@@ -1,6 +1,3 @@
-import Dropdown from "react-bootstrap/Dropdown";
-import DropdownButton from "react-bootstrap/DropdownButton";
-
 function MoviesAddedToAccount({ listOfMovies, deleteMovie }) {
   function handleDeletion(movieId) {
     console.log("deleted from Account");
@@ -17,8 +14,8 @@ function MoviesAddedToAccount({ listOfMovies, deleteMovie }) {
     <div id='parent-grid-container-added-movies'>
       {/* <div id='parent-grid-container'> */}
       <div className='grid-container'>
-        {listOfMovies.map((movie) => (
-          <div className='movie-container' key={movie.id}>
+        {listOfMovies.map((movie, index) => (
+          <div className='movie-container' key={index}>
             <div className='divForImg'>
               <img
                 id='grid-image'
@@ -27,28 +24,6 @@ function MoviesAddedToAccount({ listOfMovies, deleteMovie }) {
               />
             </div>
             <div className='divForBut'>
-              {/* <Dropdown>
-                <Dropdown.Toggle variant='success' className='overlay-button'>
-                  Move To
-                </Dropdown.Toggle>
-
-                <Dropdown.Menu>
-                  <Dropdown.Item href='#/action-1' className='overlay-button'>
-                    Currently Watching
-                  </Dropdown.Item>
-                  <Dropdown.Item href='#/action-2' className='overlay-button'>
-                    Watched
-                  </Dropdown.Item>
-                  <Dropdown.Item
-                    href='#/action-3'
-                    className='overlay-button'
-                    onClick={() => handleDeletion(movie.id)}
-                  >
-                    Delete Folder
-                  </Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown> */}
-
               <button
                 className='overlay-button'
                 onClick={() => handleDeletion(movie.id)}

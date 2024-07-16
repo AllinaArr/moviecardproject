@@ -13,6 +13,8 @@ import { options } from "./Utils/options";
 function App() {
   const [searchValue, setSearchValue] = useState("");
   const [movies, setMovies] = useState([]);
+  const [page, setPage] = useState(1);
+  // const [highlyRated, setHighlyRated] = useState([]);
 
   const addMovie = (newMovie) => {
     console.log("I am handling to add movie");
@@ -52,6 +54,9 @@ function App() {
                 setSearchValue={setSearchValue}
                 movies={movies}
                 addMovie={addMovie}
+                page={page}
+                setPage={setPage}
+                setMovies={setMovies}
               />
             }
           />
@@ -66,6 +71,8 @@ function App() {
                 searchValue={searchValue}
                 setSearchValue={setSearchValue}
                 addMovie={addMovie}
+                page={page}
+                setPage={setPage}
               />
             }
           />
@@ -76,6 +83,8 @@ function App() {
                 searchValue={searchValue}
                 setSearchValue={setSearchValue}
                 addMovie={addMovie}
+                page={page}
+                setPage={setPage}
               />
             }
           />

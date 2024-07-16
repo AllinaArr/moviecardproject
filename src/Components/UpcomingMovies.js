@@ -1,12 +1,14 @@
 import "../index.css";
 import AddMovieButton from "./AddMovieButton";
-import { useState } from "react";
 import { options } from "../Utils/options";
 
-function UpcomingMovies({ listOfMovies, addMovie }) {
-  const [highlyRated, setHighlyRated] = useState([]);
-  const [page, setPage] = useState(1);
-
+function UpcomingMovies({
+  page,
+  setHighlyRated,
+  setPage,
+  listOfMovies,
+  addMovie,
+}) {
   function handleMoreMovies() {
     const nextPage = page + 1;
     fetch(
@@ -28,20 +30,8 @@ function UpcomingMovies({ listOfMovies, addMovie }) {
   return (
     <div id='parent-grid-container'>
       <div className='grid-container'>
-        {listOfMovies.map((movie) => (
-          <div className='movie-container' key={movie.id}>
-            <div className='divForImg'>
-              <img
-                id='grid-image'
-                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                alt={movie.original_title}
-              />
-            </div>
-            <AddMovieButton addMovie={addMovie} movie={movie} />
-          </div>
-        ))}
-        {highlyRated.map((movie) => (
-          <div className='movie-container' key={movie.id}>
+        {listOfMovies.map((movie, index) => (
+          <div className='movie-container' key={index}>
             <div className='divForImg'>
               <img
                 id='grid-image'

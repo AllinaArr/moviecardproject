@@ -23,8 +23,8 @@ function FilteredMovies({ searchValue }) {
   return (
     <div id='parent-grid-container'>
       <div className='grid-container'>
-        {filteredMovies.map((movie) => (
-          <div className='movie-container' key={movie.id}>
+        {filteredMovies.map((movie, index) => (
+          <div className='movie-container' key={index}>
             <div className='divForImg'>
               <img
                 id='grid-image'

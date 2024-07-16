@@ -1,33 +1,27 @@
 import AddMovieButton from "./AddMovieButton";
 import "../index.css";
-import { useState, useEffect } from "react";
 import { options } from "../Utils/options";
 
-function RandomMovies({ addMovie }) {
-  const [highlyRated, setHighlyRated] = useState([]);
-  const [page, setPage] = useState(1);
-
-  useEffect(() => {
+function RandomMovies({ page, setPage, listOfMovies, addMovie, setMovies }) {
+  function handlePageMovies() {
+    const nextPage = page + 1;
     fetch(
-      `https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=${page}`,
+      `https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=${nextPage}`,
       options
     )
       .then((response) => response.json())
       .then((data) => {
-        setHighlyRated((prevMovies) => [...prevMovies, ...data.results]);
+        setMovies((prevPage) => [...prevPage, ...data.results]);
+        setPage(nextPage);
       })
-      .catch((err) => console.error(err));
-  }, [page]);
-
-  function handlePageMovies() {
-    setPage((prevPage) => prevPage + 1);
+      .catch((err) => console.log(err));
   }
 
   return (
     <div id='parent-grid-container'>
       <div className='grid-container'>
-        {highlyRated.map((movie) => (
-          <div className='movie-container' key={movie.id}>
+        {listOfMovies.map((movie, index) => (
+          <div className='movie-container' key={index}>
             <div className='divForImg'>
               <img
                 id='grid-image'

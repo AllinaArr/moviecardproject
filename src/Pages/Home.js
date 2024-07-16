@@ -4,7 +4,15 @@ import SearchBar from "../Components/SearchBar";
 import UpcomingMovies from "../Components/UpcomingMovies";
 import GendersFilter from "../Components/GendersFilter";
 
-function Home({ searchValue, setSearchValue, movies, addMovie }) {
+function Home({
+  page,
+  setPage,
+  searchValue,
+  setSearchValue,
+  movies,
+  addMovie,
+  setMovies,
+}) {
   const handleSearch = () => {
     console.log("Searching for:", searchValue);
   };
@@ -28,7 +36,13 @@ function Home({ searchValue, setSearchValue, movies, addMovie }) {
         {searchValue ? (
           <FilteredMovies searchValue={searchValue} />
         ) : (
-          <UpcomingMovies listOfMovies={movies} addMovie={addMovie} />
+          <UpcomingMovies
+            page={page}
+            setPage={setPage}
+            listOfMovies={movies}
+            addMovie={addMovie}
+            setHighlyRated={setMovies}
+          />
         )}
       </div>
     </div>
