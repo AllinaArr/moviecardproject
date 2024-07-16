@@ -1,5 +1,6 @@
 import React from "react";
 import { TextField, Button, Box } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
 
 function SearchBar({ searchValue, onChangeValue, onSearch }) {
   const handleSubmit = (e) => {
@@ -21,9 +22,10 @@ function SearchBar({ searchValue, onChangeValue, onSearch }) {
             variant='outlined'
             sx={{ width: "25ch" }}
           />
-          <Button type='submit' className='search-btn'>
-            Search
-          </Button>
+
+          <button type='submit' className='container-button'>
+            <SearchIcon />
+          </button>
         </Box>
       </form>
     </Box>

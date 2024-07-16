@@ -51,6 +51,7 @@ function AddMovieButton({ addMovie, movie }) {
       ) : (
         <AddIcon className='overlay-button' onClick={handleClick} />
       )}
+
       <Dialog open={modal} onClose={toggleModal}>
         <DialogTitle>Notification</DialogTitle>
         <DialogContent>

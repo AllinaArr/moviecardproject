@@ -2,6 +2,7 @@ import FilteredMovies from "../Components/FilteredMovies";
 import React from "react";
 import SearchBar from "../Components/SearchBar";
 import UpcomingMovies from "../Components/UpcomingMovies";
+import GendersFilter from "../Components/GendersFilter";
 
 function Home({ searchValue, setSearchValue, movies, addMovie }) {
   const handleSearch = () => {
@@ -12,8 +13,11 @@ function Home({ searchValue, setSearchValue, movies, addMovie }) {
     <div>
       <div id='home-container'>
         <div id='home-name'>
-          <h1>Home</h1>
+          <h1 id='home-bar'>Home</h1>
+          <GendersFilter />
         </div>
+        <GendersFilter />
+
         <SearchBar
           searchValue={searchValue}
           onChangeValue={setSearchValue}

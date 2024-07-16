@@ -9,9 +9,18 @@
   --body-secondary: #e4d5f4;
 }
 
-body,
-.body-info {
+body {
   min-height: 100vh;
+  margin: 0;
+  font-family: "Lato", sans-serif;
+  background-color: var(--body-primary);
+  display: grid;
+  grid-template-columns: 15rem 1fr;
+  gap: 2rem;
+}
+
+.body-info {
+  margin: 0;
   font-family: "Lato", sans-serif;
   background-color: var(--body-primary);
   display: grid;
@@ -22,7 +31,7 @@ body,
 nav {
   position: sticky;
   top: 0;
-  max-height: 100svh;
+  max-height: 150svh;
   background-color: var(--nav-bg);
 }
 
@@ -90,10 +99,6 @@ nav {
   align-items: center;
 }
 
-.search-divider {
-  /* margin-left: 5vh; */
-}
-
 .container {
   display: flex;
   align-items: center;
@@ -112,7 +117,14 @@ nav {
 }
 
 #home-name {
-  margin-right: 60vh;
+  margin-right: 80vh;
+  position: relative;
+  margin: 300 px;
+  left: 0;
+}
+
+#home-bar {
+  margin-right: 40vh;
   position: relative;
   margin: 300 px;
   left: 0;
@@ -137,6 +149,7 @@ img {
 
 #parent-grid-container {
   width: 170%;
+  max-width: 85vw;
   padding: 20px;
 }
 
@@ -192,12 +205,36 @@ img {
   color: #e5e1ec;
 }
 
+.div-more-movies {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+.more-movies-btn {
+  padding: 10px 20px;
+  background-color: var(--nav-bg);
+  color: #4f4959;
+  border: 1px solid #4f4959;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.more-movies-btn:hover {
+  display: block;
+  border-color: gold;
+  transform: scale(1.1);
+  transition: all 0.3s;
+  background-color: #333;
+  color: #e5e1ec;
+}
+
 .divForBut {
   margin-top: 10px; /* Add spacing between image and button */
 }
 
 .container-button {
-  width: 300px;
+  width: 70px;
+  height: 50px;
   background-color: var(--nav-bg);
   color: #4f4959;
   border: 1px solid #4f4959;

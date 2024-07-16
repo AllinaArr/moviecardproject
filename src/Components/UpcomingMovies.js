@@ -18,6 +18,9 @@ function UpcomingMovies({ listOfMovies, addMovie }) {
           </div>
         ))}
       </div>
+      <div className='div-more-movies'>
+        <button className='more-movies-btn'>Load More</button>
+      </div>
     </div>
   );
 }
