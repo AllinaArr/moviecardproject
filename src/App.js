@@ -14,7 +14,6 @@ function App() {
   const [searchValue, setSearchValue] = useState("");
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
-  // const [highlyRated, setHighlyRated] = useState([]);
 
   const addMovie = (newMovie) => {
     console.log("I am handling to add movie");

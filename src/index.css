@@ -27,7 +27,15 @@ body {
   grid-template-columns: 15rem 1fr;
   gap: 2rem;
 }
-
+.slide {
+  position: fixed; /* or absolute, if you prefer */
+  right: 0;
+  width: 300px;
+  height: 100vh;
+  /* border: 3px solid #73ad21; */
+  padding: 10px;
+  background-color: var(--body-primary); /* Optional: Add background color */
+}
 nav {
   position: sticky;
   top: 0;
@@ -159,7 +167,7 @@ img {
 
 .grid-container {
   display: grid;
-  /* width: 100%; */
+  width: calc(100% - 320px); /* Adjust based on slide width + padding */
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   column-gap: 20px;
   row-gap: 20px;
@@ -217,6 +225,16 @@ img {
   border: 1px solid #4f4959;
   border-radius: 25px;
   cursor: pointer;
+}
+
+.genre-btn {
+  padding: 10px 20px;
+  background-color: var(--nav-bg);
+  color: #4f4959;
+  border: 1px solid #4f4959;
+  border-radius: 25px;
+  cursor: pointer;
+  margin: 5px;
 }
 
 .more-movies-btn:hover {

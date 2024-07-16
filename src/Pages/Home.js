@@ -22,15 +22,15 @@ function Home({
       <div id='home-container'>
         <div id='home-name'>
           <h1 id='home-bar'>Home</h1>
-          <GendersFilter />
         </div>
-        <GendersFilter />
-
+      </div>
+      <div className='slide'>
         <SearchBar
           searchValue={searchValue}
           onChangeValue={setSearchValue}
           onSearch={handleSearch}
         />
+        <GendersFilter />
       </div>
       <div>
         {searchValue ? (
