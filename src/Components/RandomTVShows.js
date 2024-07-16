@@ -1,10 +1,31 @@
 import AddMovieButton from "./AddMovieButton";
+import { useState, useEffect } from "react";
+import { options } from "../Utils/options";
 
-function RandomTVShows({ listOfTvShows, addMovie }) {
+function RandomTVShows({ addMovie }) {
+  const [tvShows, setTvShows] = useState([]);
+  const [page, setPage] = useState(1);
+
+  useEffect(() => {
+    fetch(
+      `https://api.themoviedb.org/3/tv/popular?language=en-US&page=${page}`,
+      options
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setTvShows((prevShows) => [...prevShows, ...data.results]);
+      })
+      .catch((err) => console.error(err));
+  }, [page]);
+
+  function handleMoreTVShows() {
+    setPage((prevPage) => prevPage + 1);
+  }
+
   return (
     <div id='parent-grid-container'>
       <div className='grid-container'>
-        {listOfTvShows.map((tvshow) => (
+        {tvShows.map((tvshow) => (
           <div className='movie-container' key={tvshow.id}>
             <div className='divForImg'>
               <img
@@ -16,6 +37,11 @@ function RandomTVShows({ listOfTvShows, addMovie }) {
             <AddMovieButton addMovie={addMovie} movie={tvshow} />
           </div>
         ))}
+      </div>
+      <div className='div-more-movies'>
+        <button className='more-movies-btn' onClick={handleMoreTVShows}>
+          Load More
+        </button>
       </div>
     </div>
   );
