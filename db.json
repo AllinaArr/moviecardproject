@@ -6,29 +6,14 @@
       "title": "Breathe"
     },
     {
-      "id": "238",
-      "poster_path": "/3bhkrj58Vtu7enYsRolD1fZdja1.jpg",
-      "title": "The Godfather"
-    },
-    {
       "id": "1079485",
       "poster_path": "/2sADrLwMQof6yYmrJRSa04tFZuS.jpg",
       "title": "Winnie-the-Pooh: Blood and Honey 2"
     },
     {
-      "id": "155",
-      "poster_path": "/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
-      "title": "The Dark Knight"
-    },
-    {
       "id": "1023922",
       "poster_path": "/ArvoFK6nlouZRxYmtIOUzKIrg90.jpg",
       "title": "MaXXXine"
-    },
-    {
-      "id": "1114738",
-      "poster_path": "/xkNK36hQv8SWiwiQoE7naRfP0zL.jpg",
-      "title": "Boneyard"
     },
     {
       "id": "1214509",
@@ -41,11 +26,6 @@
       "title": "The Garfield Movie"
     },
     {
-      "id": "1022789",
-      "poster_path": "/vpnVM9B6NMmQpWeZvzLvDESb2QY.jpg",
-      "title": "Inside Out 2"
-    },
-    {
       "id": "1114738",
       "poster_path": "/xkNK36hQv8SWiwiQoE7naRfP0zL.jpg",
       "title": "Boneyard"
@@ -54,11 +34,6 @@
       "id": "278",
       "poster_path": "/9cqNxx0GxF0bflZmeSMuL5tnGzr.jpg",
       "title": "The Shawshank Redemption"
-    },
-    {
-      "id": "1022789",
-      "poster_path": "/vpnVM9B6NMmQpWeZvzLvDESb2QY.jpg",
-      "title": "Inside Out 2"
     },
     {
       "id": "519182",
@@ -76,9 +51,24 @@
       "title": "Creation of the Gods I: Kingdom of Storms"
     },
     {
-      "id": "1022789",
-      "poster_path": "/vpnVM9B6NMmQpWeZvzLvDESb2QY.jpg",
-      "title": "Inside Out 2"
+      "id": "14537",
+      "poster_path": "/5konZnIbcAxZjP616Cz5o9bKEfW.jpg",
+      "title": "Harakiri"
+    },
+    {
+      "id": "324857",
+      "poster_path": "/iiZZdoQBEYBv6id8su7ImL0oCbD.jpg",
+      "title": "Spider-Man: Into the Spider-Verse"
+    },
+    {
+      "id": "519182",
+      "poster_path": "/3w84hCFJATpiCO5g8hpdWVPBbmq.jpg",
+      "title": "Despicable Me 4"
+    },
+    {
+      "id": "882059",
+      "poster_path": "/25JskXmchcYwj3jHRmcPm738MpB.jpg",
+      "title": "Boy Kills World"
     }
   ]
 }

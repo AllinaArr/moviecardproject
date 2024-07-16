@@ -3,6 +3,7 @@ import { options } from "../Utils/options";
 
 function GendersFilter() {
   const [genres, setGenres] = useState([]);
+
   useEffect(() => {
     fetch(`https://api.themoviedb.org/3/genre/movie/list?language=en`, options)
       .then((response) => response.json())
