@@ -3,6 +3,7 @@ import RandomTVShows from "../Components/RandomTVShows";
 import SearchBar from "../Components/SearchBar";
 import { useState, useEffect } from "react";
 import { options } from "../Utils/options";
+import GendersFilter from "../Components/GendersFilter";
 
 function TvShows({ page, setPage, searchValue, setSearchValue, addMovie }) {
   const [tvShows, setTvShows] = useState([]);
@@ -25,17 +26,20 @@ function TvShows({ page, setPage, searchValue, setSearchValue, addMovie }) {
 
   return (
     <div>
-      <div>
-        <div id='home-container'>
-          <div id='home-name'>
-            <h1>TV Shows</h1>
-          </div>
-          <SearchBar
-            searchValue={searchValue}
-            onChangeValue={setSearchValue}
-            onSearch={handleSearch}
-          />
+      <div id='home-container'>
+        <div id='home-name'>
+          <h1 id='home-bar'>TV Shows</h1>
         </div>
+      </div>
+      <div className='slide'>
+        <SearchBar
+          searchValue={searchValue}
+          onChangeValue={setSearchValue}
+          onSearch={handleSearch}
+        />
+        <GendersFilter />
+      </div>
+      <div>
         {searchValue ? (
           <FilteredMovies searchValue={searchValue} />
         ) : (

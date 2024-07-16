@@ -39,8 +39,9 @@ body {
 nav {
   position: sticky;
   top: 0;
-  max-height: 150svh;
+  /* max-height: 150svh; */
   background-color: var(--nav-bg);
+  height: 100vh;
 }
 
 .nav-list {
@@ -218,6 +219,7 @@ img {
   align-items: center;
   justify-content: center;
 }
+
 .more-movies-btn {
   padding: 10px 20px;
   background-color: var(--nav-bg);
