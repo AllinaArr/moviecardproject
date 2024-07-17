@@ -5,7 +5,15 @@ import { useState, useEffect } from "react";
 import { options } from "../Utils/options";
 import GendersFilter from "../Components/GendersFilter";
 
-function TvShows({ page, setPage, searchValue, setSearchValue, addMovie }) {
+function TvShows({
+  page,
+  setPage,
+  searchValue,
+  setSearchValue,
+  addMovie,
+  genres,
+  setGenres,
+}) {
   const [tvShows, setTvShows] = useState([]);
 
   useEffect(() => {
@@ -37,7 +45,7 @@ function TvShows({ page, setPage, searchValue, setSearchValue, addMovie }) {
           onChangeValue={setSearchValue}
           onSearch={handleSearch}
         />
-        <GendersFilter />
+        <GendersFilter genres={genres} setGenres={setGenres} />
       </div>
       <div>
         {searchValue ? (

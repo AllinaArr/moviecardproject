@@ -1,9 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { options } from "../Utils/options";
 
-function GendersFilter() {
-  const [genres, setGenres] = useState([]);
-
+function GendersFilter({ genres, setGenres }) {
   useEffect(() => {
     fetch(`https://api.themoviedb.org/3/genre/movie/list?language=en`, options)
       .then((response) => response.json())
@@ -12,13 +10,13 @@ function GendersFilter() {
         setGenres(data.genres);
       })
       .catch((err) => console.error(err));
-  }, []);
+  }, [setGenres]);
 
   return (
     <div>
       {genres.map((genre, index) => (
         <button className='genre-btn' key={index}>
-          {genre.name}{" "}
+          {genre.name}
         </button>
       ))}
     </div>

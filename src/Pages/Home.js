@@ -12,6 +12,8 @@ function Home({
   movies,
   addMovie,
   setMovies,
+  genres,
+  setGenres,
 }) {
   const handleSearch = () => {
     console.log("Searching for:", searchValue);
@@ -30,7 +32,7 @@ function Home({
           onChangeValue={setSearchValue}
           onSearch={handleSearch}
         />
-        <GendersFilter />
+        <GendersFilter genres={genres} setGenres={setGenres} />
       </div>
       <div>
         {searchValue ? (

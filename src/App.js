@@ -14,6 +14,7 @@ function App() {
   const [searchValue, setSearchValue] = useState("");
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
+  const [genres, setGenres] = useState([]);
 
   const addMovie = (newMovie) => {
     console.log("I am handling to add movie");
@@ -56,6 +57,8 @@ function App() {
                 page={page}
                 setPage={setPage}
                 setMovies={setMovies}
+                genres={genres}
+                setGenres={setGenres}
               />
             }
           />
@@ -72,6 +75,8 @@ function App() {
                 addMovie={addMovie}
                 page={page}
                 setPage={setPage}
+                genres={genres}
+                setGenres={setGenres}
               />
             }
           />
@@ -84,6 +89,8 @@ function App() {
                 addMovie={addMovie}
                 page={page}
                 setPage={setPage}
+                genres={genres}
+                setGenres={setGenres}
               />
             }
           />
