@@ -1,9 +1,9 @@
-import FilteredMovies from "../Components/FilteredMovies";
+import FilteredMovies from "../Components/Filters/FilteredMovies";
 import RandomMovies from "../Components/RandomMovies";
 import SearchBar from "../Components/SearchBar";
 import { useState, useEffect } from "react";
 import { options } from "../Utils/options";
-import GendersFilter from "../Components/GendersFilter";
+import GendersFilter from "../Components/Filters/GendersFilter";
 
 function Movies({
   page,
@@ -55,7 +55,16 @@ function Movies({
       </div>
       <div>
         {searchValue ? (
-          <FilteredMovies searchValue={searchValue} />
+          <FilteredMovies
+            searchValue={searchValue}
+            hoveredMovie={hoveredMovie}
+            setHoveredMovie={setHoveredMovie}
+            movieAdded={movieAdded}
+            setMovieAdded={setMovieAdded}
+            modal={modal}
+            setModal={setModal}
+            addMovie={addMovie}
+          />
         ) : (
           <RandomMovies
             page={page}

@@ -1,7 +1,7 @@
 import React from "react";
 import "../index.css";
 import { options } from "../Utils/options";
-import HoverBtns from "./HoverBtns";
+import HoverBtns from "./Buttons/HoverBtns";
 
 function UpcomingMovies({
   page,
@@ -36,8 +36,6 @@ function UpcomingMovies({
 
   return (
     <HoverBtns
-      page={page}
-      setPage={setPage}
       listOfMovies={listOfMovies}
       addMovie={addMovie}
       hoveredMovie={hoveredMovie}

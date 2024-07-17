@@ -1,6 +1,6 @@
 import "../index.css";
 import { options } from "../Utils/options";
-import HoverBtns from "./HoverBtns";
+import HoverBtns from "../Components/Buttons/HoverBtns";
 
 function RandomMovies({
   page,

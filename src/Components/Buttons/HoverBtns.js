@@ -2,8 +2,6 @@ import AddMovieButton from "./AddMovieButton";
 import React from "react";
 
 function HoverBtns({
-  page,
-  setPage,
   listOfMovies,
   addMovie,
   hoveredMovie,
@@ -13,6 +11,7 @@ function HoverBtns({
   modal,
   setModal,
   handleMoreMovies,
+  filteredMovies,
 }) {
   function handleAddToWatched(movie) {
     console.log("Add to Watched:", movie);
@@ -54,6 +53,7 @@ function HoverBtns({
         }, 10000);
       });
   }
+
   return (
     <div id='parent-grid-container'>
       <div className='grid-container'>

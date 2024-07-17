@@ -1,8 +1,8 @@
-import FilteredMovies from "../Components/FilteredMovies";
+import FilteredMovies from "../Components/Filters/FilteredMovies";
 import React from "react";
 import SearchBar from "../Components/SearchBar";
 import UpcomingMovies from "../Components/UpcomingMovies";
-import GendersFilter from "../Components/GendersFilter";
+import GendersFilter from "../Components/Filters/GendersFilter";
 
 function Home({
   page,
@@ -42,7 +42,16 @@ function Home({
       </div>
       <div>
         {searchValue ? (
-          <FilteredMovies searchValue={searchValue} />
+          <FilteredMovies
+            searchValue={searchValue}
+            hoveredMovie={hoveredMovie}
+            setHoveredMovie={setHoveredMovie}
+            movieAdded={movieAdded}
+            setMovieAdded={setMovieAdded}
+            modal={modal}
+            setModal={setModal}
+            addMovie={addMovie}
+          />
         ) : (
           <UpcomingMovies
             page={page}

@@ -1,6 +1,6 @@
 import SummaryOfAddedMovies from "../Components/SummaryOfAddedMovies";
 import { useEffect, useState } from "react";
-import AccordionAccount from "../Components/AccordionAccount";
+import AccordionAccount from "../Components/Buttons/AccordionAccount";
 
 function Account({ deleteMovie }) {
   const [movies, setMovies] = useState([]);

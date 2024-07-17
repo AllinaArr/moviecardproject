@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { options } from "../Utils/options";
+import { options } from "../../Utils/options";
 
 function GendersFilter({ genres, setGenres }) {
   useEffect(() => {

@@ -1,4 +1,4 @@
-import HoverBtns from "./HoverBtns";
+import HoverBtns from "../Components/Buttons/HoverBtns";
 import { options } from "../Utils/options";
 
 function RandomTVShows({
