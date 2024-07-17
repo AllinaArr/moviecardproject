@@ -1,5 +1,3 @@
-import AddMovieButton from "./AddMovieButton";
-
 function MoviesAddedToAccount({ listOfMovies, deleteMovie }) {
   function handleDeletion(movieId) {
     console.log("deleted from Account");
