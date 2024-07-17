@@ -72,7 +72,17 @@ function App() {
           />
           <Route
             path={PATHS.ACCOUNT_APP}
-            element={<Account deleteMovie={deleteMovie} />}
+            element={
+              <Account
+                deleteMovie={deleteMovie}
+                hoveredMovie={hoveredMovie}
+                setHoveredMovie={setHoveredMovie}
+                movieAdded={movieAdded}
+                setMovieAdded={setMovieAdded}
+                modal={modal}
+                setModal={setModal}
+              />
+            }
           />
           <Route
             path={PATHS.TVSHOWS_APP}

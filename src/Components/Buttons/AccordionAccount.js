@@ -8,7 +8,16 @@ import {
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import MoviesAddedToAccount from "../MoviesAddedToAccount";
 
-const AccordionAccount = ({ movies, deleteMovie }) => {
+const AccordionAccount = ({
+  movies,
+  deleteMovie,
+  hoveredMovie,
+  setHoveredMovie,
+  movieAdded,
+  setMovieAdded,
+  modal,
+  setModal,
+}) => {
   return (
     <div className='flex'>
       <Accordion
@@ -34,6 +43,12 @@ const AccordionAccount = ({ movies, deleteMovie }) => {
             <MoviesAddedToAccount
               listOfMovies={movies}
               deleteMovie={deleteMovie}
+              hoveredMovie={hoveredMovie}
+              setHoveredMovie={setHoveredMovie}
+              movieAdded={movieAdded}
+              setMovieAdded={setMovieAdded}
+              modal={modal}
+              setModal={setModal}
             />
           </Typography>
         </AccordionDetails>

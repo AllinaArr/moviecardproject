@@ -2,7 +2,15 @@ import SummaryOfAddedMovies from "../Components/SummaryOfAddedMovies";
 import { useEffect, useState } from "react";
 import AccordionAccount from "../Components/Buttons/AccordionAccount";
 
-function Account({ deleteMovie }) {
+function Account({
+  deleteMovie,
+  hoveredMovie,
+  setHoveredMovie,
+  movieAdded,
+  setMovieAdded,
+  modal,
+  setModal,
+}) {
   const [movies, setMovies] = useState([]);
   const [count, setCount] = useState(0);
 
@@ -15,7 +23,7 @@ function Account({ deleteMovie }) {
         setMovies(data);
         setCount(data.length);
       });
-  }, [movies]);
+  }, []);
 
   return (
     <div>
@@ -25,7 +33,16 @@ function Account({ deleteMovie }) {
         </div>
         <SummaryOfAddedMovies count={count} />
       </div>
-      <AccordionAccount movies={movies} deleteMovie={deleteMovie} />
+      <AccordionAccount
+        movies={movies}
+        deleteMovie={deleteMovie}
+        hoveredMovie={hoveredMovie}
+        setHoveredMovie={setHoveredMovie}
+        movieAdded={movieAdded}
+        setMovieAdded={setMovieAdded}
+        modal={modal}
+        setModal={setModal}
+      />
     </div>
   );
 }
