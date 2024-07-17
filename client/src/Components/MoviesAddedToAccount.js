@@ -19,7 +19,7 @@ function MoviesAddedToAccount({
       .then((response) => response.ok)
       .then(() => {
         deleteMovie(movieId);
-        setModal(true); // Set modal to true after deletion
+        setModal(true);
       })
       .catch((err) => console.log(err));
   }
