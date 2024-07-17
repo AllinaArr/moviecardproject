@@ -13,6 +13,12 @@ function Movies({
   addMovie,
   genres,
   setGenres,
+  hoveredMovie,
+  setHoveredMovie,
+  movieAdded,
+  setMovieAdded,
+  modal,
+  setModal,
 }) {
   const [movies, setMovies] = useState([]);
 
@@ -57,6 +63,12 @@ function Movies({
             listOfMovies={movies}
             addMovie={addMovie}
             setMovies={setMovies}
+            hoveredMovie={hoveredMovie}
+            setHoveredMovie={setHoveredMovie}
+            movieAdded={movieAdded}
+            setMovieAdded={setMovieAdded}
+            modal={modal}
+            setModal={setModal}
           />
         )}
       </div>

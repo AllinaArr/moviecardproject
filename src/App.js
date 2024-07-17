@@ -15,7 +15,9 @@ function App() {
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
   const [genres, setGenres] = useState([]);
-
+  const [hoveredMovie, setHoveredMovie] = useState(null);
+  const [movieAdded, setMovieAdded] = useState(false);
+  const [modal, setModal] = useState(false);
   const addMovie = (newMovie) => {
     console.log("I am handling to add movie");
     setMovies((prevMovies) => [...prevMovies, newMovie]);
@@ -59,6 +61,12 @@ function App() {
                 setMovies={setMovies}
                 genres={genres}
                 setGenres={setGenres}
+                hoveredMovie={hoveredMovie}
+                setHoveredMovie={setHoveredMovie}
+                movieAdded={movieAdded}
+                setMovieAdded={setMovieAdded}
+                modal={modal}
+                setModal={setModal}
               />
             }
           />
@@ -77,6 +85,12 @@ function App() {
                 setPage={setPage}
                 genres={genres}
                 setGenres={setGenres}
+                hoveredMovie={hoveredMovie}
+                setHoveredMovie={setHoveredMovie}
+                movieAdded={movieAdded}
+                setMovieAdded={setMovieAdded}
+                modal={modal}
+                setModal={setModal}
               />
             }
           />
@@ -91,6 +105,12 @@ function App() {
                 setPage={setPage}
                 genres={genres}
                 setGenres={setGenres}
+                hoveredMovie={hoveredMovie}
+                setHoveredMovie={setHoveredMovie}
+                movieAdded={movieAdded}
+                setMovieAdded={setMovieAdded}
+                modal={modal}
+                setModal={setModal}
               />
             }
           />

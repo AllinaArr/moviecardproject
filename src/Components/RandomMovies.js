@@ -1,9 +1,21 @@
-import AddMovieButton from "./AddMovieButton";
 import "../index.css";
 import { options } from "../Utils/options";
+import HoverBtns from "./HoverBtns";
 
-function RandomMovies({ page, setPage, listOfMovies, addMovie, setMovies }) {
-  function handlePageMovies() {
+function RandomMovies({
+  page,
+  setPage,
+  listOfMovies,
+  addMovie,
+  setMovies,
+  hoveredMovie,
+  setHoveredMovie,
+  movieAdded,
+  setMovieAdded,
+  modal,
+  setModal,
+}) {
+  function handleMoreMovies() {
     const nextPage = page + 1;
     fetch(
       `https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=${nextPage}`,
@@ -18,27 +30,19 @@ function RandomMovies({ page, setPage, listOfMovies, addMovie, setMovies }) {
   }
 
   return (
-    <div id='parent-grid-container'>
-      <div className='grid-container'>
-        {listOfMovies.map((movie, index) => (
-          <div className='movie-container' key={index}>
-            <div className='divForImg'>
-              <img
-                id='grid-image'
-                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                alt={movie.original_title}
-              />
-            </div>
-            <AddMovieButton addMovie={addMovie} movie={movie} />
-          </div>
-        ))}
-      </div>
-      <div className='div-more-movies'>
-        <button className='more-movies-btn' onClick={handlePageMovies}>
-          Load More
-        </button>
-      </div>
-    </div>
+    <HoverBtns
+      page={page}
+      setPage={setPage}
+      listOfMovies={listOfMovies}
+      addMovie={addMovie}
+      hoveredMovie={hoveredMovie}
+      setHoveredMovie={setHoveredMovie}
+      movieAdded={movieAdded}
+      setMovieAdded={setMovieAdded}
+      modal={modal}
+      setModal={setModal}
+      handleMoreMovies={handleMoreMovies}
+    />
   );
 }
 

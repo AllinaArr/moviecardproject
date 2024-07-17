@@ -14,6 +14,12 @@ function Home({
   setMovies,
   genres,
   setGenres,
+  hoveredMovie,
+  setHoveredMovie,
+  movieAdded,
+  setMovieAdded,
+  modal,
+  setModal,
 }) {
   const handleSearch = () => {
     console.log("Searching for:", searchValue);
@@ -44,6 +50,12 @@ function Home({
             listOfMovies={movies}
             addMovie={addMovie}
             setHighlyRated={setMovies}
+            hoveredMovie={hoveredMovie}
+            setHoveredMovie={setHoveredMovie}
+            movieAdded={movieAdded}
+            setMovieAdded={setMovieAdded}
+            modal={modal}
+            setModal={setModal}
           />
         )}
       </div>

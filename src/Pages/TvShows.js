@@ -13,6 +13,12 @@ function TvShows({
   addMovie,
   genres,
   setGenres,
+  hoveredMovie,
+  setHoveredMovie,
+  movieAdded,
+  setMovieAdded,
+  modal,
+  setModal,
 }) {
   const [tvShows, setTvShows] = useState([]);
 
@@ -57,6 +63,12 @@ function TvShows({
             listOfMovies={tvShows}
             addMovie={addMovie}
             setTvShows={setTvShows}
+            hoveredMovie={hoveredMovie}
+            setHoveredMovie={setHoveredMovie}
+            movieAdded={movieAdded}
+            setMovieAdded={setMovieAdded}
+            modal={modal}
+            setModal={setModal}
           />
         )}
       </div>
