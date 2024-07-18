@@ -37,7 +37,7 @@ function App() {
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log("WE GET ALL DATA");
+        console.log("WE GET ALL MOVIES FROM OPEN API");
         setMovies(data.results);
       })
       .catch((err) => console.error(err));

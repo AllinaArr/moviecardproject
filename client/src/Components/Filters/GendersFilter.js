@@ -6,7 +6,7 @@ function GendersFilter({ genres, setGenres }) {
     fetch(`https://api.themoviedb.org/3/genre/movie/list?language=en`, options)
       .then((response) => response.json())
       .then((data) => {
-        console.log("WE GET ALL GENRES");
+        console.log("WE GET ALL GENRES FROM OPEN API");
         setGenres(data.genres);
       })
       .catch((err) => console.error(err));

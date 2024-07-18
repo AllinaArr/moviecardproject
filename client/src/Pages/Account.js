@@ -15,7 +15,7 @@ function Account({
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    fetch("http://localhost:3000/movies")
+    fetch("http://localhost:5555/user_account_movies")
       .then((response) => response.json())
       .then((data) => {
         console.log(movies);
