@@ -18,6 +18,7 @@ function App() {
   const [hoveredMovie, setHoveredMovie] = useState(null);
   const [movieAdded, setMovieAdded] = useState(false);
   const [modal, setModal] = useState(false);
+
   const addMovie = (newMovie) => {
     console.log("I am handling to add movie");
     setMovies((prevMovies) => [...prevMovies, newMovie]);

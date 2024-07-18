@@ -30,7 +30,7 @@ class List_Movies(db.Model, SerializerMixin):
     user_movie = db.relationship('User_Movie_List', back_populates="movie")
     
     serialize_rules = ['-user_movie.movie']
-        
+    
     def __repr__(self):
         return f'<List_Movies {self.movie_id} {self.movie_progress}>'
    

@@ -1,6 +1,6 @@
 import RemoveMovieFromAccount from "./Buttons/RemoveMovieFromAccount";
 
-function MoviesAddedToAccount({
+function MoviesInCurrentlyWatching({
   listOfMovies,
   deleteMovie,
   hoveredMovie,
@@ -89,4 +89,4 @@ function MoviesAddedToAccount({
   );
 }
 
-export default MoviesAddedToAccount;
+export default MoviesInCurrentlyWatching;

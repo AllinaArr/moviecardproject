@@ -6,7 +6,7 @@ import {
   Typography,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import MoviesAddedToAccount from "../MoviesAddedToAccount";
+import MoviesAddedToAccount from "../AccountComponents/MoviesAddedToAccount";
 
 const AccordionAccount = ({
   movies,
