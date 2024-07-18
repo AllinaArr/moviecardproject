@@ -1,13 +1,11 @@
 import { Fragment } from "react";
-import LogInOutComponent from "../Components/LogInOutComponent";
 
-function Login() {
+function Community() {
   return (
     <Fragment>
-      <h1>Logout</h1>
-      <LogInOutComponent />
+      <h1>Community</h1>
     </Fragment>
   );
 }
 
-export default Login;
+export default Community;

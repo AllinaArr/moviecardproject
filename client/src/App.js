@@ -125,7 +125,7 @@ function App() {
               />
             }
           />
-          <Route path={PATHS.LOGIN_APP} element={<Login />} />
+          {/* <Route path={PATHS.LOGIN_APP} element={<Login />} /> */}
         </Routes>
       </Router>
     </div>

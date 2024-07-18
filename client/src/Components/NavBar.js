@@ -43,14 +43,14 @@ function NavBar() {
             Movies
           </NavLink>
         </li>
-        <li className={activePath === PATHS.LOGIN_APP ? "active" : ""}>
+        {/* <li className={activePath === PATHS.LOGIN_APP ? "active" : ""}>
           <NavLink
             to={PATHS.LOGIN_APP}
             onClick={() => handleClick(PATHS.LOGIN_APP)}
           >
             Logout
           </NavLink>
-        </li>
+        </li> */}
       </ul>
     </nav>
   );
