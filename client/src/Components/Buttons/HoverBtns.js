@@ -14,11 +14,66 @@ function HoverBtns({
   filteredMovies,
 }) {
   function handleAddToWatched(movie) {
-    console.log("Add to Watched:", movie);
+    console.log("clicked finished");
+
+    fetch("http://localhost:5555/movies_progress/finished", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        user_id: 1,
+        movie_id: movie.id,
+        poster_path: movie.poster_path,
+        title: movie.title,
+        list_id: movie.id,
+        movie: {
+          movie_id: movie.id,
+          movie_progress: "finished",
+        },
+      }),
+    })
+      .then((response) => response.json())
+      .then((movie) => {
+        console.log("Adding the movie to finished");
+        addMovie(movie);
+        setMovieAdded(true);
+        setModal(true);
+        setTimeout(() => {
+          setModal(false);
+        }, 10000);
+      });
   }
 
   function handleCurrentlyWatching(movie) {
-    console.log("Currently Watching:", movie);
+    console.log("clicked currently watching");
+    fetch("http://localhost:5555/movies_progress/watching", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        user_id: 1,
+        movie_id: movie.id,
+        poster_path: movie.poster_path,
+        title: movie.title,
+        list_id: movie.id,
+        movie: {
+          movie_id: movie.id,
+          movie_progress: "currently watching",
+        },
+      }),
+    })
+      .then((response) => response.json())
+      .then((movie) => {
+        console.log("Adding the movie to currently watching");
+        addMovie(movie);
+        setMovieAdded(true);
+        setModal(true);
+        setTimeout(() => {
+          setModal(false);
+        }, 10000);
+      });
   }
 
   function handleMouseOver(index) {
@@ -37,13 +92,13 @@ function HoverBtns({
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        user_id: movie.user_id,
-        movie_id: movie.movie_id,
+        user_id: 1,
+        movie_id: movie.id,
         poster_path: movie.poster_path,
         title: movie.title,
-        list_id: movie.list_id,
+        list_id: movie.id,
         movie: {
-          movie_id: movie.movie_id,
+          movie_id: movie.id,
           movie_progress: "in list",
         },
       }),

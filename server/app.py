@@ -34,17 +34,20 @@ def post_movie_in_list():
     if request.method == 'POST':
         data = request.get_json()
             
-        new_movie = User_Movie_List(
-            list_id = data['list_id'],
-            movie_id = data['movie_id'],
-            poster_path = data['poster_path'],
-            title = data['title'],
-            user_id = data['user_id'],
-            movie = List_Movies(
-                movie_id= data['movie_id'],
-                movie_progress = data['movie_progress']
+        try:
+            new_movie = User_Movie_List(
+                # list_id = data['movie_id'],
+                movie_id = data['movie_id'],
+                poster_path = data['poster_path'],
+                title = data['title'],
+                user_id = data['user_id'],
+                movie = List_Movies(
+                    movie_id= data['movie_id'],
+                    movie_progress = "in list"
+                )
             )
-        )
+        except ValueError:
+            return {'error':'bad request'}, 400
         
         db.session.add(new_movie)
         db.session.commit()
@@ -52,17 +55,66 @@ def post_movie_in_list():
         return make_response(new_movie.to_dict(), 201)
     
 
-@app.route('/movies_progress/watching', methods=['GET'])
+@app.route('/movies_progress/watching', methods=['GET', 'POST'])
 def get_movie_watching():
-    movie_currently_watching = List_Movies.query.filter(List_Movies.movie_progress.ilike("currently watching"))
-    results = [movie.to_dict() for movie in movie_currently_watching]
-    return make_response(results, 200)
+    if request.method == 'GET':
+        movie_currently_watching = List_Movies.query.filter(List_Movies.movie_progress.ilike("currently watching"))
+        results = [movie.to_dict() for movie in movie_currently_watching]
+        return make_response(results, 200)
+    
+    if request.method == 'POST':
+        data = request.get_json()
+            
+        try:
+            new_movie = User_Movie_List(
+                # list_id = data['movie_id'],
+                movie_id = data['movie_id'],
+                poster_path = data['poster_path'],
+                title = data['title'],
+                user_id = data['user_id'],
+                movie = List_Movies(
+                    movie_id= data['movie_id'],
+                    movie_progress = "currently watching"
+                )
+            )
+        except ValueError:
+            return {'error':'bad request'}, 400
+        
+        db.session.add(new_movie)
+        db.session.commit()
+        
+        return make_response(new_movie.to_dict(), 201)
+        
 
-@app.route('/movies_progress/finished', methods=['GET'])
+@app.route('/movies_progress/finished', methods=['GET', 'POST'])
 def get_movie_finished():
-    movie_finished = List_Movies.query.filter(List_Movies.movie_progress.ilike('finished'))
-    results = [movie.to_dict() for movie in movie_finished]
-    return make_response(results,200)
+    if request.method == 'GET':
+        movie_finished = List_Movies.query.filter(List_Movies.movie_progress.ilike('finished'))
+        results = [movie.to_dict() for movie in movie_finished]
+        return make_response(results,200)
+    
+    if request.method == 'POST':
+        data = request.get_json()
+            
+        try:
+            new_movie = User_Movie_List(
+                # list_id = data['movie_id'],
+                movie_id = data['movie_id'],
+                poster_path = data['poster_path'],
+                title = data['title'],
+                user_id = data['user_id'],
+                movie = List_Movies(
+                    movie_id= data['movie_id'],
+                    movie_progress = "finished"
+                )
+            )
+        except ValueError:
+            return {'error':'bad request'}, 400
+        
+        db.session.add(new_movie)
+        db.session.commit()
+        
+        return make_response(new_movie.to_dict(), 201)
 
 @app.route('/user_account_movies/<int:id>', methods=['DELETE'])
 def delete_movies_from_user_account(id):
@@ -71,10 +123,6 @@ def delete_movies_from_user_account(id):
         db.session.delete(movie)
         db.session.commit()
         return make_response(movie.to_dict(), 200)
-        
-# POST for in list
-# POST for in currently watching
-# POST for finished
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)
