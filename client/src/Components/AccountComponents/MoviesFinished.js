@@ -1,6 +1,6 @@
 import RemoveMovieFromAccount from "../Buttons/RemoveMovieFromAccount";
 
-function MoviesInCurrentlyWatching({
+function MoviesFinished({
   listOfMovies,
   deleteMovie,
   hoveredMovie,
@@ -69,13 +69,13 @@ function MoviesInCurrentlyWatching({
                     className='overlay-button'
                     onClick={() => handleCurrentlyWatching(movie)}
                   >
-                    Remove From List
+                    Currently Watching
                   </button>
                   <button
                     className='overlay-button'
                     onClick={() => handleAddToWatched(movie)}
                   >
-                    Add to Watched
+                    Remove From Finished
                   </button>
                 </div>
               )}
@@ -89,4 +89,4 @@ function MoviesInCurrentlyWatching({
   );
 }
 
-export default MoviesInCurrentlyWatching;
+export default MoviesFinished;

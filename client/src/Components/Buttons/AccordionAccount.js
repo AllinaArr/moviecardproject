@@ -7,6 +7,8 @@ import {
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import MoviesAddedToAccount from "../AccountComponents/MoviesAddedToAccount";
+import MoviesCurrentlyWatching from "../AccountComponents/MoviesInCurrentlyWatching";
+import MoviesFinished from "../AccountComponents/MoviesFinished";
 
 const AccordionAccount = ({
   deleteMovie,
@@ -86,7 +88,7 @@ const AccordionAccount = ({
               width: "80vw",
             }}
           >
-            <MoviesAddedToAccount
+            <MoviesCurrentlyWatching
               listOfMovies={movieCurrently}
               deleteMovie={deleteMovie}
               hoveredMovie={hoveredMovie}
@@ -127,7 +129,7 @@ const AccordionAccount = ({
               borderRadius: "10px",
             }}
           >
-            <MoviesAddedToAccount
+            <MoviesFinished
               listOfMovies={movieFinished}
               deleteMovie={deleteMovie}
               hoveredMovie={hoveredMovie}
