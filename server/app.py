@@ -29,20 +29,10 @@ def get_movie_in_list():
         results = [movie.to_dict() for movie in movie_in_list]
         return make_response(results, 200)
     
-@app.route('/movies_progress/in_list/<int:id>', methods=['POST'])
+@app.route('/movies_progress/in_list', methods=['POST'])
 def post_movie_in_list():
     if request.method == 'POST':
         data = request.get_json()
-        print(f"Received data: {data}")
-        
-        existing_movie = List_Movies.query.filter_by(movie_id=data['movie_id']).first()
-        
-        if not existing_movie:
-            new_list_movie = List_Movies(
-                movie_id=data['movie_id'],
-                movie_progress="in list"
-            )
-            db.session.add(new_list_movie)
             
         new_movie = User_Movie_List(
             list_id = data['list_id'],
@@ -50,7 +40,10 @@ def post_movie_in_list():
             poster_path = data['poster_path'],
             title = data['title'],
             user_id = data['user_id'],
-
+            movie = List_Movies(
+                movie_id= data['movie_id'],
+                movie_progress = data['movie_progress']
+            )
         )
         
         db.session.add(new_movie)
