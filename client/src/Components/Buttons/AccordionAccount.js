@@ -9,7 +9,6 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import MoviesAddedToAccount from "../AccountComponents/MoviesAddedToAccount";
 
 const AccordionAccount = ({
-  movies,
   deleteMovie,
   hoveredMovie,
   setHoveredMovie,
@@ -17,6 +16,9 @@ const AccordionAccount = ({
   setMovieAdded,
   modal,
   setModal,
+  movieInList,
+  movieCurrently,
+  movieFinished,
 }) => {
   return (
     <div className='flex'>
@@ -42,7 +44,7 @@ const AccordionAccount = ({
             }}
           >
             <MoviesAddedToAccount
-              listOfMovies={movies}
+              listOfMovies={movieInList}
               deleteMovie={deleteMovie}
               hoveredMovie={hoveredMovie}
               setHoveredMovie={setHoveredMovie}
@@ -58,6 +60,7 @@ const AccordionAccount = ({
         style={{
           backgroundColor: "var(--body-secondary)",
           borderRadius: "10px",
+          width: "80vw",
         }}
       >
         <AccordionSummary
@@ -76,13 +79,31 @@ const AccordionAccount = ({
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography className='myListStyle'>Movies</Typography>
+          <Typography
+            style={{
+              backgroundColor: "var(--body-secondary)",
+              borderRadius: "10px",
+              width: "80vw",
+            }}
+          >
+            <MoviesAddedToAccount
+              listOfMovies={movieCurrently}
+              deleteMovie={deleteMovie}
+              hoveredMovie={hoveredMovie}
+              setHoveredMovie={setHoveredMovie}
+              movieAdded={movieAdded}
+              setMovieAdded={setMovieAdded}
+              modal={modal}
+              setModal={setModal}
+            />
+          </Typography>
         </AccordionDetails>
       </Accordion>{" "}
       <Accordion
         style={{
           backgroundColor: "var(--body-secondary)",
           borderRadius: "10px",
+          width: "80vw",
         }}
       >
         <AccordionSummary
@@ -106,7 +127,16 @@ const AccordionAccount = ({
               borderRadius: "10px",
             }}
           >
-            Movies
+            <MoviesAddedToAccount
+              listOfMovies={movieFinished}
+              deleteMovie={deleteMovie}
+              hoveredMovie={hoveredMovie}
+              setHoveredMovie={setHoveredMovie}
+              movieAdded={movieAdded}
+              setMovieAdded={setMovieAdded}
+              modal={modal}
+              setModal={setModal}
+            />
           </Typography>
         </AccordionDetails>
       </Accordion>

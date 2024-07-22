@@ -31,20 +31,27 @@ function HoverBtns({
 
   function handleAddToList(movie) {
     console.log("clicked");
-    fetch("http://localhost:3000/movies", {
+    fetch(`http://localhost:5555/movies_progress/in_list/${movie}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        id: movie.id.toString(),
+        user_id: 1,
+        movie_id: movie.movie_id,
         poster_path: movie.poster_path,
         title: movie.title,
-        original_name: movie.original_name,
+        list_id: movie.list_id,
+        movie: {
+          id: movie.movie_id,
+          movie_id: movie.movie_id,
+          movie_progress: "in list",
+        },
       }),
     })
       .then((response) => response.json())
       .then((movie) => {
+        console.log("Adding the movie");
         addMovie(movie);
         setMovieAdded(true);
         setModal(true);
@@ -75,7 +82,7 @@ function HoverBtns({
                 <div className='button-overlay'>
                   <button
                     className='overlay-button'
-                    onClick={() => handleAddToList(movie)}
+                    onClick={() => handleAddToList(movie.id)}
                   >
                     Add to List
                   </button>

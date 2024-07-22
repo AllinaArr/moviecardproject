@@ -24,9 +24,40 @@ def get_movies_from_user_account():
     
 @app.route('/movies_progress/in_list', methods=['GET'])
 def get_movie_in_list():
-    movie_in_list = List_Movies.query.filter(List_Movies.movie_progress.ilike("in list"))
-    results = [movie.to_dict() for movie in movie_in_list]
-    return make_response(results, 200)
+    if request.method == 'GET': 
+        movie_in_list = List_Movies.query.filter(List_Movies.movie_progress.ilike("in list"))
+        results = [movie.to_dict() for movie in movie_in_list]
+        return make_response(results, 200)
+    
+@app.route('/movies_progress/in_list/<int:id>', methods=['POST'])
+def post_movie_in_list():
+    if request.method == 'POST':
+        data = request.get_json()
+        print(f"Received data: {data}")
+        
+        existing_movie = List_Movies.query.filter_by(movie_id=data['movie_id']).first()
+        
+        if not existing_movie:
+            new_list_movie = List_Movies(
+                movie_id=data['movie_id'],
+                movie_progress="in list"
+            )
+            db.session.add(new_list_movie)
+            
+        new_movie = User_Movie_List(
+            list_id = data['list_id'],
+            movie_id = data['movie_id'],
+            poster_path = data['poster_path'],
+            title = data['title'],
+            user_id = data['user_id'],
+
+        )
+        
+        db.session.add(new_movie)
+        db.session.commit()
+        
+        return make_response(new_movie.to_dict(), 201)
+    
 
 @app.route('/movies_progress/watching', methods=['GET'])
 def get_movie_watching():
@@ -48,7 +79,9 @@ def delete_movies_from_user_account(id):
         db.session.commit()
         return make_response(movie.to_dict(), 200)
         
-
+# POST for in list
+# POST for in currently watching
+# POST for finished
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)

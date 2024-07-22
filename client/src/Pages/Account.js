@@ -25,6 +25,18 @@ function Account({
       });
   }, []);
 
+  const inListMovie = movies.filter(
+    (movie) => movie.movie.movie_progress === "in list"
+  );
+
+  const movieInProgress = movies.filter(
+    (movie) => movie.movie.movie_progress === "currently watching"
+  );
+
+  const movieFinished = movies.filter(
+    (movie) => movie.movie.movie_progress === "finished"
+  );
+
   return (
     <div>
       <div id='account-container'>
@@ -34,7 +46,6 @@ function Account({
         <SummaryOfAddedMovies count={count} />
       </div>
       <AccordionAccount
-        movies={movies}
         deleteMovie={deleteMovie}
         hoveredMovie={hoveredMovie}
         setHoveredMovie={setHoveredMovie}
@@ -42,6 +53,9 @@ function Account({
         setMovieAdded={setMovieAdded}
         modal={modal}
         setModal={setModal}
+        movieInList={inListMovie}
+        movieCurrently={movieInProgress}
+        movieFinished={movieFinished}
       />
     </div>
   );
