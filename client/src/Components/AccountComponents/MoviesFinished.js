@@ -11,13 +11,14 @@ function MoviesFinished({
   setModal,
 }) {
   function handleDeletion(movieId) {
-    console.log("deleted from Account");
+    console.log("deleted from Finished");
 
-    fetch(`http://localhost:3000/movies/${movieId}`, {
+    fetch(`http://localhost:5555/user_account_movies/${movieId}`, {
       method: "DELETE",
     })
       .then((response) => response.ok)
       .then(() => {
+        console.log(movieId);
         deleteMovie(movieId);
         setModal(true);
       })
@@ -61,7 +62,7 @@ function MoviesFinished({
                 <div className='button-overlay'>
                   <button
                     className='overlay-button'
-                    onClick={() => handleDeletion(movie.id)}
+                    onClick={() => handleAddToWatched(movie)}
                   >
                     Add to List
                   </button>
@@ -73,7 +74,7 @@ function MoviesFinished({
                   </button>
                   <button
                     className='overlay-button'
-                    onClick={() => handleAddToWatched(movie)}
+                    onClick={() => handleDeletion(movie.id)}
                   >
                     Remove From Finished
                   </button>
