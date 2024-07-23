@@ -1,6 +1,7 @@
 import "./index.css";
 import PATHS from "./Utils/paths";
 import HeaderOne from "./Components/HeaderOne";
+
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./Pages/Home";
 import Account from "./Pages/Account";
@@ -49,6 +50,7 @@ function App() {
       <Router>
         <HeaderOne />
         <Routes>
+          <Route path={PATHS.LOGIN_APP} element={<Login />} />
           <Route
             path={PATHS.HOME}
             element={
@@ -82,6 +84,7 @@ function App() {
                 setMovieAdded={setMovieAdded}
                 modal={modal}
                 setModal={setModal}
+                addMovie={addMovie}
               />
             }
           />
@@ -125,7 +128,6 @@ function App() {
               />
             }
           />
-          {/* <Route path={PATHS.LOGIN_APP} element={<Login />} /> */}
         </Routes>
       </Router>
     </div>

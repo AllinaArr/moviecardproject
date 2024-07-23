@@ -9,6 +9,7 @@ function MoviesInCurrentlyWatching({
   setMovieAdded,
   modal,
   setModal,
+  addMovie,
 }) {
   function handleDeletion(movieId) {
     console.log("deleted from Finished");
@@ -25,12 +26,42 @@ function MoviesInCurrentlyWatching({
       .catch((err) => console.log(err));
   }
 
-  function handleAddToWatched(movie) {
-    console.log("Add to Watched:", movie);
-  }
-
   function handleCurrentlyWatching(movie) {
     console.log("Currently Watching:", movie);
+  }
+
+  function handleAddToWatched(movie) {
+    console.log("clicked finished");
+    // does not work properly
+    // Maybe PATCH
+
+    // fetch("http://localhost:5555/movies_progress/finished", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     user_id: 1,
+    //     movie_id: movie.id,
+    //     poster_path: movie.poster_path,
+    //     title: movie.title,
+    //     list_id: movie.id,
+    //     movie: {
+    //       movie_id: movie.id,
+    //       movie_progress: "finished",
+    //     },
+    //   }),
+    // })
+    //   .then((response) => response.json())
+    //   .then((movie) => {
+    //     console.log("Adding the movie to finished");
+    //     addMovie(movie);
+    //     setMovieAdded(true);
+    //     setModal(true);
+    //     setTimeout(() => {
+    //       setModal(false);
+    //     }, 10000);
+    //   });
   }
 
   function handleMouseOver(index) {

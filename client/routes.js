@@ -5,12 +5,14 @@ import Home from "./Pages/Home";
 import Account from "./Pages/Account";
 import TvShows from "./src/Pages/TvShows";
 import Movies from "./src/Pages/Movies";
+import Login from "./src/Pages/Login";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />,
+    element: <Login />,
   },
+  { path: "/home", element: <Home /> },
   {
     path: "/account",
     element: <Account />,
@@ -23,6 +25,4 @@ const router = createBrowserRouter([
     path: "/movies",
     element: <Movies />,
   },
-
-  // { path: "/login", element: <Login /> },
 ]);

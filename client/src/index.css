@@ -374,3 +374,25 @@ img {
     position: static;
   }
 }
+
+.input-username,
+.input-password {
+  padding: 10px 20px;
+  margin: 5px;
+  background-color: var(--nav-bg);
+  border: 1px solid #4f4959;
+  border-radius: 25px;
+  cursor: pointer;
+  font-family: "Lato", sans-serif;
+}
+
+.login {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  min-width: 100vh;
+  /* min-height: 100vh; */
+}
+
+.login-form {
+}

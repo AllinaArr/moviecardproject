@@ -21,6 +21,7 @@ const AccordionAccount = ({
   movieInList,
   movieCurrently,
   movieFinished,
+  addMovie,
 }) => {
   return (
     <div className='flex'>
@@ -89,6 +90,7 @@ const AccordionAccount = ({
             }}
           >
             <MoviesCurrentlyWatching
+              addMovie={addMovie}
               listOfMovies={movieCurrently}
               deleteMovie={deleteMovie}
               hoveredMovie={hoveredMovie}

@@ -10,6 +10,7 @@ function Account({
   setMovieAdded,
   modal,
   setModal,
+  addMovie,
 }) {
   const [movies, setMovies] = useState([]);
   const [count, setCount] = useState(0);
@@ -56,6 +57,7 @@ function Account({
         movieInList={inListMovie}
         movieCurrently={movieInProgress}
         movieFinished={movieFinished}
+        addMovie={addMovie}
       />
     </div>
   );

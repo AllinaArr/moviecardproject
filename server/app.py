@@ -16,6 +16,23 @@ CORS(app, supports_credentials=True)
 
 db.init_app(app)
 
+@app.route('/login', methods=['POST'])
+def login():
+    data = request.get_json()
+    
+    user = User_Account.query.filter(User_Account.username == 
+                                     data['username']).first()
+    
+    if not user:
+        return {"error":"login failed"}, 401
+    
+    if not user.authenticate(data['password']):
+        return {'error':"login failed"}, 401
+    
+    session['user_id'] = user.id
+    
+    return user.to_dict(), 200
+
 @app.route('/user_account_movies', methods=['GET'])
 def get_movies_from_user_account():
     if request.method == 'GET':
@@ -53,6 +70,26 @@ def post_movie_in_list():
         db.session.commit()
         
         return make_response(new_movie.to_dict(), 201)
+    
+@app.route('/movies_progress/in_list/<int:id>', methods=['PATCH'])
+def patch_movie_in_list(id):
+    movie = List_Movies.query.filter(List_Movies.movie_id == id).first()
+    
+    if not movie:
+        return {"error": "Movies is not found"}, 404
+    data = request.get_json()
+    try:
+        if 'movie_id' in data:
+            movie.movie_id = data['movie_id']
+        if 'movie_progress' in data:
+            movie.movie_progress = 'currently watching'
+    except ValueError:
+        return {"errors":["validation errors"]}, 400
+    
+    db.session.add(movie)
+    db.session.commit()
+    
+    return movie.to_dict(), 200
     
 
 @app.route('/movies_progress/watching', methods=['GET', 'POST'])
