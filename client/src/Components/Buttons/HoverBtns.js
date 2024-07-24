@@ -13,7 +13,7 @@ function HoverBtns({
   handleMoreMovies,
   filteredMovies,
 }) {
-  const [isDisabled, setIsDisabled] = useState(false);
+  const [disabledButtons, setDisabledButtons] = useState({});
 
   function handleAddToWatched(movie) {
     console.log("clicked finished");
@@ -40,7 +40,10 @@ function HoverBtns({
         console.log("Adding the movie to finished");
         addMovie(movie);
         setMovieAdded(true);
-        setIsDisabled(true);
+        setDisabledButtons((prev) => ({
+          ...prev,
+          [movie.id]: { ...prev[movie.id], watched: true },
+        }));
         setModal(true);
         setTimeout(() => {
           setModal(false);
@@ -73,7 +76,10 @@ function HoverBtns({
         addMovie(movie);
         setMovieAdded(true);
         setModal(true);
-        setIsDisabled(true);
+        setDisabledButtons((prev) => ({
+          ...prev,
+          [movie.id]: { ...prev[movie.id], watching: true },
+        }));
         setTimeout(() => {
           setModal(false);
         }, 10000);
@@ -113,7 +119,10 @@ function HoverBtns({
         addMovie(movie);
         setMovieAdded(true);
         setModal(true);
-        setIsDisabled(true);
+        setDisabledButtons((prev) => ({
+          ...prev,
+          [movie.id]: { ...prev[movie.id], list: true },
+        }));
         setTimeout(() => {
           setModal(false);
         }, 10000);
@@ -142,22 +151,29 @@ function HoverBtns({
                   <button
                     className='overlay-button'
                     onClick={() => handleAddToList(movie)}
+                    disabled={disabledButtons[movie.id]?.list}
                   >
-                    {isDisabled ? "Added to cart" : "Add to List"}
+                    {disabledButtons[movie.id]?.list
+                      ? "Added to cart"
+                      : "Add to List"}
                   </button>
                   <button
                     className='overlay-button'
                     onClick={() => handleCurrentlyWatching(movie)}
+                    disabled={disabledButtons[movie.id]?.watching}
                   >
-                    {isDisabled
-                      ? "Added to currently Watching"
+                    {disabledButtons[movie.id]?.watching
+                      ? "Added to Currently Watching"
                       : "Currently Watching"}
                   </button>
                   <button
                     className='overlay-button'
                     onClick={() => handleAddToWatched(movie)}
+                    disabled={disabledButtons[movie.id]?.watched}
                   >
-                    {isDisabled ? "Added to finished" : "Finished"}
+                    {disabledButtons[movie.id]?.watched
+                      ? "Added to Finished"
+                      : "Finished"}
                   </button>
                 </div>
               )}
