@@ -86,7 +86,7 @@ const AccordionAccount = ({
             style={{
               backgroundColor: "var(--body-secondary)",
               borderRadius: "10px",
-              width: "80vw",
+              width: "70vw",
             }}
           >
             <MoviesCurrentlyWatching

@@ -1,5 +1,5 @@
 import AddMovieButton from "./AddMovieButton";
-import React from "react";
+import React, { useState } from "react";
 
 function HoverBtns({
   listOfMovies,
@@ -13,6 +13,8 @@ function HoverBtns({
   handleMoreMovies,
   filteredMovies,
 }) {
+  const [isDisabled, setIsDisabled] = useState(false);
+
   function handleAddToWatched(movie) {
     console.log("clicked finished");
 
@@ -38,6 +40,7 @@ function HoverBtns({
         console.log("Adding the movie to finished");
         addMovie(movie);
         setMovieAdded(true);
+        setIsDisabled(true);
         setModal(true);
         setTimeout(() => {
           setModal(false);
@@ -70,6 +73,7 @@ function HoverBtns({
         addMovie(movie);
         setMovieAdded(true);
         setModal(true);
+        setIsDisabled(true);
         setTimeout(() => {
           setModal(false);
         }, 10000);
@@ -109,6 +113,7 @@ function HoverBtns({
         addMovie(movie);
         setMovieAdded(true);
         setModal(true);
+        setIsDisabled(true);
         setTimeout(() => {
           setModal(false);
         }, 10000);
@@ -138,19 +143,21 @@ function HoverBtns({
                     className='overlay-button'
                     onClick={() => handleAddToList(movie)}
                   >
-                    Add to List
+                    {isDisabled ? "Added to cart" : "Add to List"}
                   </button>
                   <button
                     className='overlay-button'
                     onClick={() => handleCurrentlyWatching(movie)}
                   >
-                    Currently Watching
+                    {isDisabled
+                      ? "Added to currently Watching"
+                      : "Currently Watching"}
                   </button>
                   <button
                     className='overlay-button'
                     onClick={() => handleAddToWatched(movie)}
                   >
-                    Add to Watched
+                    {isDisabled ? "Added to finished" : "Finished"}
                   </button>
                 </div>
               )}

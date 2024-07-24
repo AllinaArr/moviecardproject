@@ -40,8 +40,8 @@ function Login() {
       {msg ? <p>{msg}</p> : null}
       {errorElement}
       <form onSubmit={handleSubmit} className='login-form'>
-        <h1 id='home-bar'>Login</h1>
-        <div id='home-container'>
+        <h1 id='login-bar'>Login</h1>
+        <div id='login-container'>
           <input
             type='text'
             placeholder='Username'
@@ -57,20 +57,20 @@ function Login() {
             className='input-password'
           />
         </div>
-        <div className=''>
+        <div className='login-para'>
           <label>
             <input type='checkbox' /> Remember me
           </label>
-          <a href='#'>
+          <a href='#' className='login-para'>
             <br /> Forgot Password
           </a>
         </div>
-        <button className=''>Login</button>
+        <button className='login-btn'>Login</button>
 
-        <div className=''>
+        <div className='login-para'>
           <p>
             Don't have an account?
-            <a href='#'>
+            <a href='#' className='login-para'>
               {" "}
               <br />
               Register
