@@ -26,10 +26,12 @@ function App() {
   };
 
   const deleteMovie = (movieId) => {
-    setMovies((prevMovies) =>
-      prevMovies.filter((movie) => movie.id !== movieId)
-    );
-    console.log("prevMovie ID");
+    setMovies((prevMovies) => {
+      const updatedMovies = prevMovies.filter((movie) => movie.id !== movieId);
+      console.log("Updated movies after deletion:", updatedMovies);
+      return updatedMovies;
+    });
+    console.log("Deleted movie ID:", movieId);
   };
 
   useEffect(() => {

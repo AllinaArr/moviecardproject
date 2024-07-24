@@ -47,7 +47,12 @@ function Account({
         <SummaryOfAddedMovies count={count} />
       </div>
       <AccordionAccount
-        deleteMovie={deleteMovie}
+        deleteMovie={(movieId) => {
+          setMovies((prevMovies) =>
+            prevMovies.filter((movie) => movie.id !== movieId)
+          );
+          deleteMovie(movieId);
+        }}
         hoveredMovie={hoveredMovie}
         setHoveredMovie={setHoveredMovie}
         movieAdded={movieAdded}
