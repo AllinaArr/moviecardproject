@@ -171,10 +171,20 @@ def get_movie_finished():
 @app.route('/user_account_movies/<int:id>', methods=['DELETE'])
 def delete_movies_from_user_account(id):
     if request.method =='DELETE':
-        movie = User_Movie_List.query.filter(User_Movie_List.id == id).first()
-        db.session.delete(movie)
+        movie_id = User_Movie_List.query.filter(User_Movie_List.id == id).first()
+        
+        if movie_id:
+            progress_status = ["in list", "currently watching", "finished"]
+            
+            for status in progress_status:
+                movie_progress = List_Movies.query.filter_by(id=id, movie_progress=status).first()
+                if movie_progress:
+                    db.session.delete(movie_progress)
+        
+        db.session.delete(movie_id)
         db.session.commit()
-        return make_response(movie.to_dict(), 200)
+                
+        return make_response(movie_id.to_dict(), 200)
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)

@@ -173,7 +173,7 @@ function HoverBtns({
                   >
                     {disabledButtons[movie.id]?.watched
                       ? "Added to Finished"
-                      : "Finished"}
+                      : "Add to Finished"}
                   </button>
                 </div>
               )}

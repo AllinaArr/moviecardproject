@@ -52,23 +52,9 @@ class User_Account(db.Model, SerializerMixin):
     __tablename__ = "user_account"
     
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String, unique=True, nullable=False)
+    username = db.Column(db.String)
     email = db.Column(db.String)
-    __password = db.Column(db.String, nullable=False)
-    
-    @hybrid_property
-    def password(self):
-        return self.__password
-    
-    @password.setter
-    def password(self, new_password):
-        hash = bcrypt.generate_password_hash(new_password.encode('utf-8'))
-        self.__password = hash
-        
-    def authenticate(self, password):
-        return bcrypt.check_password_hash(self._password, password.encode('utf-8'))
-    
-    serialize_rules = ['-_password']
+    password_hash = db.Column(db.String)
     
     def __repr__(self):
         return f'<User_Account {self.username} {self.email} {self.password_hash}>'
