@@ -107,6 +107,11 @@ def get_movie_watching():
     if request.method == 'POST':
         data = request.get_json()
             
+        existing_movie = User_Movie_List.query.filter_by(user_id=data['user_id'], movie_id=data['movie_id']).first()
+        
+        if existing_movie:
+            return {'error':"Movie is already in list"}, 400
+        
         try:
             new_movie = User_Movie_List(
                 # list_id = data['movie_id'],
@@ -138,6 +143,11 @@ def get_movie_finished():
     if request.method == 'POST':
         data = request.get_json()
             
+        existing_movie = User_Movie_List.query.filter_by(user_id=data['user_id'], movie_id=data['movie_id']).first()
+        
+        if existing_movie:
+            return {'error':"Movie is already in list"}, 400
+        
         try:
             new_movie = User_Movie_List(
                 # list_id = data['movie_id'],
