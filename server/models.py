@@ -59,3 +59,16 @@ class User_Account(db.Model, SerializerMixin):
     
     def __repr__(self):
         return f'<User_Account {self.username} {self.email} {self.password_hash}>'
+    
+class Review(db.Model, SerializerMixin):
+    __tablename__ = 'review'
+    
+    id = db.Column(db.Integer, primary_key = True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user_account.id'))
+    movie_id = db.Column(db.Integer, db.ForeignKey('user_movie_list.id'))
+    movie_progress = db.Column(db.String)
+    review_score = db.Column(db.Float)
+    review = db.Column(db.String)
+    
+    def __repr__(self):
+        return f'<Review {self.user_id} {self.movie_id} {self.movie_progress} {self.review_score} {self.review}>'
