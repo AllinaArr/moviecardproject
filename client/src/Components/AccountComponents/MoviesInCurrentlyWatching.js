@@ -1,4 +1,4 @@
-import RemoveMovieFromAccount from "../Buttons/RemoveMovieFromAccount";
+import RemoveMovieFromAccount from "../Buttons/SubmitAReview";
 
 function MoviesInCurrentlyWatching({
   listOfMovies,

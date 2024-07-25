@@ -6,7 +6,7 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { Button } from "@mui/material";
 
-function RemoveMovieFromAccount({ modal, setModal }) {
+function SubmitAReview({ modal, setModal }) {
   function toggleModal() {
     console.log("I checked a toggleModal");
     setModal(!modal);
@@ -16,9 +16,8 @@ function RemoveMovieFromAccount({ modal, setModal }) {
       <Dialog open={modal} onClose={toggleModal}>
         <DialogTitle>Notification</DialogTitle>
         <DialogContent>
-          <DialogContentText>
-            You removed this movie from your list
-          </DialogContentText>
+          <DialogContentText>Submit a Review</DialogContentText>
+          {/* <DialogContentText>Submit a Review</DialogContentText> */}
         </DialogContent>
         <DialogActions>
           <Button onClick={toggleModal} color='primary' className='close-modal'>
@@ -30,4 +29,4 @@ function RemoveMovieFromAccount({ modal, setModal }) {
   );
 }
 
-export default RemoveMovieFromAccount;
+export default SubmitAReview;

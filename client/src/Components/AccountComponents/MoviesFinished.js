@@ -1,4 +1,4 @@
-import RemoveMovieFromAccount from "../Buttons/RemoveMovieFromAccount";
+import SubmitAReview from "../Buttons/SubmitAReview";
 
 function MoviesFinished({
   listOfMovies,
@@ -10,27 +10,39 @@ function MoviesFinished({
   modal,
   setModal,
 }) {
-  function handleDeletion(movieId) {
-    console.log("deleted from Finished");
+  /**
+   *
+   * @param {*} index
+   * maybe I don't need to delete from "Finished movies"
+   * However, I may change a status -> think about it later
+   */
 
-    fetch(`http://localhost:5555/user_account_movies/${movieId}`, {
-      method: "DELETE",
-    })
-      .then((response) => response.ok)
-      .then(() => {
-        console.log(movieId);
-        deleteMovie(movieId);
-        setModal(true);
-      })
-      .catch((err) => console.log(err));
-  }
+  // function handleDeletion(movieId) {
+  //   console.log("deleted from Finished");
 
-  function handleAddToWatched(movie) {
-    console.log("Add to Watched:", movie);
-  }
+  //   fetch(`http://localhost:5555/user_account_movies/${movieId}`, {
+  //     method: "DELETE",
+  //   })
+  //     .then((response) => response.ok)
+  //     .then(() => {
+  //       console.log(movieId);
+  //       deleteMovie(movieId);
+  //       setModal(true);
+  //     })
+  //     .catch((err) => console.log(err));
+  // }
 
-  function handleCurrentlyWatching(movie) {
-    console.log("Currently Watching:", movie);
+  // function handleAddToWatched(movie) {
+  //   console.log("Add to Watched:", movie);
+  // }
+
+  // function handleCurrentlyWatching(movie) {
+  //   console.log("Currently Watching:", movie);
+  // }
+
+  function handleSubmitReview(movie) {
+    console.log("Clicked Add Review is Handled");
+    setModal(true);
   }
 
   function handleMouseOver(index) {
@@ -62,21 +74,9 @@ function MoviesFinished({
                 <div className='button-overlay'>
                   <button
                     className='overlay-button'
-                    onClick={() => handleAddToWatched(movie)}
+                    onClick={() => handleSubmitReview(movie)}
                   >
-                    Add to List
-                  </button>
-                  <button
-                    className='overlay-button'
-                    onClick={() => handleCurrentlyWatching(movie)}
-                  >
-                    Currently Watching
-                  </button>
-                  <button
-                    className='overlay-button'
-                    onClick={() => handleDeletion(movie.id)}
-                  >
-                    Remove From Finished
+                    Add Review
                   </button>
                 </div>
               )}
@@ -85,7 +85,7 @@ function MoviesFinished({
         ))}
       </div>
 
-      {modal && <RemoveMovieFromAccount modal={modal} setModal={setModal} />}
+      {modal && <SubmitAReview modal={modal} setModal={setModal} />}
     </div>
   );
 }
