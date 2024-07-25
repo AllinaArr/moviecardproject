@@ -28,6 +28,7 @@ function HoverBtns({
         movie_id: movie.id,
         poster_path: movie.poster_path,
         title: movie.title,
+        name: movie.name,
         list_id: movie.id,
         movie: {
           movie_id: movie.id,
@@ -63,6 +64,7 @@ function HoverBtns({
         movie_id: movie.id,
         poster_path: movie.poster_path,
         title: movie.title,
+        name: movie.name,
         list_id: movie.id,
         movie: {
           movie_id: movie.id,
@@ -106,6 +108,7 @@ function HoverBtns({
         movie_id: movie.id,
         poster_path: movie.poster_path,
         title: movie.title,
+        name: movie.name,
         list_id: movie.id,
         movie: {
           movie_id: movie.id,

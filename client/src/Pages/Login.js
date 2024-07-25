@@ -31,14 +31,14 @@ function Login() {
       .catch((resp) => resp.json())
       .then((data) => setError(data));
   }
-  const errorElement = error ? (
-    <p style={{ color: "red" }}>{error.error}</p>
-  ) : null;
+  // const errorElement = error ? (
+  //   <p style={{ color: "red" }}>{error.error}</p>
+  // ) : null;
 
   return (
     <div className='login'>
-      {msg ? <p>{msg}</p> : null}
-      {errorElement}
+      {/* {msg ? <p>{msg}</p> : null}
+      {errorElement} */}
       <form onSubmit={handleSubmit} className='login-form'>
         <h1 id='login-bar'>Login</h1>
         <div id='login-container'>

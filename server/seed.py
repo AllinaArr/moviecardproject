@@ -25,11 +25,11 @@ def run():
     
     # add user_movie_list
     movies_in_list = [User_Movie_List(user_id=users[0].id, 
-                                      movie_id=720321, poster_path="/wTW2t8ocWDlHns8I7vQxuqkyK58.jpg", title="Breathe", list_id=movies_progress[0].movie_id),
+                                      movie_id=720321, poster_path="/wTW2t8ocWDlHns8I7vQxuqkyK58.jpg", title="Breathe", name="", list_id=movies_progress[0].movie_id),
                       User_Movie_List(user_id=users[0].id, 
-                                      movie_id=1022789, poster_path="/vpnVM9B6NMmQpWeZvzLvDESb2QY.jpg", title="Inside Out 2", list_id=movies_progress[1].movie_id),
+                                      movie_id=1022789, poster_path="/vpnVM9B6NMmQpWeZvzLvDESb2QY.jpg", title="Inside Out 2",name="", list_id=movies_progress[1].movie_id),
                       User_Movie_List(user_id=users[0].id, 
-                                      movie_id=519182, poster_path="/3w84hCFJATpiCO5g8hpdWVPBbmq.jpg", title="Despicable Me 4", list_id=movies_progress[2].movie_id)]
+                                      movie_id=519182, poster_path="/3w84hCFJATpiCO5g8hpdWVPBbmq.jpg", title="Despicable Me 4", name="", list_id=movies_progress[2].movie_id)]
     db.session.add_all(movies_in_list)
     db.session.commit()
     

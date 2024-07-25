@@ -24,7 +24,8 @@ class User_Movie_List(db.Model, SerializerMixin):
     user_id = db.Column(db.Integer, db.ForeignKey('user_account.id'))
     movie_id = db.Column(db.Integer, )
     poster_path = db.Column(db.String)
-    title = db.Column(db.String)
+    title = db.Column(db.String, nullable=True)
+    name = db.Column(db.String, nullable=True)
     list_id = db.Column(db.String, db.ForeignKey('list_movies.movie_id'))
     
     movie = db.relationship('List_Movies', back_populates='user_movie')

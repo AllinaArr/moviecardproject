@@ -50,7 +50,7 @@ def get_movie_in_list():
 def post_movie_in_list():
     if request.method == 'POST':
         data = request.get_json()
-        
+    
         existing_movie = User_Movie_List.query.filter_by(user_id=data['user_id'], movie_id=data['movie_id']).first()
         
         if existing_movie:
@@ -61,7 +61,8 @@ def post_movie_in_list():
                 # list_id = data['movie_id'],
                 movie_id = data['movie_id'],
                 poster_path = data['poster_path'],
-                title = data['title'],
+                title = data.get('title', None),
+                name = data.get('name', None),
                 user_id = data['user_id'],
                 movie = List_Movies(
                     movie_id= data['movie_id'],
@@ -117,7 +118,8 @@ def get_movie_watching():
                 # list_id = data['movie_id'],
                 movie_id = data['movie_id'],
                 poster_path = data['poster_path'],
-                title = data['title'],
+                title = data.get('title', None),
+                name = data.get('name', None),
                 user_id = data['user_id'],
                 movie = List_Movies(
                     movie_id= data['movie_id'],
@@ -153,7 +155,8 @@ def get_movie_finished():
                 # list_id = data['movie_id'],
                 movie_id = data['movie_id'],
                 poster_path = data['poster_path'],
-                title = data['title'],
+                title = data.get('title', None),
+                name = data.get('name', None),
                 user_id = data['user_id'],
                 movie = List_Movies(
                     movie_id= data['movie_id'],
