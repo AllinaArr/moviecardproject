@@ -182,8 +182,11 @@ def delete_movies_from_user_account(id):
                 
         return make_response(movie_id.to_dict(), 200)
     
-@app.route('/user_account_movies/reviews', methods=['POST'])
+@app.route('/user_account_movies/reviews', methods=['GET','POST'])
 def post_movie_review():
+    if request.method == 'GET':
+        reviews = Review.query.all()
+        return [review.to_dict(rules=['-user_movie', '-movie.user_movie']) for review in reviews], 200
     if request.method == 'POST':
         data = request.get_json()
         try:

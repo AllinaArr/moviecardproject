@@ -75,7 +75,7 @@ class Review(db.Model, SerializerMixin):
     user_movie = db.relationship('User_Movie_List', back_populates="review")
     movie = db.relationship('List_Movies', back_populates='review')
     
-    serialize_rules = ['-user_movie.review', '-movie.review']
+    serialize_rules = ['-user_movie', '-movie.review', '-movie.user_movie']
     
     @validates('review_score')
     def validate_up_to_10(self, key, new_value):

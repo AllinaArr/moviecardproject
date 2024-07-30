@@ -5,6 +5,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { Button, TextField } from "@mui/material";
+import { useEffect } from "react";
 
 function SubmitAReview({ modal, setModal }) {
   function toggleModal() {
@@ -12,7 +13,16 @@ function SubmitAReview({ modal, setModal }) {
     setModal(!modal);
   }
 
-  function handleSubmit() {}
+  function handleSubmit(e) {
+    e.preventDefault();
+    fetch("http://localhost:5555/user_account_movies/reviews", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(),
+    });
+  }
   return (
     <div className='divForBut'>
       <Dialog open={modal} onClose={toggleModal}>
