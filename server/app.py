@@ -3,7 +3,7 @@ from flask_migrate import Migrate
 from flask_restful import Api, Resource
 from flask_cors import CORS
 
-from models import db, User_Movie_List, User_Account, List_Movies
+from models import db, User_Movie_List, User_Account, List_Movies, Review
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
@@ -181,6 +181,26 @@ def delete_movies_from_user_account(id):
         db.session.commit()
                 
         return make_response(movie_id.to_dict(), 200)
+    
+@app.route('/user_account_movies/reviews', methods=['POST'])
+def post_movie_review():
+    if request.method == 'POST':
+        data = request.get_json()
+        try:
+            new_review = Review(
+                user_id = data['user_id'],
+                movie_id = data['movie_id'],
+                movie_progress = data['movie_progress'],
+                review_score = data['review_score'],
+                review = data['review'],
+            )
+        except ValueError:
+            return {'error':'no review added'}, 400
+        db.session.add(new_review)
+        db.session.commit()
+        
+        return new_review.to_dict(), 201
+        
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)

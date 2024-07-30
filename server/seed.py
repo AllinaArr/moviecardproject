@@ -1,10 +1,11 @@
 from app import app
-from models import db, User_Account, User_Movie_List, List_Movies
+from models import db, User_Account, User_Movie_List, List_Movies, Review
 
 def run():
     User_Account.query.delete()
     User_Movie_List.query.delete()
     List_Movies.query.delete()
+    Review.query.delete()
     db.session.commit()
     
     # add users
@@ -31,6 +32,10 @@ def run():
                       User_Movie_List(user_id=users[0].id, 
                                       movie_id=519182, poster_path="/3w84hCFJATpiCO5g8hpdWVPBbmq.jpg", title="Despicable Me 4", name="", list_id=movies_progress[2].movie_id)]
     db.session.add_all(movies_in_list)
+    db.session.commit()
+    
+    reviews = [Review(user_id=users[0].id, movie_id=519182, movie_progress="finished", review_score=9, review="you have to watch it")]
+    db.session.add_all(reviews)
     db.session.commit()
     
 

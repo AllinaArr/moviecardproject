@@ -22,15 +22,16 @@ class User_Movie_List(db.Model, SerializerMixin):
     
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user_account.id'))
-    movie_id = db.Column(db.Integer, )
+    movie_id = db.Column(db.Integer )
     poster_path = db.Column(db.String)
     title = db.Column(db.String, nullable=True)
     name = db.Column(db.String, nullable=True)
     list_id = db.Column(db.String, db.ForeignKey('list_movies.movie_id'))
     
     movie = db.relationship('List_Movies', back_populates='user_movie')
+    review = db.relationship('Review', back_populates='user_movie')
     
-    serialize_rules = ['-movie.user_movie']
+    serialize_rules = ['-movie.user_movie', '-review.user_movie']
     
     def __repr__(self):
         return f'<User_Movie_List {self.user_id} {self.movie_id} {self.poster_path} {self.title} {self.list_id}>'
@@ -43,8 +44,9 @@ class List_Movies(db.Model, SerializerMixin):
     movie_progress = db.Column(db.String)
     
     user_movie = db.relationship('User_Movie_List', back_populates="movie")
+    review = db.relationship("Review", back_populates='movie')
     
-    serialize_rules = ['-user_movie.movie']
+    serialize_rules = ['-user_movie.movie', '-review.movie']
     
     def __repr__(self):
         return f'<List_Movies {self.movie_id} {self.movie_progress}>'
@@ -69,6 +71,17 @@ class Review(db.Model, SerializerMixin):
     movie_progress = db.Column(db.String, db.ForeignKey('list_movies.movie_progress'))
     review_score = db.Column(db.Float)
     review = db.Column(db.String)
+    
+    user_movie = db.relationship('User_Movie_List', back_populates="review")
+    movie = db.relationship('List_Movies', back_populates='review')
+    
+    serialize_rules = ['-user_movie.review', '-movie.review']
+    
+    @validates('review_score')
+    def validate_up_to_10(self, key, new_value):
+        if new_value <=10:
+            return new_value
+        raise ValueError('score must be up to 10')
     
     def __repr__(self):
         return f'<Review {self.user_id} {self.movie_id} {self.movie_progress} {self.review_score} {self.review}>'
