@@ -66,7 +66,7 @@ class Review(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key = True)
     user_id = db.Column(db.Integer, db.ForeignKey('user_account.id'))
     movie_id = db.Column(db.Integer, db.ForeignKey('user_movie_list.id'))
-    movie_progress = db.Column(db.String)
+    movie_progress = db.Column(db.String, db.ForeignKey('list_movies.movie_progress'))
     review_score = db.Column(db.Float)
     review = db.Column(db.String)
     
