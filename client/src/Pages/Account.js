@@ -38,6 +38,16 @@ function Account({
     (movie) => movie.movie.movie_progress === "finished"
   );
 
+  function updatedMovieProgress(movieId, newProgress) {
+    setMovies((prevMovies) =>
+      prevMovies.map((movie) =>
+        movie.movie_id === movieId
+          ? { ...movie, movie: { ...movie.movie, movie_progress: newProgress } }
+          : movie
+      )
+    );
+  }
+
   return (
     <div>
       <div id='account-container'>
@@ -63,6 +73,7 @@ function Account({
         movieCurrently={movieInProgress}
         movieFinished={movieFinished}
         addMovie={addMovie}
+        updatedMovieProgress={updatedMovieProgress}
       />
     </div>
   );

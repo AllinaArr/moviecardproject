@@ -9,9 +9,11 @@ function MoviesAddedToAccount({
   setMovieAdded,
   modal,
   setModal,
+  addMovie,
+  updatedMovieProgress,
 }) {
   function handleDeletion(movieId) {
-    console.log("deleted from Account");
+    console.log("handle Deletion: deleted from Account");
 
     fetch(`http://localhost:5555/user_account_movies/${movieId}`, {
       method: "DELETE",
@@ -25,12 +27,42 @@ function MoviesAddedToAccount({
       .catch((err) => console.log(err));
   }
 
-  function handleAddToWatched(movie) {
-    console.log("Add to Watched:", movie);
+  function handleCurrentlyWatching(movie) {
+    fetch(`http://localhost:5555/movies_progress/update`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        movie_id: movie.movie_id,
+        movie_progress: "currently watching",
+      }),
+    })
+      .then((response) => response.json())
+      .then((updatedMovie) => {
+        console.log(updatedMovie);
+        updatedMovieProgress(movie.movie_id, "currently watching");
+      })
+      .catch((err) => console.log(err));
   }
 
-  function handleCurrentlyWatching(movie) {
-    console.log("Currently Watching:", movie);
+  function handleAddToWatched(movie) {
+    fetch(`http://localhost:5555/movies_progress/update`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        movie_id: movie.movie_id,
+        movie_progress: "finished",
+      }),
+    })
+      .then((response) => response.json())
+      .then((updatedMovie) => {
+        console.log(updatedMovie);
+        updatedMovieProgress(movie.movie_id, "finished");
+      })
+      .catch((err) => console.log(err));
   }
 
   function handleMouseOver(index) {
@@ -64,7 +96,7 @@ function MoviesAddedToAccount({
                     className='overlay-button'
                     onClick={() => handleDeletion(movie.id)}
                   >
-                    Remove From List
+                    Delete From List
                   </button>
                   <button
                     className='overlay-button'
@@ -76,7 +108,7 @@ function MoviesAddedToAccount({
                     className='overlay-button'
                     onClick={() => handleAddToWatched(movie)}
                   >
-                    Add to Watched
+                    Watched
                   </button>
                 </div>
               )}

@@ -4,24 +4,50 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import { Button } from "@mui/material";
+import { Button, TextField } from "@mui/material";
 
 function SubmitAReview({ modal, setModal }) {
   function toggleModal() {
     console.log("I checked a toggleModal");
     setModal(!modal);
   }
+
+  function handleSubmit() {}
   return (
     <div className='divForBut'>
       <Dialog open={modal} onClose={toggleModal}>
-        <DialogTitle>Notification</DialogTitle>
+        <DialogTitle>Review</DialogTitle>
         <DialogContent>
-          <DialogContentText>Submit a Review</DialogContentText>
-          {/* <DialogContentText>Submit a Review</DialogContentText> */}
+          <TextField
+            autoFocus
+            required
+            margin='dense'
+            id='name'
+            label='Your review'
+            fullWidth
+            variant='standard'
+          />
+          <TextField
+            autoFocus
+            required
+            margin='dense'
+            id='name'
+            label='Your score'
+            fullWidth
+            type='number'
+            variant='standard'
+          />
         </DialogContent>
         <DialogActions>
           <Button onClick={toggleModal} color='primary' className='close-modal'>
-            Done
+            Cancel
+          </Button>
+          <Button
+            onClick={handleSubmit}
+            color='primary'
+            className='close-modal'
+          >
+            Submit
           </Button>
         </DialogActions>
       </Dialog>

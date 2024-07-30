@@ -12,7 +12,7 @@ function MoviesInCurrentlyWatching({
   addMovie,
 }) {
   function handleDeletion(movieId) {
-    console.log("deleted from Finished");
+    console.log("handle Deletion: deleted from Account");
 
     fetch(`http://localhost:5555/user_account_movies/${movieId}`, {
       method: "DELETE",
@@ -26,42 +26,40 @@ function MoviesInCurrentlyWatching({
       .catch((err) => console.log(err));
   }
 
-  function handleCurrentlyWatching(movie) {
-    console.log("Currently Watching:", movie);
+  function handleInList(movie) {
+    fetch(`http://localhost:5555/movies_progress/update`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        movie_id: movie.movie_id,
+        movie_progress: "in list",
+      }),
+    })
+      .then((response) => response.json())
+      .then((updatedMovie) => {
+        console.log(updatedMovie);
+      })
+      .catch((err) => console.log(err));
   }
 
   function handleAddToWatched(movie) {
-    console.log("clicked finished");
-    // does not work properly
-    // Maybe PATCH
-
-    // fetch("http://localhost:5555/movies_progress/finished", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({
-    //     user_id: 1,
-    //     movie_id: movie.id,
-    //     poster_path: movie.poster_path,
-    //     title: movie.title,
-    //     list_id: movie.id,
-    //     movie: {
-    //       movie_id: movie.id,
-    //       movie_progress: "finished",
-    //     },
-    //   }),
-    // })
-    //   .then((response) => response.json())
-    //   .then((movie) => {
-    //     console.log("Adding the movie to finished");
-    //     addMovie(movie);
-    //     setMovieAdded(true);
-    //     setModal(true);
-    //     setTimeout(() => {
-    //       setModal(false);
-    //     }, 10000);
-    //   });
+    fetch(`http://localhost:5555/movies_progress/update`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        movie_id: movie.movie_id,
+        movie_progress: "finished",
+      }),
+    })
+      .then((response) => response.json())
+      .then((updatedMovie) => {
+        console.log(updatedMovie);
+      })
+      .catch((err) => console.log(err));
   }
 
   function handleMouseOver(index) {
@@ -93,7 +91,7 @@ function MoviesInCurrentlyWatching({
                 <div className='button-overlay'>
                   <button
                     className='overlay-button'
-                    onClick={() => handleCurrentlyWatching(movie)}
+                    onClick={() => handleInList(movie)}
                   >
                     Add to List
                   </button>
@@ -107,7 +105,7 @@ function MoviesInCurrentlyWatching({
                     className='overlay-button'
                     onClick={() => handleAddToWatched(movie)}
                   >
-                    Add to Watched
+                    Watched
                   </button>
                 </div>
               )}

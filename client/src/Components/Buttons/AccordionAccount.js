@@ -22,6 +22,7 @@ const AccordionAccount = ({
   movieCurrently,
   movieFinished,
   addMovie,
+  updatedMovieProgress,
 }) => {
   return (
     <div className='flex'>
@@ -55,6 +56,8 @@ const AccordionAccount = ({
               setMovieAdded={setMovieAdded}
               modal={modal}
               setModal={setModal}
+              addMovie={addMovie}
+              updatedMovieProgress={updatedMovieProgress}
             />
           </Typography>
         </AccordionDetails>

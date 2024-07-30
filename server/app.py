@@ -77,27 +77,20 @@ def post_movie_in_list():
         
         return make_response(new_movie.to_dict(), 201)
     
-@app.route('/movies_progress/in_list/<int:id>', methods=['PATCH'])
-def patch_movie_in_list(id):
-    movie = List_Movies.query.filter(List_Movies.movie_id == id).first()
-    
-    if not movie:
-        return {"error": "Movies is not found"}, 404
+@app.route('/movies_progress/update', methods=['PATCH'])
+def patch_movie_in_list():
     data = request.get_json()
-    try:
-        if 'movie_id' in data:
-            movie.movie_id = data['movie_id']
-        if 'movie_progress' in data:
-            movie.movie_progress = 'currently watching'
-    except ValueError:
-        return {"errors":["validation errors"]}, 400
     
-    db.session.add(movie)
-    db.session.commit()
+    movie_id = data['movie_id']
+    movie_progress = data['movie_progress']
     
-    return movie.to_dict(), 200
+    movie_record = List_Movies.query.filter_by(movie_id=movie_id).first()
+    if movie_record:
+        movie_record.movie_progress= movie_progress
+        db.session.commit()
+        return make_response(movie_record.to_dict(), 200)
+    return {'error': 'Movie not found'}, 404
     
-
 @app.route('/movies_progress/watching', methods=['GET', 'POST'])
 def get_movie_watching():
     if request.method == 'GET':
