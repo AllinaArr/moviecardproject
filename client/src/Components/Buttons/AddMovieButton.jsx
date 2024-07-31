@@ -17,7 +17,7 @@ function AddMovieButton({ modal, setModal }) {
         <DialogTitle>Notification</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            You added this movie to your watchlist
+            You added this movie to your account
           </DialogContentText>
         </DialogContent>
         <DialogActions>

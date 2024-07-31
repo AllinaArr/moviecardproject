@@ -10,8 +10,9 @@ import Login from "./src/Pages/Login";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />,
+    element: <Login />,
   },
+  { path: "/home", element: <Home /> },
   {
     path: "/account",
     element: <Account />,
@@ -24,5 +25,4 @@ const router = createBrowserRouter([
     path: "/movies",
     element: <Movies />,
   },
-  { path: "/login", element: <Login /> },
 ]);

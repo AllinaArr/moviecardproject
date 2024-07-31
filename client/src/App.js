@@ -1,6 +1,7 @@
 import "./index.css";
 import PATHS from "./Utils/paths";
 import HeaderOne from "./Components/HeaderOne";
+
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./Pages/Home";
 import Account from "./Pages/Account";
@@ -18,16 +19,19 @@ function App() {
   const [hoveredMovie, setHoveredMovie] = useState(null);
   const [movieAdded, setMovieAdded] = useState(false);
   const [modal, setModal] = useState(false);
+
   const addMovie = (newMovie) => {
     console.log("I am handling to add movie");
     setMovies((prevMovies) => [...prevMovies, newMovie]);
   };
 
   const deleteMovie = (movieId) => {
-    setMovies((prevMovies) =>
-      prevMovies.filter((movie) => movie.id !== movieId)
-    );
-    console.log("prevMovie ID");
+    setMovies((prevMovies) => {
+      const updatedMovies = prevMovies.filter((movie) => movie.id !== movieId);
+      console.log("Updated movies after deletion:", updatedMovies);
+      return updatedMovies;
+    });
+    console.log("Deleted movie ID:", movieId);
   };
 
   useEffect(() => {
@@ -37,7 +41,7 @@ function App() {
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log("WE GET ALL DATA");
+        console.log("WE GET ALL MOVIES FROM OPEN API");
         setMovies(data.results);
       })
       .catch((err) => console.error(err));
@@ -48,6 +52,7 @@ function App() {
       <Router>
         <HeaderOne />
         <Routes>
+          <Route path={PATHS.LOGIN_APP} element={<Login />} />
           <Route
             path={PATHS.HOME}
             element={
@@ -81,6 +86,7 @@ function App() {
                 setMovieAdded={setMovieAdded}
                 modal={modal}
                 setModal={setModal}
+                addMovie={addMovie}
               />
             }
           />
@@ -124,7 +130,6 @@ function App() {
               />
             }
           />
-          <Route path={PATHS.LOGIN_APP} element={<Login />} />
         </Routes>
       </Router>
     </div>

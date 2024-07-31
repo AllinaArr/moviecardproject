@@ -1,5 +1,5 @@
 import AddMovieButton from "./AddMovieButton";
-import React from "react";
+import React, { useState } from "react";
 
 function HoverBtns({
   listOfMovies,
@@ -13,12 +13,79 @@ function HoverBtns({
   handleMoreMovies,
   filteredMovies,
 }) {
+  const [disabledButtons, setDisabledButtons] = useState({});
+
   function handleAddToWatched(movie) {
-    console.log("Add to Watched:", movie);
+    console.log("clicked finished");
+
+    fetch("http://localhost:5555/movies_progress/finished", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        user_id: 1,
+        movie_id: movie.id,
+        poster_path: movie.poster_path,
+        title: movie.title,
+        name: movie.name,
+        list_id: movie.id,
+        movie: {
+          movie_id: movie.id,
+          movie_progress: "finished",
+        },
+      }),
+    })
+      .then((response) => response.json())
+      .then((movie) => {
+        console.log("Adding the movie to finished");
+        addMovie(movie);
+        setMovieAdded(true);
+        setDisabledButtons((prev) => ({
+          ...prev,
+          [movie.id]: { ...prev[movie.id], watched: true },
+        }));
+        setModal(true);
+        setTimeout(() => {
+          setModal(false);
+        }, 10000);
+      });
   }
 
   function handleCurrentlyWatching(movie) {
-    console.log("Currently Watching:", movie);
+    console.log("clicked currently watching");
+    fetch("http://localhost:5555/movies_progress/watching", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        user_id: 1,
+        movie_id: movie.id,
+        poster_path: movie.poster_path,
+        title: movie.title,
+        name: movie.name,
+        list_id: movie.id,
+        movie: {
+          movie_id: movie.id,
+          movie_progress: "currently watching",
+        },
+      }),
+    })
+      .then((response) => response.json())
+      .then((movie) => {
+        console.log("Adding the movie to currently watching");
+        addMovie(movie);
+        setMovieAdded(true);
+        setModal(true);
+        setDisabledButtons((prev) => ({
+          ...prev,
+          [movie.id]: { ...prev[movie.id], watching: true },
+        }));
+        setTimeout(() => {
+          setModal(false);
+        }, 10000);
+      });
   }
 
   function handleMouseOver(index) {
@@ -31,23 +98,34 @@ function HoverBtns({
 
   function handleAddToList(movie) {
     console.log("clicked");
-    fetch("http://localhost:3000/movies", {
+    fetch("http://localhost:5555/movies_progress/in_list", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        id: movie.id.toString(),
+        user_id: 1,
+        movie_id: movie.id,
         poster_path: movie.poster_path,
         title: movie.title,
-        original_name: movie.original_name,
+        name: movie.name,
+        list_id: movie.id,
+        movie: {
+          movie_id: movie.id,
+          movie_progress: "in list",
+        },
       }),
     })
       .then((response) => response.json())
       .then((movie) => {
+        console.log("Adding the movie");
         addMovie(movie);
         setMovieAdded(true);
         setModal(true);
+        setDisabledButtons((prev) => ({
+          ...prev,
+          [movie.id]: { ...prev[movie.id], list: true },
+        }));
         setTimeout(() => {
           setModal(false);
         }, 10000);
@@ -76,20 +154,29 @@ function HoverBtns({
                   <button
                     className='overlay-button'
                     onClick={() => handleAddToList(movie)}
+                    disabled={disabledButtons[movie.id]?.list}
                   >
-                    Add to List
+                    {disabledButtons[movie.id]?.list
+                      ? "Added to cart"
+                      : "Add to List"}
                   </button>
                   <button
                     className='overlay-button'
                     onClick={() => handleCurrentlyWatching(movie)}
+                    disabled={disabledButtons[movie.id]?.watching}
                   >
-                    Currently Watching
+                    {disabledButtons[movie.id]?.watching
+                      ? "Added to Currently Watching"
+                      : "Currently Watching"}
                   </button>
                   <button
                     className='overlay-button'
                     onClick={() => handleAddToWatched(movie)}
+                    disabled={disabledButtons[movie.id]?.watched}
                   >
-                    Add to Watched
+                    {disabledButtons[movie.id]?.watched
+                      ? "Added to Finished"
+                      : "Add to Finished"}
                   </button>
                 </div>
               )}
