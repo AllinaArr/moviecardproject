@@ -14,6 +14,14 @@ function NavBar() {
   return (
     <nav>
       <ul className='nav-list'>
+        <li className={activePath === PATHS.LOGIN_APP ? "active" : ""}>
+          <NavLink
+            to={PATHS.LOGIN_APP}
+            onClick={() => handleClick(PATHS.LOGIN_APP)}
+          >
+            Logout
+          </NavLink>
+        </li>
         <li className={activePath === PATHS.HOME ? "active" : ""}>
           <NavLink to={PATHS.HOME} onClick={() => handleClick(PATHS.HOME)}>
             Home
@@ -41,14 +49,6 @@ function NavBar() {
             onClick={() => handleClick(PATHS.MOVIES_APP)}
           >
             Movies
-          </NavLink>
-        </li>
-        <li className={activePath === PATHS.LOGIN_APP ? "active" : ""}>
-          <NavLink
-            to={PATHS.LOGIN_APP}
-            onClick={() => handleClick(PATHS.LOGIN_APP)}
-          >
-            Logout
           </NavLink>
         </li>
       </ul>

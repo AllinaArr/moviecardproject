@@ -6,10 +6,11 @@ import {
   Typography,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import MoviesAddedToAccount from "../MoviesAddedToAccount";
+import MoviesAddedToAccount from "../AccountComponents/MoviesAddedToAccount";
+import MoviesCurrentlyWatching from "../AccountComponents/MoviesInCurrentlyWatching";
+import MoviesFinished from "../AccountComponents/MoviesFinished";
 
 const AccordionAccount = ({
-  movies,
   deleteMovie,
   hoveredMovie,
   setHoveredMovie,
@@ -17,6 +18,11 @@ const AccordionAccount = ({
   setMovieAdded,
   modal,
   setModal,
+  movieInList,
+  movieCurrently,
+  movieFinished,
+  addMovie,
+  updatedMovieProgress,
 }) => {
   return (
     <div className='flex'>
@@ -24,6 +30,7 @@ const AccordionAccount = ({
         style={{
           backgroundColor: "var(--body-secondary)",
           borderRadius: "10px",
+          width: "80vw",
         }}
       >
         <AccordionSummary
@@ -41,7 +48,7 @@ const AccordionAccount = ({
             }}
           >
             <MoviesAddedToAccount
-              listOfMovies={movies}
+              listOfMovies={movieInList}
               deleteMovie={deleteMovie}
               hoveredMovie={hoveredMovie}
               setHoveredMovie={setHoveredMovie}
@@ -49,6 +56,8 @@ const AccordionAccount = ({
               setMovieAdded={setMovieAdded}
               modal={modal}
               setModal={setModal}
+              addMovie={addMovie}
+              updatedMovieProgress={updatedMovieProgress}
             />
           </Typography>
         </AccordionDetails>
@@ -57,6 +66,7 @@ const AccordionAccount = ({
         style={{
           backgroundColor: "var(--body-secondary)",
           borderRadius: "10px",
+          width: "80vw",
         }}
       >
         <AccordionSummary
@@ -75,13 +85,32 @@ const AccordionAccount = ({
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography className='myListStyle'>Movies</Typography>
+          <Typography
+            style={{
+              backgroundColor: "var(--body-secondary)",
+              borderRadius: "10px",
+              width: "70vw",
+            }}
+          >
+            <MoviesCurrentlyWatching
+              addMovie={addMovie}
+              listOfMovies={movieCurrently}
+              deleteMovie={deleteMovie}
+              hoveredMovie={hoveredMovie}
+              setHoveredMovie={setHoveredMovie}
+              movieAdded={movieAdded}
+              setMovieAdded={setMovieAdded}
+              modal={modal}
+              setModal={setModal}
+            />
+          </Typography>
         </AccordionDetails>
       </Accordion>{" "}
       <Accordion
         style={{
           backgroundColor: "var(--body-secondary)",
           borderRadius: "10px",
+          width: "80vw",
         }}
       >
         <AccordionSummary
@@ -105,7 +134,16 @@ const AccordionAccount = ({
               borderRadius: "10px",
             }}
           >
-            Movies
+            <MoviesFinished
+              listOfMovies={movieFinished}
+              deleteMovie={deleteMovie}
+              hoveredMovie={hoveredMovie}
+              setHoveredMovie={setHoveredMovie}
+              movieAdded={movieAdded}
+              setMovieAdded={setMovieAdded}
+              modal={modal}
+              setModal={setModal}
+            />
           </Typography>
         </AccordionDetails>
       </Accordion>
