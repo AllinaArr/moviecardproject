@@ -6,12 +6,10 @@ function HoverBtns({
   addMovie,
   hoveredMovie,
   setHoveredMovie,
-  movieAdded,
   setMovieAdded,
   modal,
   setModal,
   handleMoreMovies,
-  filteredMovies,
 }) {
   const [disabledButtons, setDisabledButtons] = useState({});
 
@@ -39,7 +37,6 @@ function HoverBtns({
       .then((response) => response.json())
       .then((movie) => {
         console.log("Adding the movie to finished");
-        addMovie(movie);
         setMovieAdded(true);
         setDisabledButtons((prev) => ({
           ...prev,
@@ -75,7 +72,6 @@ function HoverBtns({
       .then((response) => response.json())
       .then((movie) => {
         console.log("Adding the movie to currently watching");
-        addMovie(movie);
         setMovieAdded(true);
         setModal(true);
         setDisabledButtons((prev) => ({
@@ -119,7 +115,6 @@ function HoverBtns({
       .then((response) => response.json())
       .then((movie) => {
         console.log("Adding the movie");
-        addMovie(movie);
         setMovieAdded(true);
         setModal(true);
         setDisabledButtons((prev) => ({

@@ -5,9 +5,12 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { Button, TextField } from "@mui/material";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 function SubmitAReview({ modal, setModal }) {
+  const [review, setReview] = useState("");
+  const [score, setScore] = useState("");
+
   function toggleModal() {
     console.log("I checked a toggleModal");
     setModal(!modal);
@@ -20,9 +23,18 @@ function SubmitAReview({ modal, setModal }) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(),
-    });
+      body: JSON.stringify({ review, score }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+        toggleModal();
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   }
+
   return (
     <div className='divForBut'>
       <Dialog open={modal} onClose={toggleModal}>
@@ -36,6 +48,8 @@ function SubmitAReview({ modal, setModal }) {
             label='Your review'
             fullWidth
             variant='standard'
+            value={review}
+            onChange={(e) => setReview(e.target.value)}
           />
           <TextField
             autoFocus
@@ -46,6 +60,8 @@ function SubmitAReview({ modal, setModal }) {
             fullWidth
             type='number'
             variant='standard'
+            value={score}
+            onChange={(e) => setScore(e.target.value)}
           />
         </DialogContent>
         <DialogActions>

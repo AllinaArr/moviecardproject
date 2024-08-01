@@ -85,7 +85,7 @@ function MoviesFinished({
         ))}
       </div>
 
-      {modal && <SubmitAReview modal={modal} setModal={setModal} />}
+      {/* {modal && <SubmitAReview modal={modal} setModal={setModal} />} */}
     </div>
   );
 }

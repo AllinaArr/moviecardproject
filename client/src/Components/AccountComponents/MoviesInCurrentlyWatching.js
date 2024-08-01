@@ -21,7 +21,7 @@ function MoviesInCurrentlyWatching({
       .then(() => {
         console.log(movieId);
         deleteMovie(movieId);
-        setModal(true);
+        // setModal(true);
       })
       .catch((err) => console.log(err));
   }
@@ -114,7 +114,7 @@ function MoviesInCurrentlyWatching({
         ))}
       </div>
 
-      {modal && <RemoveMovieFromAccount modal={modal} setModal={setModal} />}
+      {/* {modal && <RemoveMovieFromAccount modal={modal} setModal={setModal} />} */}
     </div>
   );
 }
