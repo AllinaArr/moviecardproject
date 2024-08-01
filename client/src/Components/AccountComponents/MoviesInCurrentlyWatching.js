@@ -60,6 +60,7 @@ function MoviesInCurrentlyWatching({
       .then((response) => response.json())
       .then((updatedMovie) => {
         console.log(updatedMovie);
+        updatedMovieProgress(movie.movie_id, "finished");
       })
       .catch((err) => console.log(err));
   }
