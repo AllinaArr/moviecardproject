@@ -10,6 +10,7 @@ function MoviesInCurrentlyWatching({
   modal,
   setModal,
   addMovie,
+  updatedMovieProgress,
 }) {
   function handleDeletion(movieId) {
     console.log("handle Deletion: deleted from Account");
@@ -40,6 +41,7 @@ function MoviesInCurrentlyWatching({
       .then((response) => response.json())
       .then((updatedMovie) => {
         console.log(updatedMovie);
+        updatedMovieProgress(movie.movie_id, "in list");
       })
       .catch((err) => console.log(err));
   }
