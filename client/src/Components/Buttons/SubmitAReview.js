@@ -5,9 +5,9 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { Button, TextField } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-function SubmitAReview({ modal, setModal }) {
+function SubmitAReview({ modal, setModal, movie }) {
   const [review, setReview] = useState("");
   const [score, setScore] = useState("");
 
@@ -23,7 +23,17 @@ function SubmitAReview({ modal, setModal }) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ review, score }),
+      body: JSON.stringify({
+        movie: {
+          movie_id: movie.id,
+          movie_progress: "finished",
+        },
+        movie_id: movie.id,
+        movie_progress: "finished",
+        review: review,
+        review_score: Number(score),
+        user_id: 1,
+      }),
     })
       .then((response) => response.json())
       .then((data) => {
