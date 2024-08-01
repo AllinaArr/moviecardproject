@@ -25,6 +25,15 @@ function Home({
     console.log("Searching for:", searchValue);
   };
 
+  const addMovieIfNotExists = (movie) => {
+    setMovies((prevMovie) => {
+      const movieExist = prevMovie.some((m) => m.id === movie.id);
+      if (!movieExist) {
+        return [...prevMovie, movie];
+      }
+      return prevMovie;
+    });
+  };
   return (
     <div>
       <div id='home-container'>
@@ -57,7 +66,7 @@ function Home({
             page={page}
             setPage={setPage}
             listOfMovies={movies}
-            addMovie={addMovie}
+            addMovie={addMovieIfNotExists}
             setHighlyRated={setMovies}
             hoveredMovie={hoveredMovie}
             setHoveredMovie={setHoveredMovie}

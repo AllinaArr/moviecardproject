@@ -10,6 +10,7 @@ function MoviesInCurrentlyWatching({
   modal,
   setModal,
   addMovie,
+  updatedMovieProgress,
 }) {
   function handleDeletion(movieId) {
     console.log("handle Deletion: deleted from Account");
@@ -21,7 +22,7 @@ function MoviesInCurrentlyWatching({
       .then(() => {
         console.log(movieId);
         deleteMovie(movieId);
-        setModal(true);
+        // setModal(true);
       })
       .catch((err) => console.log(err));
   }
@@ -40,6 +41,7 @@ function MoviesInCurrentlyWatching({
       .then((response) => response.json())
       .then((updatedMovie) => {
         console.log(updatedMovie);
+        updatedMovieProgress(movie.movie_id, "in list");
       })
       .catch((err) => console.log(err));
   }
@@ -58,6 +60,7 @@ function MoviesInCurrentlyWatching({
       .then((response) => response.json())
       .then((updatedMovie) => {
         console.log(updatedMovie);
+        updatedMovieProgress(movie.movie_id, "finished");
       })
       .catch((err) => console.log(err));
   }
@@ -114,7 +117,7 @@ function MoviesInCurrentlyWatching({
         ))}
       </div>
 
-      {modal && <RemoveMovieFromAccount modal={modal} setModal={setModal} />}
+      {/* {modal && <RemoveMovieFromAccount modal={modal} setModal={setModal} />} */}
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import SubmitAReview from "../Buttons/SubmitAReview";
+import { useState } from "react";
 
 function MoviesFinished({
   listOfMovies,
@@ -10,38 +11,11 @@ function MoviesFinished({
   modal,
   setModal,
 }) {
-  /**
-   *
-   * @param {*} index
-   * maybe I don't need to delete from "Finished movies"
-   * However, I may change a status -> think about it later
-   */
-
-  // function handleDeletion(movieId) {
-  //   console.log("deleted from Finished");
-
-  //   fetch(`http://localhost:5555/user_account_movies/${movieId}`, {
-  //     method: "DELETE",
-  //   })
-  //     .then((response) => response.ok)
-  //     .then(() => {
-  //       console.log(movieId);
-  //       deleteMovie(movieId);
-  //       setModal(true);
-  //     })
-  //     .catch((err) => console.log(err));
-  // }
-
-  // function handleAddToWatched(movie) {
-  //   console.log("Add to Watched:", movie);
-  // }
-
-  // function handleCurrentlyWatching(movie) {
-  //   console.log("Currently Watching:", movie);
-  // }
+  const [selectedMovie, setSelectedMovie] = useState();
 
   function handleSubmitReview(movie) {
     console.log("Clicked Add Review is Handled");
+    setSelectedMovie(movie);
     setModal(true);
   }
 
@@ -85,7 +59,13 @@ function MoviesFinished({
         ))}
       </div>
 
-      {modal && <SubmitAReview modal={modal} setModal={setModal} />}
+      {modal && (
+        <SubmitAReview
+          modal={modal}
+          setModal={setModal}
+          movie={selectedMovie}
+        />
+      )}
     </div>
   );
 }

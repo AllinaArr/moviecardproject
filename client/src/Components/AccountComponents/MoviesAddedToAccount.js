@@ -22,7 +22,7 @@ function MoviesAddedToAccount({
       .then(() => {
         console.log(movieId);
         deleteMovie(movieId);
-        setModal(true);
+        // setModal(true);
       })
       .catch((err) => console.log(err));
   }
