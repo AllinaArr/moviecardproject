@@ -102,6 +102,7 @@ const AccordionAccount = ({
               setMovieAdded={setMovieAdded}
               modal={modal}
               setModal={setModal}
+              updatedMovieProgress={updatedMovieProgress}
             />
           </Typography>
         </AccordionDetails>
