@@ -1,8 +1,8 @@
 import { useState } from "react";
 
 function Login() {
-  const [error, setError] = useState();
-  const [msg, setMsg] = useState();
+  const [error, setError] = useState(null);
+  const [msg, setMsg] = useState(null);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -23,35 +23,43 @@ function Login() {
       .then((resp) => {
         if (resp.ok) {
           setMsg("Log in successful!");
+          setError(null);
+          return resp.json();
         } else {
-          setMsg("Log in failed!");
-          return Promise.reject(resp);
+          return resp.json().then((data) => {
+            setMsg("Log in failed!");
+            setError(data.error || "An error occurred");
+            throw new Error(data.error || "An error occurred");
+          });
         }
       })
-      .catch((resp) => resp.json())
-      .then((data) => setError(data));
+      .catch((err) => {
+        console.error("Login error:", err);
+      });
   }
-  // const errorElement = error ? (
-  //   <p style={{ color: "red" }}>{error.error}</p>
-  // ) : null;
+
+  const errorElement = error ? <p style={{ color: "red" }}>{error}</p> : null;
+  const messageElement = msg ? <p>{msg}</p> : null;
 
   return (
     <div className='login'>
-      {/* {msg ? <p>{msg}</p> : null}
-      {errorElement} */}
+      {messageElement}
+      {errorElement}
       <form onSubmit={handleSubmit} className='login-form'>
         <h1 id='login-bar'>Login</h1>
         <div id='login-container'>
           <input
             type='text'
+            name='username'
             placeholder='Username'
             required
             className='input-username'
           />
         </div>
-        <div className=''>
+        <div>
           <input
-            type='text'
+            type='password'
+            name='password'
             placeholder='Password'
             required
             className='input-password'
@@ -65,7 +73,9 @@ function Login() {
             <br /> Forgot Password
           </a>
         </div>
-        <button className='login-btn'>Login</button>
+        <button type='submit' className='login-btn'>
+          Login
+        </button>
 
         <div className='login-para'>
           <p>

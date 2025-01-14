@@ -68,3 +68,20 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+---
+
+pip install pipenv
+pipenv install
+pipenv shell
+pip install Flask
+pip install Flask-Migrate
+pip install flask-restful
+pip install flask-cors
+pip install sqlalchemy-serializer
+pip install Flask-Bcrypt
+python server/app.py
+
+cd server
+export FLASK_APP=app.py
+export FLASK_RUN_PORT=5555
