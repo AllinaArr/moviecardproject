@@ -5,9 +5,15 @@ from flask_cors import CORS
 
 from models import db, User_Movie_List, User_Account, List_Movies, Review
 
+from werkzeug.security import check_password_hash 
+from werkzeug.security import generate_password_hash
+
+import jwt
+
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SECRET_KEY'] = 'your_secret_key'
 app.json.compact = False
 
 migrate = Migrate(app, db)
@@ -19,19 +25,35 @@ db.init_app(app)
 @app.route('/login', methods=['POST'])
 def login():
     data = request.get_json()
+    user = User_Account.query.filter(User_Account.username == data['username']).first()
+    if user and check_password_hash(user.password_hash, data['password']):  # Use `password_hash`
+        token = jwt.encode({'user_id': user.id}, app.config['SECRET_KEY'], algorithm='HS256')
+        return jsonify({"success": True, "token": token})
+    return jsonify({"success": False, "message": "Invalid username or password"}), 401
+
+@app.route('/signup', methods=['POST'])
+def signup():
+    data = request.get_json()
+
+    # Validate input
+    if not all(key in data for key in ('email', 'username', 'password')):
+        return jsonify({"message": "Missing fields"}), 400
+
+    hashed_password = generate_password_hash(data['password'], method='pbkdf2:sha256')
     
-    user = User_Account.query.filter(User_Account.username == 
-                                     data['username']).first()
+    try:
+        new_user = User_Account(
+            email=data['email'],
+            username=data['username'],
+            password_hash=hashed_password  # Use the correct field name
+        )
+        db.session.add(new_user)
+        db.session.commit()
+    except IntegrityError:
+        db.session.rollback()
+        return jsonify({"message": "Email or username already exists"}), 400
     
-    if not user:
-        return {"error":"login failed"}, 401
-    
-    if not user.authenticate(data['password']):
-        return {'error':"login failed"}, 401
-    
-    session['user_id'] = user.id
-    
-    return user.to_dict(), 200
+    return jsonify({"message": "User registered successfully"})
 
 @app.route('/user_account_movies', methods=['GET'])
 def get_movies_from_user_account():

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 import {
   Avatar,
   Button,
@@ -13,37 +13,35 @@ import {
 } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 
-export default function Login() {
+export default function SignUp() {
+  const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
-  const handleLogin = async (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://127.0.0.1:5555/login", {
+      const response = await fetch("http://127.0.0.1:5555/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ username, password }),
+        body: JSON.stringify({ email, username, password }),
       });
 
-      console.log("Response status:", response.status); // Debugging
       const data = await response.json();
-      console.log("Response data:", data); // Debugging
 
       if (data.success) {
-        localStorage.setItem("token", data.token);
-        navigate("/home");
+        setMessage(data.message);
+        navigate("/login");
       } else {
         setMessage(data.message);
       }
     } catch (error) {
-      console.error("Error:", error); // Debugging
-      setMessage("Error signing in");
+      setMessage("Error signing up");
     }
   };
 
@@ -51,6 +49,7 @@ export default function Login() {
     <Box
       sx={{
         background: "linear-gradient(135deg, #cdbaef 0%, #b495ea 100%)",
+        // background: "linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%)",
         minHeight: "100vh",
         display: "flex",
         justifyContent: "center",
@@ -65,6 +64,7 @@ export default function Login() {
           px: 4,
           py: 3,
           backgroundColor: "rgba(255, 255, 255, 0.85)",
+          // border: "1px solid #ff6f61",
           border: "1px solid #b495ea",
           borderRadius: "16px",
           boxShadow: "0 8px 20px rgba(0, 0, 0, 0.2)",
@@ -85,37 +85,39 @@ export default function Login() {
             <Typography
               component='h1'
               variant='h5'
-              sx={{
-                fontWeight: "bold",
-                color: "#4a148c",
-                textAlign: "center",
-              }}
-            >
-              Welcome to ScreenSphere
-            </Typography>
-            <Typography
-              component='h2'
-              variant='h5'
               sx={{ fontWeight: "bold", color: "#4a148c" }}
             >
-              Sign In
+              Sign Up
             </Typography>
             <Box
               component='form'
               noValidate
-              onSubmit={handleLogin}
+              onSubmit={handleSignup}
               sx={{ mt: 1 }}
             >
               <TextField
+                onChange={(event) => setEmail(event.target.value)}
+                value={email}
+                variant='outlined'
+                margin='normal'
+                required
+                fullWidth
+                id='email'
+                label='Email'
+                autoFocus
+                InputProps={{
+                  sx: { backgroundColor: "#ffffff", borderRadius: 2 },
+                }}
+              />
+              <TextField
                 onChange={(event) => setUsername(event.target.value)}
+                value={username}
                 variant='outlined'
                 margin='normal'
                 required
                 fullWidth
                 id='username'
                 label='Username'
-                value={username}
-                autoFocus
                 InputProps={{
                   sx: { backgroundColor: "#ffffff", borderRadius: 2 },
                 }}
@@ -139,28 +141,30 @@ export default function Login() {
                 type='submit'
                 fullWidth
                 variant='contained'
-                onClick={() => console.log("Button clicked!")}
                 sx={{
                   mt: 3,
                   mb: 2,
+                  // backgroundColor: "#ff6f61",
+                  // color: "#ffffff",
                   backgroundColor: "#6a1b9a",
                   color: "#ffffff",
                   fontWeight: "bold",
                   "&:hover": { backgroundColor: "#4a148c" },
+                  // "&:hover": { backgroundColor: "#b23c17" },
                 }}
               >
-                Log In
+                Sign Up
               </Button>
               <Grid>
                 <Grid item>
-                  <NavLink to='/signup' style={{ textDecoration: "none" }}>
+                  <Link to='/login' style={{ textDecoration: "none" }}>
                     <Typography
                       variant='body2'
                       sx={{ color: "#6a1b9a", fontWeight: "bold" }}
                     >
-                      {"Don't have an account? Sign Up"}
+                      {"Already have an account? Sign In"}
                     </Typography>
-                  </NavLink>
+                  </Link>
                 </Grid>
               </Grid>
               <Typography color='#6a1b9a' align='center' sx={{ mt: 3 }}>
