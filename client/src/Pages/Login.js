@@ -85,6 +85,17 @@ export default function Login() {
             <Typography
               component='h1'
               variant='h5'
+              sx={{
+                fontWeight: "bold",
+                color: "#4a148c",
+                textAlign: "center",
+              }}
+            >
+              Welcome to ScreenSphere
+            </Typography>
+            <Typography
+              component='h2'
+              variant='h5'
               sx={{ fontWeight: "bold", color: "#4a148c" }}
             >
               Sign In

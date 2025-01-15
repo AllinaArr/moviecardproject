@@ -48,7 +48,8 @@ export default function SignUp() {
   return (
     <Box
       sx={{
-        background: "linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%)",
+        background: "linear-gradient(135deg, #cdbaef 0%, #b495ea 100%)",
+        // background: "linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%)",
         minHeight: "100vh",
         display: "flex",
         justifyContent: "center",
@@ -63,7 +64,8 @@ export default function SignUp() {
           px: 4,
           py: 3,
           backgroundColor: "rgba(255, 255, 255, 0.85)",
-          border: "1px solid #ff6f61",
+          // border: "1px solid #ff6f61",
+          border: "1px solid #b495ea",
           borderRadius: "16px",
           boxShadow: "0 8px 20px rgba(0, 0, 0, 0.2)",
         }}
@@ -77,13 +79,13 @@ export default function SignUp() {
               alignItems: "center",
             }}
           >
-            <Avatar sx={{ m: 1, backgroundColor: "#ff6f61" }}>
+            <Avatar sx={{ m: 1, backgroundColor: "#b495ea" }}>
               <LockOutlinedIcon />
             </Avatar>
             <Typography
               component='h1'
               variant='h5'
-              sx={{ fontWeight: "bold", color: "#b23c17" }}
+              sx={{ fontWeight: "bold", color: "#4a148c" }}
             >
               Sign Up
             </Typography>
@@ -142,10 +144,13 @@ export default function SignUp() {
                 sx={{
                   mt: 3,
                   mb: 2,
-                  backgroundColor: "#ff6f61",
+                  // backgroundColor: "#ff6f61",
+                  // color: "#ffffff",
+                  backgroundColor: "#6a1b9a",
                   color: "#ffffff",
                   fontWeight: "bold",
-                  "&:hover": { backgroundColor: "#b23c17" },
+                  "&:hover": { backgroundColor: "#4a148c" },
+                  // "&:hover": { backgroundColor: "#b23c17" },
                 }}
               >
                 Sign Up
@@ -155,14 +160,14 @@ export default function SignUp() {
                   <Link to='/login' style={{ textDecoration: "none" }}>
                     <Typography
                       variant='body2'
-                      sx={{ color: "#b23c17", fontWeight: "bold" }}
+                      sx={{ color: "#6a1b9a", fontWeight: "bold" }}
                     >
                       {"Already have an account? Sign In"}
                     </Typography>
                   </Link>
                 </Grid>
               </Grid>
-              <Typography color='#b23c17' align='center' sx={{ mt: 3 }}>
+              <Typography color='#6a1b9a' align='center' sx={{ mt: 3 }}>
                 {message}
               </Typography>
             </Box>
