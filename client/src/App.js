@@ -6,6 +6,7 @@ import Account from "./Pages/Account";
 import TvShows from "./Pages/TvShows";
 import Movies from "./Pages/Movies";
 import Login from "./Pages/Login";
+import SignUp from "./Pages/SignUp";
 import { options } from "./Utils/options";
 
 import {
@@ -63,12 +64,18 @@ function App() {
 
 function Layout(props) {
   const location = useLocation();
-  const isLoginPage = location.pathname === PATHS.LOGIN_APP;
+  const isAuthPage =
+    location.pathname === PATHS.LOGIN_APP ||
+    location.pathname === PATHS.SIGNUP_APP;
 
   return (
-    // <div>
-    <div className={isLoginPage ? "" : "body-info"}>
-      {!isLoginPage ? (
+    <div className={isAuthPage ? "" : "body-info"}>
+      {isAuthPage ? (
+        <Routes>
+          <Route path={PATHS.LOGIN_APP} element={<Login />} />
+          <Route path={PATHS.SIGNUP_APP} element={<SignUp />} />
+        </Routes>
+      ) : (
         <>
           <HeaderOne />
           <Routes>
@@ -82,14 +89,8 @@ function Layout(props) {
             <Route path={PATHS.MOVIES_APP} element={<Movies {...props} />} />
           </Routes>
         </>
-      ) : (
-        // Render Login page separately without body-info
-        <Routes>
-          <Route path={PATHS.LOGIN_APP} element={<Login />} />
-        </Routes>
       )}
     </div>
-    // </>
   );
 }
 
