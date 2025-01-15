@@ -66,9 +66,10 @@ function Layout(props) {
   const isLoginPage = location.pathname === PATHS.LOGIN_APP;
 
   return (
-    <>
+    // <div>
+    <div className={isLoginPage ? "" : "body-info"}>
       {!isLoginPage ? (
-        <div className='body-info'>
+        <>
           <HeaderOne />
           <Routes>
             <Route
@@ -80,14 +81,15 @@ function Layout(props) {
             <Route path={PATHS.TVSHOWS_APP} element={<TvShows {...props} />} />
             <Route path={PATHS.MOVIES_APP} element={<Movies {...props} />} />
           </Routes>
-        </div>
+        </>
       ) : (
         // Render Login page separately without body-info
         <Routes>
           <Route path={PATHS.LOGIN_APP} element={<Login />} />
         </Routes>
       )}
-    </>
+    </div>
+    // </>
   );
 }
 
