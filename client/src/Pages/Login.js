@@ -145,10 +145,7 @@ export default function Login() {
                   </NavLink>
                 </Grid>
               </Grid>
-              <Typography
-                align='center'
-                sx={{ mt: 3, color: "#b71c1c", fontWeight: "bold" }}
-              >
+              <Typography color='white' align='center' sx={{ mt: 3 }}>
                 {message}
               </Typography>
             </Box>
