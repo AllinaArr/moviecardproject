@@ -20,6 +20,7 @@
 } */
 
 .body-info {
+  min-height: 100vh;
   margin: 0;
   font-family: "Lato", sans-serif;
   background-color: var(--body-primary);

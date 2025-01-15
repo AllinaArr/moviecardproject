@@ -1,97 +1,3 @@
-// // import { useState } from "react";
-
-// // function Login() {
-// //   const [error, setError] = useState(null);
-// //   const [msg, setMsg] = useState(null);
-
-// //   function handleSubmit(event) {
-// //     event.preventDefault();
-
-// //     const data = {
-// //       username: event.target.username.value,
-// //       password: event.target.password.value,
-// //     };
-
-// //     fetch("http://127.0.0.1:5555/login", {
-// //       method: "POST",
-// //       headers: {
-// //         "Content-Type": "application/json",
-// //       },
-// //       credentials: "include",
-// //       body: JSON.stringify(data),
-// //     })
-// //       .then((resp) => {
-// //         if (resp.ok) {
-// //           setMsg("Log in successful!");
-// //           setError(null);
-// //           return resp.json();
-// //         } else {
-// //           return resp.json().then((data) => {
-// //             setMsg("Log in failed!");
-// //             setError(data.error || "An error occurred");
-// //             throw new Error(data.error || "An error occurred");
-// //           });
-// //         }
-// //       })
-// //       .catch((err) => {
-// //         console.error("Login error:", err);
-// //       });
-// //   }
-
-// //   const errorElement = error ? <p style={{ color: "red" }}>{error}</p> : null;
-// //   const messageElement = msg ? <p>{msg}</p> : null;
-
-// //   return (
-// //     <div className='login'>
-// //       {messageElement}
-// //       {errorElement}
-// //       <form onSubmit={handleSubmit} className='login-form'>
-// //         <h1 id='login-bar'>Login</h1>
-// //         <div id='login-container'>
-// //           <input
-// //             type='text'
-// //             name='username'
-// //             placeholder='Username'
-// //             required
-// //             className='input-username'
-// //           />
-// //         </div>
-// //         <div>
-// //           <input
-// //             type='password'
-// //             name='password'
-// //             placeholder='Password'
-// //             required
-// //             className='input-password'
-// //           />
-// //         </div>
-// //         <div className='login-para'>
-// //           <label>
-// //             <input type='checkbox' /> Remember me
-// //           </label>
-// //           <a href='#' className='login-para'>
-// //             <br /> Forgot Password
-// //           </a>
-// //         </div>
-// //         <button type='submit' className='login-btn'>
-// //           Login
-// //         </button>
-
-// //         <div className='login-para'>
-// //           <p>
-// //             Don't have an account?
-// //             <a href='#' className='login-para'>
-// //               {" "}
-// //               <br />
-// //               Register
-// //             </a>
-// //           </p>
-// //         </div>
-// //       </form>
-// //     </div>
-// //   );
-// // }
-
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import {
@@ -138,25 +44,27 @@ export default function Login() {
   return (
     <Box
       sx={{
-        backgroundColor: "#5b5b5b",
+        background: "linear-gradient(135deg, #cdbaef 0%, #b495ea 100%)",
         minHeight: "100vh",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        padding: 2,
       }}
     >
       <Card
         sx={{
-          mx: 2,
+          width: "100%",
+          maxWidth: 400,
           px: 4,
           py: 3,
-          backgroundColor: "#1c1c1c",
-          border: "2px solid #ff6f61",
-          borderRadius: "10px",
-          boxShadow: "0 4px 10px rgba(0, 0, 0, 0.3)",
+          backgroundColor: "rgba(255, 255, 255, 0.85)",
+          border: "1px solid #b495ea",
+          borderRadius: "16px",
+          boxShadow: "0 8px 20px rgba(0, 0, 0, 0.2)",
         }}
       >
-        <Container component='main' maxWidth='xs'>
+        <Container component='main'>
           <CssBaseline />
           <Box
             sx={{
@@ -165,11 +73,15 @@ export default function Login() {
               alignItems: "center",
             }}
           >
-            <Avatar sx={{ m: 1, backgroundColor: "secondary.main" }}>
+            <Avatar sx={{ m: 1, backgroundColor: "#b495ea" }}>
               <LockOutlinedIcon />
             </Avatar>
-            <Typography component='h1' variant='h5' color='white'>
-              Sign in
+            <Typography
+              component='h1'
+              variant='h5'
+              sx={{ fontWeight: "bold", color: "#4a148c" }}
+            >
+              Sign In
             </Typography>
             <Box
               component='form'
@@ -188,7 +100,7 @@ export default function Login() {
                 value={username}
                 autoFocus
                 InputProps={{
-                  sx: { backgroundColor: "white" },
+                  sx: { backgroundColor: "#ffffff", borderRadius: 2 },
                 }}
               />
               <TextField
@@ -203,7 +115,7 @@ export default function Login() {
                 type='password'
                 id='password'
                 InputProps={{
-                  sx: { backgroundColor: "white" },
+                  sx: { backgroundColor: "#ffffff", borderRadius: 2 },
                 }}
               />
               <Button
@@ -213,20 +125,30 @@ export default function Login() {
                 sx={{
                   mt: 3,
                   mb: 2,
-                  backgroundColor: "#ff9800",
-                  "&:hover": { backgroundColor: "#e68900" },
+                  backgroundColor: "#6a1b9a",
+                  color: "#ffffff",
+                  fontWeight: "bold",
+                  "&:hover": { backgroundColor: "#4a148c" },
                 }}
               >
                 Log In
               </Button>
-              <Grid container>
+              <Grid>
                 <Grid item>
-                  <NavLink to='/signup' style={{ color: "#ff9800" }}>
-                    {"Don't have an account? Sign Up"}
+                  <NavLink to='/signup' style={{ textDecoration: "none" }}>
+                    <Typography
+                      variant='body2'
+                      sx={{ color: "#6a1b9a", fontWeight: "bold" }}
+                    >
+                      {"Don't have an account? Sign Up"}
+                    </Typography>
                   </NavLink>
                 </Grid>
               </Grid>
-              <Typography color='white' align='center' sx={{ mt: 3 }}>
+              <Typography
+                align='center'
+                sx={{ mt: 3, color: "#b71c1c", fontWeight: "bold" }}
+              >
                 {message}
               </Typography>
             </Box>
