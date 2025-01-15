@@ -63,39 +63,30 @@ function App() {
 
 function Layout(props) {
   const location = useLocation();
-  // const isLoginPage = location.pathname === PATHS.LOGIN_APP;
-  const isAuthPage = location.pathname === PATHS.LOGIN_APP;
+  const isLoginPage = location.pathname === PATHS.LOGIN_APP;
 
   return (
     <>
-      <div className={isAuthPage ? "auth-page" : "body-info"}>
-        {!isAuthPage ? (
-          <>
-            <HeaderOne />
-            <Routes>
-              <Route
-                path='/'
-                element={<Navigate to={PATHS.LOGIN_APP} replace />}
-              />
-              <Route path={PATHS.HOME} element={<Home {...props} />} />
-              <Route
-                path={PATHS.ACCOUNT_APP}
-                element={<Account {...props} />}
-              />
-              <Route
-                path={PATHS.TVSHOWS_APP}
-                element={<TvShows {...props} />}
-              />
-              <Route path={PATHS.MOVIES_APP} element={<Movies {...props} />} />
-            </Routes>
-          </>
-        ) : (
+      {!isLoginPage ? (
+        <div className='body-info'>
+          <HeaderOne />
           <Routes>
-            <Route path={PATHS.LOGIN_APP} element={<Login />} />
-            {/* <Route path={PATHS.SIGNUP} element={<SignUp />} /> */}
+            <Route
+              path='/'
+              element={<Navigate to={PATHS.LOGIN_APP} replace />}
+            />
+            <Route path={PATHS.HOME} element={<Home {...props} />} />
+            <Route path={PATHS.ACCOUNT_APP} element={<Account {...props} />} />
+            <Route path={PATHS.TVSHOWS_APP} element={<TvShows {...props} />} />
+            <Route path={PATHS.MOVIES_APP} element={<Movies {...props} />} />
           </Routes>
-        )}
-      </div>
+        </div>
+      ) : (
+        // Render Login page separately without body-info
+        <Routes>
+          <Route path={PATHS.LOGIN_APP} element={<Login />} />
+        </Routes>
+      )}
     </>
   );
 }

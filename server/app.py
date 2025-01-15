@@ -5,9 +5,14 @@ from flask_cors import CORS
 
 from models import db, User_Movie_List, User_Account, List_Movies, Review
 
+from werkzeug.security import check_password_hash 
+
+import jwt
+
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SECRET_KEY'] = 'your_secret_key'
 app.json.compact = False
 
 migrate = Migrate(app, db)
@@ -19,19 +24,11 @@ db.init_app(app)
 @app.route('/login', methods=['POST'])
 def login():
     data = request.get_json()
-    
-    user = User_Account.query.filter(User_Account.username == 
-                                     data['username']).first()
-    
-    if not user:
-        return {"error":"login failed"}, 401
-    
-    if not user.authenticate(data['password']):
-        return {'error':"login failed"}, 401
-    
-    session['user_id'] = user.id
-    
-    return user.to_dict(), 200
+    user = User_Account.query.filter(User_Account.username == data['username']).first()
+    if user and check_password_hash(user.password_hash, data['password']):  # Use `password_hash`
+        token = jwt.encode({'user_id': user.id}, app.config['SECRET_KEY'], algorithm='HS256')
+        return jsonify({"success": True, "token": token})
+    return jsonify({"success": False, "message": "Invalid username or password"}), 401
 
 @app.route('/user_account_movies', methods=['GET'])
 def get_movies_from_user_account():

@@ -21,6 +21,7 @@ export default function Login() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+
     try {
       const response = await fetch("http://127.0.0.1:5555/login", {
         method: "POST",
@@ -29,7 +30,11 @@ export default function Login() {
         },
         body: JSON.stringify({ username, password }),
       });
+
+      console.log("Response status:", response.status); // Debugging
       const data = await response.json();
+      console.log("Response data:", data); // Debugging
+
       if (data.success) {
         localStorage.setItem("token", data.token);
         navigate("/home");
@@ -37,6 +42,7 @@ export default function Login() {
         setMessage(data.message);
       }
     } catch (error) {
+      console.error("Error:", error); // Debugging
       setMessage("Error signing in");
     }
   };
@@ -122,6 +128,7 @@ export default function Login() {
                 type='submit'
                 fullWidth
                 variant='contained'
+                onClick={() => console.log("Button clicked!")}
                 sx={{
                   mt: 3,
                   mb: 2,
@@ -145,7 +152,7 @@ export default function Login() {
                   </NavLink>
                 </Grid>
               </Grid>
-              <Typography color='white' align='center' sx={{ mt: 3 }}>
+              <Typography color='#6a1b9a' align='center' sx={{ mt: 3 }}>
                 {message}
               </Typography>
             </Box>

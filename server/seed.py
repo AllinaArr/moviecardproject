@@ -1,5 +1,6 @@
 from app import app
 from models import db, User_Account, User_Movie_List, List_Movies, Review
+from werkzeug.security import generate_password_hash
 
 def run():
     User_Account.query.delete()
@@ -9,7 +10,7 @@ def run():
     db.session.commit()
     
     # add users
-    users = [User_Account(username="alinaRudanets", email="alrud@gmail.com", password_hash="helloWorld")]
+    users = [User_Account(username="alinaRudanets", email="alrud@gmail.com", password_hash=generate_password_hash("helloWorld"))]
     
     db.session.add_all(users)
     db.session.commit()
@@ -18,7 +19,6 @@ def run():
     movies_progress = [List_Movies(movie_id=720321, movie_progress="in list"),
                        List_Movies(movie_id=1022789, movie_progress="currently watching"),
                        List_Movies(movie_id=519182, movie_progress="finished")] 
-
 
     
     db.session.add_all(movies_progress)

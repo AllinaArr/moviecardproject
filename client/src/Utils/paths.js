@@ -5,6 +5,7 @@ const PATHS = {
   ACCOUNT_APP: "/account",
   TVSHOWS_APP: "/tvshows",
   MOVIES_APP: "/movies",
+  SIGNUP_APP: "/signup",
 };
 
 export default PATHS;
