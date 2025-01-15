@@ -1,6 +1,6 @@
 const PATHS = {
   HOME: "/home",
-  LOGIN_APP: "/",
+  LOGIN_APP: "/login",
   LOGOUT_APP: "/",
   ACCOUNT_APP: "/account",
   TVSHOWS_APP: "/tvshows",

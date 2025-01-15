@@ -9,7 +9,7 @@
   --body-secondary: #e4d5f4;
 }
 
-body {
+/* body {
   min-height: 100vh;
   margin: 0;
   font-family: "Lato", sans-serif;
@@ -17,7 +17,7 @@ body {
   display: grid;
   grid-template-columns: 15rem 1fr;
   gap: 2rem;
-}
+} */
 
 .body-info {
   margin: 0;
@@ -395,12 +395,13 @@ img {
   justify-content: center;
   align-items: center;
   min-width: 100vh;
+  background-color: red;
 
   /* min-height: 100vh; */
 }
 
 .login-form {
-  /* background-color: #333; */
+  background-color: #333;
   width: 350px;
 }
 
